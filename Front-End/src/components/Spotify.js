@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-
+// import React, { useEffect, useState } from 'react'
+// import { Link } from 'react-router-dom'
+// const { search } = require('./HomePage')
 
 const Spotify = () => {
 
@@ -32,7 +32,7 @@ const Spotify = () => {
   //   setQuery('')
   // }
 
-  return <div>hi</div>
+  // return <div>hi</div>
 
   // return <main className="trackList">
 
