@@ -4,8 +4,9 @@
   "description": "hello",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack-dev-server",
-    "test": "mocha test/**/*_spec.js --require test/spec_helper --recursive --exit"
+    "test": "mocha test/**/*_spec.js --require test/spec_helper --recursive --exit",
+    "serve:back": "nodemon ./Back-End/server.js",
+    "serve:front": "webpack-dev-server"
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './Front-End/src/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve('dist')
@@ -17,7 +17,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.resolve('src'),
+    contentBase: path.resolve('./Front-End/src'),
     hot: true,
     open: true,
     port: 8001,
@@ -33,7 +33,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'Front-End/src/index.html',
       filename: 'index.html',
       inject: 'body'
     })

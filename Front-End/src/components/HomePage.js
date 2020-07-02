@@ -1,5 +1,5 @@
-import React from 'react'
-import { ProgressPlugin } from 'webpack'
+import React, { useEffect, useState } from 'react'
+// import { ProgressPlugin } from 'webpack'
 import axios from 'axios'
 
 const HomePage = () => {
@@ -9,10 +9,10 @@ const HomePage = () => {
   const [movies, setMovies] = useState([])
 
   useEffect(() => {
-    getMovies()
+    // getMovies()
   }, [query])
 
-  const getMovies = 
+  // const getMovies = 
 
 
   const updateSearch = e => {
