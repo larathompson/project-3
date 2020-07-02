@@ -6,7 +6,7 @@ import HomePage from './components/HomePage'
 // import SingleMovie from './src/components/SingleMovie'
 // import Login from './src/components/Login'
 // import Register from './src/components/Register'
-// import Reviews from './src/components/Reviews'
+import Reviews from './components/Reviews'
 // import Favourites from './src/components/Favourites'
 import SingleMovie from './components/SingleMovie'
 
@@ -18,10 +18,10 @@ const App = () => {
     {/* <NavBar /> */}
     <Switch>
       <Route exact path="/" component={HomePage} />
+      <Route exact path="/reviews" component={Reviews} />
       {/* <Route path="/movies/:id" component={SingleMovie} />
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
-      <Route path="/reviews" component={Reviews} />
       <Route path="/favourites" component={Favourites} /> */}
       <Route path='/movie/:name/:id' component={SingleMovie} />
     </Switch>

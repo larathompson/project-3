@@ -1,8 +1,12 @@
 const mongoose = require('mongoose')
 const User = require('./models/user')
+const Reviews = require('./models/reviews')
+// const { default: Reviews } = require('../Front-End/src/components/Reviews')
 
+
+//it says there is a throw error and the module cant be found !
 mongoose.connect(
-  'mongodb://localhost/coffeedb',
+  'mongodb://localhost/moviedb',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err, db) => {
     if (err) return console.log(err)
@@ -38,7 +42,26 @@ mongoose.connect(
         ])
       })
       .then(users => {
-        console.log(`${users.length}users have been created !`)
+        return Reviews.create([
+          {
+            text: 'Great soundtrack! ',
+            user: users[3],
+            rating: 5
+          },
+          {
+            text: 'Shit! ',
+            user: users[1],
+            rating: 1
+          },
+          {
+            text: 'Distinctly average!' ,
+            user: users[1],
+            rating: 3
+          }
+        ])
+      })
+      .then(reviews => {
+        console.log(`${reviews.length} reviews have been created !`)
       })
       .catch(err => {
         console.log(err)
