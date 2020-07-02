@@ -1,13 +1,15 @@
 import React from 'react'
 import { Switch, Route, HashRouter } from  'react-router'
 
-import NavBar from './components/NavBar'
+import NavBar from './src/components/NavBar'
 import HomePage from './componenets/Home'
-import SingleMovie from './components/SingleMovie'
-import Login from './components/Login'
-import Register from './components/Register'
-import Reviews from './components/Reviews'
-import Favourites from './components/Favourites'
+import SingleMovie from './src/components/SingleMovie'
+import Login from './src/components/Login'
+import Register from './src/components/Register'
+import Reviews from './src/components/Reviews'
+import Favourites from './src/components/Favourites'
+import Spotify from './src/components/Spotify'
+
 
 import './styles/style.scss'
 
@@ -21,6 +23,7 @@ const App = () => {
       <Route path="/login" component={Login} />
       <Route path="/reviews" component={Reviews} />
       <Route path="/favourites" component={Favourites} />
+      <Route path='/search' component={Spotify} />
     </Switch>
   </HashRouter>
 }
