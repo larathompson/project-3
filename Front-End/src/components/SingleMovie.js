@@ -1,22 +1,31 @@
-// import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
-// const { search } = require('./HomePage')
+import axios from 'axios'
 
-const Spotify = () => {
+const SingleMovie = (props) => {
 
-  // // const [query, setQuery] = useState('')
-  // const [artistData, updateArtistData] = useState([])
+  const [soundtrackData, updateSoundtrackData] = useState([])
 
 
-  // function getArtists(query) {
-  //   console.log('hello')
-  //   fetch(`https://api.spotify.com/v1/search?q=${query}&type=playlist`)
-  //     .then(resp => resp.json())
-  //     .then((data) => {
-  //       updateArtistData(data)
-  //       console.log(data)
-  //     })
-  // }
+
+  useEffect(() => {
+    const movieName = props.match.params.name
+    axios.get(`https://api.spotify.com/v1/search?q=${movieName}soundtrack&type=playlist`,
+      {
+        headers: { 'Authorization': 'Bearer BQBR0qhn6sHg9wNgAagQHgmcPoja20s6y5xV6SgGXQqtow9ifNI4A8i0eLRXcsfymqKFBjRkEE9W7kPmXr8' }
+      })
+      .then(axiosResp => {
+        console.log(axiosResp)
+        // updateSoundtrackData(axiosResp.data)
+      })
+  }, [])
+
+  return <section>
+    <div>
+      <h1>Hello</h1>
+    </div>
+  </section>
+
 
 
 
@@ -45,7 +54,7 @@ const Spotify = () => {
   //       <button type="submit" className='button'>Search 🔍</button>
   //     </form>
   //   </div>
- 
+
   //     {artistData.map((album, index) => {
 
   //       return <div key={index}>
@@ -56,10 +65,10 @@ const Spotify = () => {
   //       </div>
   //     })}
 
-// </main>
+  // </main>
 
-// }
+  // }
 
 }
 
-export default Spotify 
+export default SingleMovie

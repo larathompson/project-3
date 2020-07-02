@@ -8,7 +8,7 @@ import HomePage from './components/HomePage'
 // import Register from './src/components/Register'
 // import Reviews from './src/components/Reviews'
 // import Favourites from './src/components/Favourites'
-import Spotify from './components/Spotify'
+import SingleMovie from './components/SingleMovie'
 
 
 import './styles/style.scss'
@@ -23,7 +23,7 @@ const App = () => {
       <Route path="/login" component={Login} />
       <Route path="/reviews" component={Reviews} />
       <Route path="/favourites" component={Favourites} /> */}
-      <Route path='/search' component={Spotify} />
+      <Route path='/movie/:name/:id' component={SingleMovie} />
     </Switch>
   </HashRouter>
 }
