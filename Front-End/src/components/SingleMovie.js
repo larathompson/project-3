@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
-// import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const SingleMovie = (props) => {
 
   const [soundtrackData, updateSoundtrackData] = useState([])
-
-
 
   useEffect(() => {
     const movieName = props.match.params.name
@@ -23,52 +20,9 @@ const SingleMovie = (props) => {
 
   return <section>
     <div>
-    <iframe src={`https://open.spotify.com/embed/playlist/${soundtrackData}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      <iframe src={`https://open.spotify.com/embed/playlist/${soundtrackData}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
   </section>
-
-
-
-
-  // function handleChange(event) {
-  //   console.log(event.target.value)
-  //   setQuery(event.target.value)
-  // }
-
-  // function handleSubmit(event) {
-  //   setQuery(event.target.value)
-  //   console.log('this is the query ' + query)
-  //   getArtists(query)
-  //   setQuery('')
-  // }
-
-  // return <div>hi</div>
-
-  // return <main className="trackList">
-
-  // <section className='search'>
-  //   <h1> Songify </h1>
-  //   <div>
-  //     <form onSubmit={handleSubmit} className='form'>
-  //       <input type="text" value={query} placeholder="Search" onChange={handleChange} className='input'>
-  //       </input>
-  //       <button type="submit" className='button'>Search 🔍</button>
-  //     </form>
-  //   </div>
-
-  //     {artistData.map((album, index) => {
-
-  //       return <div key={index}>
-  //         {/* 1) We create a link that has the cheese ID in it for each cheese */}
-  //         <Link to={`/search/${album.id}`}>
-  //                 <img src={album.cover} alt={album.title} />
-  //         </Link>
-  //       </div>
-  //     })}
-
-  // </main>
-
-  // }
 
 }
 

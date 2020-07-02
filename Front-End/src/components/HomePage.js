@@ -7,7 +7,6 @@ const HomePage = (props) => {
   const API_KEY = '089c839eda3ed1ce04045e0b371dedeb'
 
   const [search, setSearch] = useState('')
-  // const [query, setQuery] = useState('')
   const [movies, setMovies] = useState([])
 
   // useEffect(() => {
