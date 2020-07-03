@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const User = require('./models/user')
 
 mongoose.connect(
-  'mongodb://localhost/coffeedb',
+  'mongodb://localhost/moviedb',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err, db) => {
     if (err) return console.log(err)

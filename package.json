@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha test/**/*_spec.js --require test/spec_helper --recursive --exit",
     "serve:back": "nodemon ./Back-End/server.js",
-    "serve:front": "webpack-dev-server"
+    "serve:front": "webpack-dev-server",
+    "seed": "node ./Back-End/seed.js"
+
   },
   "repository": {
     "type": "git",
