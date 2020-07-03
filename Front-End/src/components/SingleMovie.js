@@ -11,7 +11,7 @@ const SingleMovie = (props) => {
 
     axios.get(`https://api.spotify.com/v1/search?q=${movieName}soundtrack&type=playlist`,
       {
-        headers: { 'Authorization': 'Bearer BQBR0qhn6sHg9wNgAagQHgmcPoja20s6y5xV6SgGXQqtow9ifNI4A8i0eLRXcsfymqKFBjRkEE9W7kPmXr8' }
+        headers: { 'Authorization': 'Bearer BQDEzeWTzvV6L75W-ybtcmMQMplJRKnRSwgXwtep1eJF4OTbc5QHn_Os0L7f2Ldby7Jf1LVk9-UjCD_idVM' }
       })
       .then(axiosResp => {
         console.log(axiosResp.data.playlists.items[0].id)

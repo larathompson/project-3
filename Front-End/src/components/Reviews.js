@@ -13,8 +13,22 @@ const Reviews = () => {
       .then(review => {
         setReviewData(review.data)
         setFilterReviews(review.data)
+        console.log(review.data)
       })
   }, [])
+
+  // return <>
+  //   <div className='reviews'>
+  //     {reviews.map((review, index) => {
+  //       return <div key={index} className='singleReview'>
+  //         <h3> {review.user.username}</h3>
+  //         <h3> {review.text}</h3>
+  //         <h3> {review.rating}</h3>
+  //       </div>
+  //     })}
+  //   </div>
+  // </>
+
 
   function handleRatingSort(event) {
     //ascending
@@ -24,7 +38,7 @@ const Reviews = () => {
       data.sort((a, b) => a.rating - b.rating)
     } else if (event.target.value === 'highToLow') {
       data.sort((a, b) => b.rating - a.rating)
-    } 
+    }
     setFilterReviews(data)
   }
 
@@ -33,17 +47,34 @@ const Reviews = () => {
   }
 
   return <section>
-    
-    rating
+    <nav>
+      rating
     <select onChange={handleRatingSort}>
-      <option value="highToLow"> Highest to Lowest</option>
-      <option value="lowToHigh"> Lowest to Highest</option>
-    </select>
+        <option value="highToLow"> Highest to Lowest</option>
+        <option value="lowToHigh"> Lowest to Highest</option>
+      </select>
 date added
     <select onChange={handleDateSort}>
-      <option value="oldest"> Oldest </option>
-      <option value="most-recent"> Most Recent </option>
-    </select>
+        <option value="oldest"> Oldest </option>
+        <option value="most-recent"> Most Recent </option>
+      </select>
+    </nav>
+
+    <main>
+      <div className='reviews'>
+        {/* {console.log(reviews.user.username)} */}
+        {filterReviews.map((review, index) => {
+          return <div key={index} className='singleReview'>
+
+            <h3> {review.user.username}</h3>
+            <h3> {review.text}</h3>
+            <h3> {review.rating}</h3>
+          </div>
+        })}
+
+      </div>
+    </main>
+
 
   </section>
 

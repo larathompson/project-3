@@ -1,11 +1,40 @@
 const Reviews = require('../models/reviews')
 
+
 function index(req, res) {
   Reviews
     .find()
+    .populate('user')
+    // .populate('comment')
     .then(reviews => {
       res.send(reviews)
     })
+}
+
+function getOneReview(req, res) {
+  const id = req.params.id
+  Reviews
+    .findById(id)
+    .populate('user')
+    .then(review => {
+      console.log(review)
+      res.send(review)
+    })
+}
+
+//gets  reviews of each movie
+function getMovieReviews(req, res) {
+  const filmId = req.params.filmId
+  console.log(filmId)
+  Reviews
+    .find({ filmId })
+    .populate('user')
+    .then(reviews => {
+      console.log(reviews)
+      res.send(reviews)
+    })
+    .catch(error => res.send(error))
+
 }
 
 
@@ -80,15 +109,15 @@ function updateComment(req, res) {
     .findById(req.params.id)
     .then(review => {
       if (!review) return res.status(404).send({ message: 'Not found' })
-     
+
       const comment = review.comments.id(req.params.commentId)
 
-   
+
       if (!comment.user.equals(req.currentUser._id)) {
         return res.status(401).send({ message: 'Unauthorized' })
       }
 
-    
+
       comment.set(req.body)
       return review.save()
     })
@@ -103,15 +132,15 @@ function removeComment(req, res) {
     .findById(req.params.id)
     .then(review => {
       if (!review) return res.status(404).send({ message: 'Not found' })
-     
+
       const comment = review.comments.id(req.params.commentId)
 
-    
+
       if (!comment.user.equals(req.currentUser._id)) {
         return res.status(401).send({ message: 'Unauthorized' })
       }
 
-      
+
       comment.remove()
       return review.save()
     })
@@ -126,7 +155,9 @@ module.exports = {
   update,
   createComment,
   removeComment,
-  updateComment
+  updateComment,
+  getOneReview,
+  getMovieReviews
 }
 
 

@@ -8,7 +8,7 @@ import Reviews from './components/Reviews'
 import Login from './components/Login'
 import Register from './components/Register'
 import SingleMovie from './components/SingleMovie'
-import Authorisation from './components/Authorisation'
+import Latest from './components/Latest'
 
 
 import './styles/style.scss'
@@ -23,6 +23,7 @@ const App = () => {
       <Route path="/login" component={Login} />
       <Route path='/movie/:name/:id' component={SingleMovie} />
       <Route path="/favourites" component={Favourites} />
+      <Route path="/latest" component={Latest} />
     </Switch>
   </HashRouter>
 }

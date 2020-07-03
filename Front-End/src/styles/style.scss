@@ -2,3 +2,39 @@
 
 $beige: #E2D5CE;
 $silver-grey: #C4C4C4;
+
+html, body {
+  height: 100vh;
+}
+
+.hero-body {
+  display: flex;
+  flex: row;
+  justify-content: flex-end;
+}
+
+.movie {
+  margin-top: 20px;
+  background: LightGray;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20% 20%;
+}
+
+.carousel {
+  height: 100;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.carousel-images {
+  display: flex;
+  animation: scrollLeft 30s linear infinite;
+}
+
+@keyframes scrollLeft {
+ to {
+   transform: translateX(-100%)
+ }
+}
+
