@@ -28,4 +28,9 @@ router.route('/register')
 router.route('/login')
   .post(userController.login)
 
+  // Creating a user profile 
+router.route('/profile')
+  .post(secureRoute, userController.addFavourite)
+  .get(secureRoute, userController.getProfile)
+
 module.exports = router

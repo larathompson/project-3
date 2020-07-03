@@ -6,7 +6,8 @@ const mongooseUniqueValidator = require('mongoose-unique-validator')
 const schema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, minLength: 8, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  favouriteMovies: { type: [Object] }
 })
 
 schema.plugin(mongooseHidden({ defaultHidden: { password: true } }))
@@ -19,7 +20,8 @@ schema
   })
 schema
   .pre('validate', function checkPassword(next) {
-    if (this._passwordConfirmation !== this.password) {
+    //! Important to add this first bit
+    if (this.isModified('password') && this._passwordConfirmation !== this.password) {
       this.invalidate('passwordConfirmation', 'should match')
     }
     next()

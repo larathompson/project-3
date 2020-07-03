@@ -21,13 +21,40 @@ function login(req, res) {
       if (!user.validatePassword(req.body.password)) {
         return res.status(401).send({ message: 'Unauthorized' })
       }
-      const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '72h' } )
+      const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '72h' })
       res.status(202).send({ message: `Welcome back ${user.username}`, token })
     })
     .catch(error => res.send(error))
 }
 
+//! Favourite Logic
+
+function addFavourite(req, res) {
+  const favourite = req.body
+  User
+    .findById(req.currentUser)
+    .then(user => {
+      user.favouriteMovies.push(favourite)
+      return user.save()
+    })
+   
+    .then(user => res.status(201).json(user))
+    .catch(err => res.status(401).send(err))
+}
+
+function getProfile(req, res) {
+  User
+    .findById(req.currentUser)
+    .then(user => {
+      console.log(user)
+    })
+
+}
+
+
 module.exports = {
   register,
-  login
+  login,
+  addFavourite,
+  getProfile
 }
