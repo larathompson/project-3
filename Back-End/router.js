@@ -8,9 +8,12 @@ router.route('/reviews')
   .post(secureRoute, reviewsController.create)
 
 router.route('/review/:id')
-
+  .get(reviewsController.getOneReview)
   .delete(secureRoute, reviewsController.remove)
   .put(secureRoute, reviewsController.update)
+
+router.route('/movie/reviews/:filmId')
+  .get(reviewsController.getMovieReviews)
 
 router.route('/review/:id/comments')
   .post(secureRoute, reviewsController.createComment)
