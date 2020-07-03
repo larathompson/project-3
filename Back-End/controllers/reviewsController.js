@@ -34,6 +34,10 @@ function getMovieReviews(req, res) {
       res.send(reviews)
     })
     .catch(error => res.send(error))
+}
+//added this 
+function createMovieReview(req, res) {
+  const filmId = req.params.filmId
 
 }
 
@@ -157,7 +161,8 @@ module.exports = {
   removeComment,
   updateComment,
   getOneReview,
-  getMovieReviews
+  getMovieReviews, 
+  createMovieReview
 }
 
 
