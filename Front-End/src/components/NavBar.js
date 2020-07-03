@@ -18,6 +18,10 @@ const NavBar = (props) => {
               Home
             </Link>
 
+            <Link to="/latest" className="button is-Light">
+              Latest
+            </Link>
+
             {!isLoggedIn() && <Link to="/register" className="button is-light">
               Register
             </Link>}
