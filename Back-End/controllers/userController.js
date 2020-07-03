@@ -11,9 +11,13 @@ function register(req, res) {
 }
 
 function login(req, res) {
+  console.log(req.body)
   User
     .findOne({ email: req.body.email })
     .then(user => {
+      console.log(user)
+      if (!user) return res.status(400).send({ message: 'User not found' })
+
       if (!user.validatePassword(req.body.password)) {
         return res.status(401).send({ message: 'Unauthorized' })
       }
