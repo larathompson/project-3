@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-const HomePage = (props) => {
+const Latest = (props) => {
 
   const API_KEY = '089c839eda3ed1ce04045e0b371dedeb'
 
@@ -10,15 +10,15 @@ const HomePage = (props) => {
   const [movies, setMovies] = useState([])
 
 
-  const popularMovies = (() => {
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+  const nowPlaying = (() => {
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`)
       .then(movie => {
         setMovies(movie.data.results)
       })
   })
 
   useEffect(() => {
-    popularMovies()
+    nowPlaying()
   }, [])
 
   const getMovies = (() => {
@@ -70,4 +70,4 @@ const HomePage = (props) => {
   </>
 }
 
-export default HomePage
+export default Latest 
