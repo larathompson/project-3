@@ -47,19 +47,19 @@ mongoose.connect(
             text: 'Great soundtrack! ',
             user: users[3],
             rating: 5,
-            filmId: '1'
+            filmId: '64690'
           },
           {
             text: 'Shit! ',
             user: users[1],
             rating: 1,
-            filmId: '2'
+            filmId: '64690'
           },
           {
             text: 'Distinctly average!' ,
             user: users[1],
             rating: 3,
-            filmId: '1'
+            filmId: '1018'
           }
         ])
       })
