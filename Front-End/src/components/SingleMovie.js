@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+// import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const SingleMovie = (props) => {
@@ -23,6 +24,10 @@ const SingleMovie = (props) => {
       <iframe src={`https://open.spotify.com/embed/playlist/${soundtrackData}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
   </section>
+
+
+
+
 
 }
 

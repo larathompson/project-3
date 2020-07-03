@@ -9,6 +9,7 @@ import HomePage from './components/HomePage'
 // import Reviews from './src/components/Reviews'
 // import Favourites from './src/components/Favourites'
 import SingleMovie from './components/SingleMovie'
+import Authorisation from './components/Authorisation'
 
 
 import './styles/style.scss'
