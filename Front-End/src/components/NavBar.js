@@ -31,6 +31,10 @@ const NavBar = (props) => {
               Login
             </Link>}
 
+            {isLoggedIn() && <Link to="/profile" className="button is-light">
+              Favourites
+            </Link>}
+
             {isLoggedIn() && <button onClick={handleLogout} className="button is-light">
               Logout
             </button>}

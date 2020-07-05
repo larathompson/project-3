@@ -24,6 +24,7 @@ router.route('/review/:id/comment/:commentId')
 
 router.route('/register')
   .post(userController.register)
+  // .post(userController.generateToken)
 
 router.route('/login')
   .post(userController.login)
