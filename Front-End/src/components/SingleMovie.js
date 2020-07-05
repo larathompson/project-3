@@ -37,6 +37,7 @@ const SingleMovie = (props) => {
       `)
       .then(axiosResp => {
         const newResp = setMovieData(axiosResp.data.results[0])
+        //! user isn't returning anything
         if (user) {
           setUser(user)
           const haveAdded = user.favouriteMovies.some((rest) => {

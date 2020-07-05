@@ -83,6 +83,6 @@ module.exports = {
   register,
   login,
   addFavourite,
-  getProfile,
+  getProfile
   // generateToken
 }
