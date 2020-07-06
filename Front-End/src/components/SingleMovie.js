@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { UserContext } from '../UserContext'
 import axios from 'axios'
 import Auth from '../lib/auth'
@@ -145,7 +146,9 @@ const SingleMovie = (props) => {
     <div className="similarMovieList">
       {similarMovieData.map((result, index) => {
         return <div key={index}>
-          <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+          <Link to={`/movie/${result.title}/${result.id}`}>
+            <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+          </Link>
         </div>
       })}
     </div>
