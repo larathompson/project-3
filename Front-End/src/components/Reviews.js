@@ -15,7 +15,7 @@ const Reviews = () => {
       .then(review => {
         setReviewData(review.data)
         setFilterReviews(review.data)
-        console.log(review.data)
+      
       })
   }, [])
 
@@ -23,28 +23,23 @@ const Reviews = () => {
 
   function handleSort(event) {
     console.log(event.target.value)
-    const data = filterReviews
+    const data = filterReviews.slice()
     if (event.target.value === 'oldest') {
-      console.log('olddddd')
-      const old = data.slice().sort((a, b) => a.createdAt - b.createdAt)
+      const old = data.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt))
       setFilterReviews(old)
     } if (event.target.value === 'most-recent') {
-      console.log('newwww')
-      const recent = data.slice().sort((a, b) => b.createdAt - a.createdAt)
+      const recent = data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
       setFilterReviews(recent)
     } if (event.target.value === 'lowToHigh') {
-      console.log('lowww')
-      const low = data.slice().sort((a, b) => a.rating - b.rating)
+      const low = data.sort((a, b) => a.rating - b.rating)
       setFilterReviews(low)
-      console.log(low)
+     
     } if (event.target.value === 'highToLow') {
-      console.log('hioghhh')
-      const high = data.slice().sort((a, b) => b.rating - a.rating)
+      const high = data.sort((a, b) => b.rating - a.rating)
       setFilterReviews(high)
     }
-   
-  }
 
+  }
   return <section>
     <nav>
       Sort Reviews
@@ -54,7 +49,7 @@ const Reviews = () => {
         <option value="oldest"> Oldest </option>
         <option value="most-recent"> Most Recent </option>
       </select>
-    
+
     </nav>
 
     <main>
@@ -63,11 +58,11 @@ const Reviews = () => {
         {filterReviews.map((review, index) => {
           return <div key={index} className='singleReview'>
 
-            <h3> {review.user.username}</h3>
-            <h3> {review.text}</h3>
-            <h3> {review.rating}</h3>
-        <h3>{review.createdAt}</h3>
+            <h3> Username: {review.user.username}</h3>
+            <h3> Review: {review.text}</h3>
+            <h3> Rating: {review.rating}</h3>
             {/* <h3> {moment.format('review.createdAt')} </h3> */}
+            <h3> Time: {moment(review.updatedAt).fromNow()}</h3>
           </div>
         })}
 
