@@ -21,7 +21,10 @@ const Favourites = () => {
       })
       .catch(error => console.log(error))
   }, [userInfo])
-
+ 
+  const deleteFavourite = () => {
+    
+  } 
 
   return <>
     <h1>Hello</h1>
@@ -29,12 +32,14 @@ const Favourites = () => {
       Welcome, {movieData.userInfo.username}!
     </h2>}
     {/* //! first time load page user info undefined, so need to make sure it exists. */}
-    <p>{userInfo && userInfo.favouriteMovies.map((movie, index) => {
+    <div>{userInfo && userInfo.favouriteMovies.map((movie, index) => {
       return <div key={index}>
         <h1>{movie.title}</h1>
+        <img src={movie.poster}/>
+        <button>Delete</button>
       </div>
     })}
-    </p>
+    </div>
   </>
 
 
