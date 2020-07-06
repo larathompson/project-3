@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: './Front-End/src/index.js',
@@ -31,6 +32,7 @@ module.exports = {
     }
   },
   plugins: [
+    new Dotenv(), 
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: 'Front-End/src/index.html',

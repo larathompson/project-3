@@ -34,6 +34,7 @@ function login(req, res) {
 
 function addFavourite(req, res) {
   const favourite = req.body
+  console.log(favourite)
   User
     .findById(req.currentUser)
     .then(user => {
