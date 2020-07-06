@@ -6,13 +6,10 @@ import Auth from '../lib/auth'
 
 const SingleMovie = (props) => {
   //! Code I've added - Kianna
-  //! Slightly confused about useContext, userContext and createContext ???
-  const { user, setUser } = useContext(UserContext)
-
+  const { userInfo, setUserInfo } = useContext(UserContext)
   const [soundtrackData, setSoundtrackData] = useState({})
-  const [info, setInfo] = useState({})
   const [added, setAdded] = useState(false)
-  const [movies, setMovieData] = useState([])
+  const [movieData, setMovieData] = useState([])
 
   useEffect(() => {
     const movieName = props.match.params.name
@@ -36,47 +33,29 @@ const SingleMovie = (props) => {
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${movieName}&page=1&include_adult=false
       `)
       .then(axiosResp => {
-        const newResp = setMovieData(axiosResp.data.results[0])
-        //! user isn't returning anything
-        if (user) {
-          setUser(user)
-          const haveAdded = user.favouriteMovies.some((rest) => {
-            return rest._id === newResp._id
+        setMovieData(axiosResp.data.results[0])
+        if (userInfo) {
+          const haveAdded = userInfo.favouriteMovies.some((rest) => {
+            return rest._id === axiosResp.data.results[0]._id
           })
           setAdded(haveAdded)
         }
       })
       .catch(err => console.log(err))
-  }, [user])
-
-
-  //!ORIGINAL
-
-  // useEffect(() => {
-  //   const API_KEY = '089c839eda3ed1ce04045e0b371dedeb'
-  //   const movieName = props.match.params.name
-  //   axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${movieName}&page=1&include_adult=false
-  //   `)
-  //     .then(movie => {
-  //       console.log(movie.data.results[0])
-  //       setMovieData(movie.data.results[0])
-  //     })
-
-  // }, [])
+  }, [userInfo])
 
   //! Pushing single movie to favourites(profile) page
 
   const favourite = () => {
-    const update = info.favouriteMovies
+    const update = userInfo.favouriteMovies
     //! is undefined, so can't push...
-    console.log(update)
-    update.push(movies)
-    setInfo({ ...info, favouriteMovies: update })
-    axios.post('/api/profile', info, {
+    // console.log(update)
+    update.push(movieData)
+    axios.post('/api/favourites', { title: movieData.title }, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
-        setUser(res.data.user)
+        setUserInfo(res.data.user)
       })
       .catch(err => {
         props.history.push('/login')
@@ -87,12 +66,13 @@ const SingleMovie = (props) => {
   //! Returning soundtrack and single movie data on page
 
   return <section>
+    {console.log('Hello', userInfo)}
     <div>
       <iframe src={`https://open.spotify.com/embed/playlist/${soundtrackData}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
     <div>
-      <h1>{movies.title} </h1>
-      <img src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`} />
+      <h1>{movieData.title} </h1>
+      <img src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
     </div>
     {/* <pre>{JSON.stringify(user), null, 2}</pre> */}
     <button onClick={favourite}>Favourite ❤️</button>

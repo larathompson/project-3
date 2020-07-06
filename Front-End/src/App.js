@@ -1,6 +1,8 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Switch, Route, HashRouter } from 'react-router-dom'
 import { UserContext } from './UserContext'
+
+import Auth, { isLoggedIn } from './lib/auth'
 
 import NavBar from './components/NavBar'
 import HomePage from './components/HomePage'
@@ -12,17 +14,32 @@ import SingleMovie from './components/SingleMovie'
 import Latest from './components/Latest'
 
 
+import axios from 'axios'
 import './styles/style.scss'
 
 
+
 const App = () => {
-  const [user, setUser] = useState(null)
-  const value = useMemo(() => ({ user, setUser }), [user, setUser])
-  
+  const [userInfo, setUserInfo] = useState(null)
+  // const value = useContext(UserContext)
+  // console.log(value)
+  // const value = useMemo(() => ({ userInfo, setUserInfo }), [userInfo, setUserInfo])
+  // console.log('This is the', value)
+  useEffect(() => {
+    if (isLoggedIn()) {
+      axios.get('/api/profile', {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+        .then(res => {
+          setUserInfo(res.data)
+        })
+    }
+  }, [])
+
   return <HashRouter>
     <NavBar />
     <Switch>
-      <UserContext.Provider value={value}>
+      <UserContext.Provider value={{ userInfo, setUserInfo }}>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/reviews" component={Reviews} />
         <Route path="/register" component={Register} />

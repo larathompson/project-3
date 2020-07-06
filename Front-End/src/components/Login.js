@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import { login } from '../lib/auth'
+import { UserContext } from '../UserContext'
+
 
 const Login = (props) => {
-
+  
+  const { user, setUser } = useState()
   const [formData, updateFormData] = useState({
     email: '',
     password: ''
   })
-
+  const { setUserInfo } = useContext(UserContext)
+  // const aUser = useContext(UserContext)
+  // {console.log(aUser)}
+  
   function handleChange(event) {
     const name = event.target.name
     const data = {
@@ -25,6 +31,8 @@ const Login = (props) => {
         // localStorage.setItem saves a key and value
         // to the browser
         login(resp.data.token)
+        console.log(resp.data.user)
+        setUserInfo(resp.data.user)
         props.history.push('/')
       })
       .catch(err => console.log(err.response) )

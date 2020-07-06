@@ -6,9 +6,10 @@ import Auth from '../lib/auth'
 
 const Favourites = () => {
   const [movieData, setMovieData] = useState([])
-  const [info, setInfo] = useState({})
+  // const [info, setInfo] = useState({})
 
-  const { user, setUser } = useContext(UserContext)
+  const { userInfo, setUserInfo } = useContext(UserContext)
+  { console.log(userInfo) }
 
   useEffect(() => {
     axios.get('/api/profile', {
@@ -17,24 +18,26 @@ const Favourites = () => {
       .then(res => {
         const newData = res.data
         setMovieData(newData)
-        if (user) {
-          setInfo(userInfo)
-        }
       })
       .catch(error => console.log(error))
-  }, [user])
+  }, [userInfo])
 
 
   return <>
     <h1>Hello</h1>
-    {movieData.user && <h2>
-      Welcome, {movieData.user.username}!
+    {movieData.userInfo && <h2>
+      Welcome, {movieData.userInfo.username}!
     </h2>}
+    {/* //! first time load page user info undefined, so need to make sure it exists. */}
+    <p>{userInfo && userInfo.favouriteMovies.map((movie, index) => {
+      return <div key={index}>
+        <h1>{movie.title}</h1>
+      </div>
+    })}
+    </p>
   </>
 
 
 }
-
-
 
 export default Favourites
