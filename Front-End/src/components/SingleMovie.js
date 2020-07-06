@@ -15,6 +15,7 @@ const SingleMovie = (props) => {
   const [reviewData, updateReviewData] = useState([])
   const [similarMovieData, updateSimilarMovieData] = useState([])
   const [text, setText] = useState('')
+  const [rating, setRating] = useState(Number)
   // const [post, setPost] = useState({})
 
   //! Returning single movie data
@@ -87,11 +88,12 @@ const SingleMovie = (props) => {
 
     const token = localStorage.getItem('token')
     console.log(text)
-    axios.post(`api/movie/reviews/${filmId}`, { text: text, filmId: props.match.params.id, rating: 3 }, {
+    axios.post(`api/movie/reviews/${filmId}`, { text: text, filmId: props.match.params.id, rating: rating }, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((axiosResponse) => {
         setText('')
+        setRating(Number)
         const reviews = [...reviewData]
         reviews.push(axiosResponse.data)
         console.log(reviews)
@@ -126,15 +128,43 @@ const SingleMovie = (props) => {
 
 
     <section className='postReview'>
-      <textarea
+      <form>
+        <div className="container">
+          <label className="label">Text</label>
+          <div className="control">
+            <input
+              name="text"
+              className="input"
+              onChange={(event) => setText(event.target.value)}
+              type="text"
+              placeholder="Review"
+              value={text}
+            />
+          </div>
+        </div>
+        <div className="container">
+          <label className="label">Rating</label>
+          <div className="control">
+            <input
+              name="text"
+              className="input"
+              onChange={(event) => setRating(event.target.value)}
+              type="number"
+              placeholder="Review"
+              value={rating}
+            />
+          </div>
+        </div>
+      </form>
+      {/* <textarea
         className="textarea"
-        placeholder="Add a comment..."
+        placeholder="Add a review..."
         onChange={(event) => setText(event.target.value)}
         value={text}
-      >
-
+      > */}
+{/* 
         {console.log(text)}
-      </textarea>
+      </textarea> */}
       <div className="button">
         <button onClick={handleComment} className="button is-info">Submit</button>
       </div>
