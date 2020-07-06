@@ -15,7 +15,7 @@ const Reviews = () => {
       .then(review => {
         setReviewData(review.data)
         setFilterReviews(review.data)
-      
+
       })
   }, [])
 
@@ -33,7 +33,7 @@ const Reviews = () => {
     } if (event.target.value === 'lowToHigh') {
       const low = data.sort((a, b) => a.rating - b.rating)
       setFilterReviews(low)
-     
+
     } if (event.target.value === 'highToLow') {
       const high = data.sort((a, b) => b.rating - a.rating)
       setFilterReviews(high)
@@ -43,7 +43,7 @@ const Reviews = () => {
   return <section>
     <nav>
       Sort Reviews
-    <select onChange={handleSort}>
+      <select onChange={handleSort}>
         <option value="highToLow"> Highest to Lowest</option>
         <option value="lowToHigh"> Lowest to Highest</option>
         <option value="oldest"> Oldest </option>
