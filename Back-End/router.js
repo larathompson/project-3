@@ -14,6 +14,8 @@ router.route('/review/:id')
 
 router.route('/movie/reviews/:filmId')
   .get(reviewsController.getMovieReviews)
+  .post(secureRoute, reviewsController.createMovieReview)
+
 
 router.route('/review/:id/comments')
   .post(secureRoute, reviewsController.createComment)
