@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../UserContext'
 import axios from 'axios'
 import Auth from '../lib/auth'
+import { Link } from 'react-router-dom'
 //! Is this needed?
 import { isLoggedIn } from '../lib/auth'
 
@@ -78,7 +79,7 @@ const SingleMovie = (props) => {
       })
       .catch(err => {
         props.history.push('/login')
-        console.log(err)
+        // console.log(err)
       })
   }
 
@@ -86,7 +87,7 @@ const SingleMovie = (props) => {
     console.log(filmId)
 
     const token = localStorage.getItem('token')
-    console.log(text)
+    // console.log(text)
     axios.post(`api/movie/reviews/${filmId}`, { text: text, filmId: props.match.params.id, rating: rating }, {
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -95,9 +96,25 @@ const SingleMovie = (props) => {
         setRating(Number)
         const reviews = [...reviewData]
         reviews.push(axiosResponse.data)
-        console.log(reviews)
+        // console.log(reviews)
         updateReviewData(reviews)
       })
+  }
+
+  //deleting a single comment 
+  function handleDelete(event) {
+    const token = localStorage.getItem('token')
+    const reviewId = event.target.value
+    axios.delete(`/api/review/${reviewId}`, { headers: { Authorization: `Bearer ${token}` } })
+    .then(() => 
+    // axios.delete(`api/movie/review/${reviewId}`, { headers: { Authorization: `Bearer ${token}` } })
+    //   .then(() => {
+    //     props.history.push(`api/movie/reviews/${filmId}`)
+    //   })
+  }
+
+  function handleEdit(review) {
+
   }
 
   //! Returning soundtrack and single movie data on page
@@ -121,6 +138,8 @@ const SingleMovie = (props) => {
           <h1>{review.user.username}</h1>
           <p> {review.text}</p>
           <p>{review.createdAt} </p>
+          <p> {review._id}</p>
+          <button onClick={handleDelete} value={review._id} className="button is-info">Delete </button>
         </div>
       })}
     </section>
@@ -161,11 +180,12 @@ const SingleMovie = (props) => {
         onChange={(event) => setText(event.target.value)}
         value={text}
       > */}
-{/* 
+      {/* 
         {console.log(text)}
       </textarea> */}
       <div className="button">
         <button onClick={handleComment} className="button is-info">Submit</button>
+
       </div>
     </section>
 
@@ -175,7 +195,9 @@ const SingleMovie = (props) => {
     <div className="similarMovieList">
       {similarMovieData.map((result, index) => {
         return <div key={index}>
-          <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+          <Link to={`/movie/${result.title}/${result.id}`}>
+            <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+          </Link>
         </div>
       })}
     </div>
