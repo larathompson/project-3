@@ -8,7 +8,6 @@
     "serve:back": "nodemon ./Back-End/server.js",
     "serve:front": "webpack-dev-server",
     "seed": "node ./Back-End/seed.js"
-
   },
   "repository": {
     "type": "git",
@@ -27,6 +26,7 @@
     "bulma": "^0.9.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.27.0",
     "mongoose": "^5.9.5",
     "mongoose-hidden": "^1.8.1",
     "mongoose-unique-validator": "^2.0.3",
