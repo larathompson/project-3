@@ -21,11 +21,12 @@ const SingleMovie = (props) => {
   useEffect(() => {
     const movieName = props.match.params.name
     const filmId = props.match.params.id
-    const API_KEY = '089c839eda3ed1ce04045e0b371dedeb'
+    const API_KEY = process.env.MOVIE_KEY
+    // '089c839eda3ed1ce04045e0b371dedeb'
 
     axios.get(`https://api.spotify.com/v1/search?q=${movieName}soundtrack&type=playlist`,
       {
-        headers: { 'Authorization': 'Bearer BQCwNx0aIOoGFcUNFiDqK2ZwizazjvhHJZhIYUI2A6QkUrqWzTfKukdKDsU4bgKcjBJJPGWqlhQJt0gnB6w' }
+        headers: { 'Authorization': `Bearer ${process.env.SPOTIFY_KEY}` }
       })
       .then(axiosResp => {
         console.log(axiosResp)

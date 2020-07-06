@@ -22,6 +22,10 @@ const NavBar = (props) => {
               Latest
             </Link>
 
+            <Link to="/women" className="button is-Light">
+              Women
+            </Link>
+
             {!isLoggedIn() && <Link to="/register" className="button is-light">
               Register
             </Link>}
