@@ -13,14 +13,6 @@ html, body {
   justify-content: flex-end;
 }
 
-.movie {
-  margin-top: 20px;
-  background: LightGray;
-  display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 20% 20% 20% 20% 20% 20%;
-}
-
 .carousel {
   height: 100;
   overflow-x: hidden;
@@ -38,3 +30,18 @@ html, body {
  }
 }
 
+
+.poster {
+  width: 300px;
+}
+
+.similarMovieList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.similarMovieItem {
+  width: 200px;
+  margin: 1px;
+}

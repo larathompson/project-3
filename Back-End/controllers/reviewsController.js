@@ -1,6 +1,7 @@
 const Reviews = require('../models/reviews')
 
 
+
 function index(req, res) {
   Reviews
     .find()
@@ -34,6 +35,24 @@ function getMovieReviews(req, res) {
       res.send(reviews)
     })
     .catch(error => res.send(error))
+}
+//added this 
+function createMovieReview(req, res) {
+  const review = req.body
+  console.log('hello' + review)
+  const filmId = req.params.filmId
+  console.log('filmid' + filmId)
+  req.body.user = req.currentUser
+  Reviews
+    .create(review)
+    // .populate('comments.user')
+    // .then(film => {
+    //   if (!film) return res.status(404).send({ message: 'Not Found!' })
+    //   review.text.push(review)
+    //   return review.save()
+    // })
+    .then(review => res.status(200).send(review))
+    .catch(err => res.send(err))
 
 }
 
@@ -157,7 +176,8 @@ module.exports = {
   removeComment,
   updateComment,
   getOneReview,
-  getMovieReviews
+  getMovieReviews,
+  createMovieReview
 }
 
 
