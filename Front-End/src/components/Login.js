@@ -12,8 +12,6 @@ const Login = (props) => {
     password: ''
   })
   const { setUserInfo } = useContext(UserContext)
-  // const aUser = useContext(UserContext)
-  // {console.log(aUser)}
   
   function handleChange(event) {
     const name = event.target.name
