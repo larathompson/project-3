@@ -56,12 +56,12 @@ const HomePage = (props) => {
           </button>
         </form>
       </div>
-      <div className="movie">
+      <div className="movieList">
         {movies.map((result, index) => {
           console.log(result)
           return <div key={index}>
             <Link to={`/movie/${result.title}/${result.id}`}>
-              <img src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+              <img className="movieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
             </Link>
           </div>
         })}
