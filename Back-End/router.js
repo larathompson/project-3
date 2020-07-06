@@ -26,8 +26,16 @@ router.route('/review/:id/comment/:commentId')
 
 router.route('/register')
   .post(userController.register)
+// .post(userController.generateToken)
 
 router.route('/login')
   .post(userController.login)
+
+// Creating a user profile 
+router.route('/profile')
+  // .post(secureRoute, userController.addFavourite)
+  .get(secureRoute, userController.getProfile)
+router.route('/favourites')
+  .post(secureRoute, userController.addFavourite)
 
 module.exports = router

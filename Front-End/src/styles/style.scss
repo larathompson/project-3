@@ -2,6 +2,10 @@
 
 $beige: #E2D5CE;
 $silver-grey: #C4C4C4;
+$cream: #FFFAF1;
+$blue-grey: #68829E;
+$slate-blue: #717e8e;
+$royal-blue: #4169E1;
 
 html, body {
   height: 100vh;
@@ -13,17 +17,23 @@ html, body {
   justify-content: flex-end;
 }
 
-.movieList {
-  margin-top: 20px;
-  background: LightGray;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.carousel {
+  height: 100;
+  overflow-x: hidden;
+  position: relative;
 }
 
-.movieItem {
-  width: 300px;
+.carousel-images {
+  display: flex;
+  animation: scrollLeft 30s linear infinite;
 }
+
+@keyframes scrollLeft {
+ to {
+   transform: translateX(-100%)
+ }
+}
+
 
 .poster {
   width: 300px;

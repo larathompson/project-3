@@ -1,6 +1,9 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const secret = 'Kianna and Kianna only is the Git master '
+
+const axios = require('axios').default
+
 function register(req, res) {
   User
     .create(req.body)
@@ -21,13 +24,65 @@ function login(req, res) {
       if (!user.validatePassword(req.body.password)) {
         return res.status(401).send({ message: 'Unauthorized' })
       }
-      const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '72h' } )
-      res.status(202).send({ message: `Welcome back ${user.username}`, token })
+      const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '72h' })
+      res.status(202).send({ message: `Welcome back ${user.username}`, token, user })
     })
     .catch(error => res.send(error))
 }
 
+//! Favourite Logic
+
+function addFavourite(req, res) {
+  const favourite = req.body
+  User
+    .findById(req.currentUser)
+    .then(user => {
+      user.favouriteMovies.push(favourite)
+      return user.save()
+    })
+
+    .then(user => res.status(201).json(user))
+    .catch(err => res.status(401).send(err))
+}
+
+function getProfile(req, res) {
+  User
+    .findById(req.currentUser)
+    .then(user => {
+      res.send(user)
+    })
+
+}
+
+//! Get a token ?
+
+// function generateToken(req, res) {
+//   User
+
+//     .axios({
+//       method: 'post',
+//       url: 'https://accounts.spotify.com/api/token',
+//       data: req.body,
+//       headers: {
+//         'Content-Type': 'application/x-www-form-urlencoded',
+//         'Authorization': 'Basic NTM5NDVlZDUyNzU1NDE5NGIxZmJlYTgyMGFhYTM0MDA6ZDVmNDRjOTNlNGNkNDZlY2E4YWQ5MzIyZjIwMmFiZjU='
+//       }
+//     }
+//       .then(function (res) {
+//         console.log(res)
+//       })
+//       .catch(function (res) {
+//         console.log(res)
+//       })
+
+//     )
+// }
+
+
 module.exports = {
   register,
-  login
+  login,
+  addFavourite,
+  getProfile
+  // generateToken
 }
