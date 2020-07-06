@@ -106,16 +106,10 @@ const SingleMovie = (props) => {
     const token = localStorage.getItem('token')
     const reviewId = event.target.value
     axios.delete(`/api/review/${reviewId}`, { headers: { Authorization: `Bearer ${token}` } })
-    .then(() => 
-    // axios.delete(`api/movie/review/${reviewId}`, { headers: { Authorization: `Bearer ${token}` } })
-    //   .then(() => {
-    //     props.history.push(`api/movie/reviews/${filmId}`)
-    //   })
   }
+ 
 
-  function handleEdit(review) {
 
-  }
 
   //! Returning soundtrack and single movie data on page
 
@@ -139,7 +133,9 @@ const SingleMovie = (props) => {
           <p> {review.text}</p>
           <p>{review.createdAt} </p>
           <p> {review._id}</p>
+           <a href="javascript:window.location.reload(true)">
           <button onClick={handleDelete} value={review._id} className="button is-info">Delete </button>
+             </a>
         </div>
       })}
     </section>
