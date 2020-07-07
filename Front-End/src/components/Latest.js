@@ -57,7 +57,7 @@ const Latest = (props) => {
       </div>
       <div className="movie">
         {movies.map((result, index) => {
-          console.log(result)
+          // console.log(result)
           return <div key={index}>
             <Link to={`/movie/${result.title}/${result.id}`}>
               <img src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />

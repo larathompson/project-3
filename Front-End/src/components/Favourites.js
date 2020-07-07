@@ -8,8 +8,8 @@ const Favourites = () => {
   const [movieData, setMovieData] = useState([])
   // const [info, setInfo] = useState({})
   const { userInfo, setUserInfo } = useContext(UserContext)
-  
-  { console.log(userInfo) }
+
+  // { console.log(userInfo) }
 
   useEffect(() => {
     axios.get('/api/profile', {
@@ -40,11 +40,15 @@ const Favourites = () => {
     <h1>Hello</h1>
     {/* //! first time page loads, user info undefined - so need to make sure it exists. */}
     <div>{userInfo && userInfo.favouriteMovies.map((movie, index) => {
-      console.log(userInfo)
+      // console.log(userInfo)
       return <div key={index}>
         <h1>{movie.title}</h1>
         <img src={movie.poster} />
-        <button value={movie.filmId} onClick={deleteFavourite}>Delete</button>
+        <div className="deleteButtonBox">
+          <div className="deleteButtonBoxTwo">
+            <button className="deleteButton" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
+          </div>
+        </div>
       </div>
     })}
     </div>

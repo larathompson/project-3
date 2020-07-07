@@ -72,29 +72,7 @@ function getProfile(req, res) {
 
 }
 
-//! Get a token ?
 
-// function generateToken(req, res) {
-//   User
-
-//     .axios({
-//       method: 'post',
-//       url: 'https://accounts.spotify.com/api/token',
-//       data: req.body,
-//       headers: {
-//         'Content-Type': 'application/x-www-form-urlencoded',
-//         'Authorization': 'Basic NTM5NDVlZDUyNzU1NDE5NGIxZmJlYTgyMGFhYTM0MDA6ZDVmNDRjOTNlNGNkNDZlY2E4YWQ5MzIyZjIwMmFiZjU='
-//       }
-//     }
-//       .then(function (res) {
-//         console.log(res)
-//       })
-//       .catch(function (res) {
-//         console.log(res)
-//       })
-
-//     )
-// }
 
 
 module.exports = {

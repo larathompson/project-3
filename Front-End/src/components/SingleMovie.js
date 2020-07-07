@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { UserContext } from '../UserContext'
+import { UserContext, SpotifyContext } from '../UserContext'
 import axios from 'axios'
 import Auth from '../lib/auth'
 import { Link } from 'react-router-dom'
@@ -10,6 +10,7 @@ import ReviewForm from './ReviewForm'
 const SingleMovie = (props) => {
 
   const { userInfo, setUserInfo } = useContext(UserContext)
+  const { spotifyInfo, setSpotifyInfo } = useContext(SpotifyContext)
 
   const [soundtrackData, setSoundtrackData] = useState({})
   const [added, setAdded] = useState(false)
@@ -17,7 +18,7 @@ const SingleMovie = (props) => {
   const [reviewData, updateReviewData] = useState([])
   const [similarMovieData, updateSimilarMovieData] = useState([])
   const [text, setText] = useState('')
-  const [rating, setRating] = useState(null)
+  const [rating, setRating] = useState(0)
 
 
   //! Returning single movie data
@@ -26,7 +27,9 @@ const SingleMovie = (props) => {
     const movieName = props.match.params.name
     const filmId = props.match.params.id
     const API_KEY = process.env.MOVIE_KEY
-    // '089c839eda3ed1ce04045e0b371dedeb'
+    
+   
+    console.log('spotify info', spotifyInfo)
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${movieName}&page=1&include_adult=false
     `)
       .then(axiosResp => {
@@ -42,7 +45,7 @@ const SingleMovie = (props) => {
 
     axios.get(`https://api.spotify.com/v1/search?q=${movieName}soundtrack&type=playlist`,
       {
-        headers: { 'Authorization': `Bearer ${process.env.SPOTIFY_KEY}` }
+        headers: { 'Authorization': `Bearer ${spotifyInfo}` }
       })
       .then(axiosResp => {
         setSoundtrackData(axiosResp.data.playlists.items[0].id)
@@ -78,7 +81,6 @@ const SingleMovie = (props) => {
         //! is returning the entire user - back end is giving the user
         //! remember to check what the data is returning/ is what you expect it to be
         setUserInfo(res.data)
-        console.log('Hello', res.data)
       })
       .catch(err => {
         props.history.push('/login')
@@ -93,8 +95,8 @@ const SingleMovie = (props) => {
     })
       .then((axiosResponse) => {
         setText('')
-        //! null is when there is no rating yet - the initial state
-        setRating(null)
+        //!0 is when there is no rating yet - the initial state
+        setRating(0)
         const reviews = [...reviewData]
         reviews.push(axiosResponse.data)
         updateReviewData(reviews)
