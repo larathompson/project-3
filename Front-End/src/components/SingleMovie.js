@@ -2,9 +2,10 @@ import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../UserContext'
 import axios from 'axios'
 import Auth from '../lib/auth'
+import { Link } from 'react-router-dom'
 import ReviewForm from './ReviewForm'
-//! Is this needed?
-import { isLoggedIn } from '../lib/auth'
+
+
 
 const SingleMovie = (props) => {
 
@@ -17,7 +18,7 @@ const SingleMovie = (props) => {
   const [similarMovieData, updateSimilarMovieData] = useState([])
   const [text, setText] = useState('')
   const [rating, setRating] = useState(Number)
-  
+
 
   //! Returning single movie data
 
@@ -65,10 +66,10 @@ const SingleMovie = (props) => {
   //! Pushing single movie to favourites(profile) page
 
   const favourite = () => {
-    const data = { 
-      filmId: movieData.id, 
-      title: movieData.title, 
-      poster: `https://image.tmdb.org/t/p/w500/${movieData.poster_path}` 
+    const data = {
+      filmId: movieData.id,
+      title: movieData.title,
+      poster: `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`
     }
     axios.post('/api/favourites', data, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
@@ -96,7 +97,17 @@ const SingleMovie = (props) => {
       })
   }
 
-  //! Returning soundtrack, reviews and single movie data on page
+  //deleting a single comment 
+  function handleDelete(event) {
+    const token = localStorage.getItem('token')
+    const reviewId = event.target.value
+    axios.delete(`/api/review/${reviewId}`, { headers: { Authorization: `Bearer ${token}` } })
+  }
+
+
+
+
+  //! Returning soundtrack and single movie data on page
 
   return <>
     <section>
@@ -115,24 +126,31 @@ const SingleMovie = (props) => {
           <h1>{review.user.username}</h1>
           <p> {review.text}</p>
           <p>{review.createdAt} </p>
+          <p> {review._id}</p>
+          <a href="javascript:window.location.reload(true)">
+            <button onClick={handleDelete} value={review._id} className="button is-info">Delete </button>
+          </a>
         </div>
       })}
     </section>
     <ReviewForm
-      text = {text}
-      setText = {setText}
-      rating = {rating}
-      setRating = {setRating}
+      text={text}
+      setText={setText}
+      rating={rating}
+      setRating={setRating}
     />
-      <div className="button">
-        <button onClick={handleComment} className="button is-info">Submit</button>
-      </div>
+    <div className="button">
+      <button onClick={handleComment} className="button is-info">Submit</button>
+
+    </div>
     <h2>Similar Movies</h2>
 
     <div className="similarMovieList">
       {similarMovieData.map((result, index) => {
         return <div key={index}>
-          <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+          <Link to={`/movie/${result.title}/${result.id}`}>
+            <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+          </Link>
         </div>
       })}
     </div>
