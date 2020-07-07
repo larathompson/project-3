@@ -3,6 +3,11 @@ const mongooseHidden = require('mongoose-hidden')
 const bcrypt = require('bcrypt')
 const mongooseUniqueValidator = require('mongoose-unique-validator')
 
+// const movieSchema = new mongoose.Schema({
+//   title: { type: String, required: true },
+//   id: { type: String, required: true }
+// })
+
 const schema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, minLength: 8, unique: true },

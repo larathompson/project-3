@@ -1,7 +1,7 @@
 const request = require('request') // "Request" library
 
-const clientId = '7ec26d7f65c148e1976be49c196b5d6e'
-const clientSecret = '6db6b34e51164e278720ed1146222e11' 
+const clientId = process.env.SPOTIFY_KEY
+const clientSecret = process.env.SPOTIFY_SECRET
 
 // your application requests authorization
 const authOptions = {
