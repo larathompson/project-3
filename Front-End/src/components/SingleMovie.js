@@ -116,6 +116,7 @@ const SingleMovie = (props) => {
       </div>
       <div>
         <h1>{movieData.title} </h1>
+        <p>{movieData.overview}</p>
         <img src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
       </div>
       {added ? <button title="Disabled button" disabled>Added</button> : <button onClick={favourite}>Favourite ❤️</button>}
