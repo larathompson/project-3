@@ -9,6 +9,9 @@ $royal-blue: #4169E1;
 
 html, body {
   height: 100vh;
+  font-family: futura;
+  font-style: italic;
+  background-color: $cream;
 }
 
 .hero-body {
@@ -34,6 +37,10 @@ html, body {
  }
 }
 
+.women-section {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .poster {
   width: 300px;

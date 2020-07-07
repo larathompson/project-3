@@ -7,6 +7,7 @@ import Auth, { isLoggedIn } from './lib/auth'
 import NavBar from './components/NavBar'
 import HomePage from './components/HomePage'
 import Favourites from './components/Favourites'
+import WomenMovies from './components/WomenMovies'
 import Reviews from './components/Reviews'
 import Login from './components/Login'
 import Register from './components/Register'
@@ -47,6 +48,7 @@ const App = () => {
         <Route path='/movie/:name/:id' component={SingleMovie} />
         <Route path="/profile" component={Favourites} />
         <Route path="/latest" component={Latest} />
+        <Route path="/women" component={WomenMovies} />
       </UserContext.Provider>
     </Switch>
   </HashRouter>
