@@ -96,6 +96,15 @@ html, body {
 //     opacity: 1;
 // }
 
+[data-aos="new-animation"] {
+  opacity: 0;
+  transition-property: transform, opacity;
+
+  &.aos-animate{
+    opacity: 1;
+  }
+}
+
 .tracking-in-expand {
   -webkit-animation:tracking-in-expand 1s cubic-bezier(.215,.61,.355,1.000) both;
   animation:tracking-in-expand 1s cubic-bezier(.215,.61,.355,1.000) both
