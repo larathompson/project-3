@@ -22,7 +22,7 @@ const ReviewForm = ({ text, setText, rating, setRating }) => {
         <label className="label">Rating</label>
         <div className="control">
           <input
-            name="text"
+            name="rating"
             className="input"
             onChange={(event) => setRating(event.target.value)}
             type="number"
