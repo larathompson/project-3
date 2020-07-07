@@ -46,6 +46,21 @@ function addFavourite(req, res) {
     .catch(err => res.status(401).send(err))
 }
 
+function deleteFavourite(req, res) {
+  const favouriteId = (req.params.id)
+  User
+    .findById(favouriteId)
+    .then(favourite => {
+      const currentUserId = req.currentUser._id
+      const userIdOnFavourite = favourite.user
+      if (!userIdOnFavourite.equals(currentUserId)) {
+        return res.status(401).send({ message: 'Unauthorized' })
+      }
+      favourite.deleteOne()
+      res.status(202).send(favourite)
+    })
+}
+
 function getProfile(req, res) {
   User
     .findById(req.currentUser)
@@ -84,6 +99,7 @@ module.exports = {
   register,
   login,
   addFavourite,
+  deleteFavourite,
   getProfile
   // generateToken
 }
