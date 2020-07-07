@@ -40,7 +40,7 @@ const App = () => {
       }
     })
       .then(res => {
-        console.log(res.data.access_token)
+        console.log('token refreshed')
         setSpotifyInfo(res.data.access_token)
       })
       .catch(res => {

@@ -27,8 +27,8 @@ const SingleMovie = (props) => {
     const movieName = props.match.params.name
     const filmId = props.match.params.id
     const API_KEY = process.env.MOVIE_KEY
-    
-   
+
+
     console.log('spotify info', spotifyInfo)
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${movieName}&page=1&include_adult=false
     `)
@@ -48,7 +48,10 @@ const SingleMovie = (props) => {
         headers: { 'Authorization': `Bearer ${spotifyInfo}` }
       })
       .then(axiosResp => {
-        setSoundtrackData(axiosResp.data.playlists.items[0].id)
+        setTimeout(() => {
+          setSoundtrackData(axiosResp.data.playlists.items[0].id)
+          console.log('hello')
+        }, 150)
       })
       .catch(err => console.log(err.response))
 
@@ -117,9 +120,9 @@ const SingleMovie = (props) => {
 
   return <>
     <section>
-      <div>
+      {soundtrackData && <div>
         <iframe src={`https://open.spotify.com/embed/playlist/${soundtrackData}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      </div>
+      </div>}
       <div>
         <h1>{movieData.title} </h1>
         <img src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />

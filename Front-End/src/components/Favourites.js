@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { UserContext } from '../UserContext'
 import axios from 'axios'
 import Auth from '../lib/auth'
@@ -43,12 +44,12 @@ const Favourites = () => {
       // console.log(userInfo)
       return <div key={index}>
         <h1>{movie.title}</h1>
-        <img src={movie.poster} />
-        <div className="deleteButtonBox">
-          <div className="deleteButtonBoxTwo">
-            <button className="deleteButton" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
-          </div>
+        <Link to={`/movie/${movie.title}/${movie.filmId}`}> <img src={movie.poster} />
+        </Link>
+        <div className="btn-delete">
+          <button className="deleteButton" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
         </div>
+
       </div>
     })}
     </div>

@@ -73,8 +73,6 @@ function getProfile(req, res) {
 }
 
 
-
-
 module.exports = {
   register,
   login,
