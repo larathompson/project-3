@@ -56,6 +56,24 @@ function createMovieReview(req, res) {
 
 }
 
+// function deleteMovieReview(req, res) {
+//   const reviewId = req.params._id
+//   // const filmId = req.params.filmId
+//   req.body.user = req.currentUser
+//   Reviews
+//     .findById(reviewId)
+//     .then(review => {
+//       const currentUserId = req.currentUser._id
+//       const userIdOnReview = review.user
+//       if (!userIdOnReview.equals(currentUserId)) {
+//         return res.status(401).send({ message: 'Unauthorized' })
+//       }
+//       review.deleteOne()
+//       res.status(202).send(review)
+//     })
+
+// }
+
 
 function create(req, res) {
   const review = req.body

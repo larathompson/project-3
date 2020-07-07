@@ -15,13 +15,13 @@ const Reviews = () => {
       .then(review => {
         setReviewData(review.data)
         setFilterReviews(review.data)
-
       })
   }, [])
 
 
 
   function handleSort(event) {
+    console.log(filterReviews)
     console.log(event.target.value)
     const data = filterReviews.slice()
     if (event.target.value === 'oldest') {
