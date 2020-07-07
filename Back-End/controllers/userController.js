@@ -46,19 +46,21 @@ function addFavourite(req, res) {
     .catch(err => res.status(401).send(err))
 }
 
+//! Not sure 
+
 function deleteFavourite(req, res) {
-  const favouriteId = (req.params.id)
+  const favouriteId = parseInt((req.params.filmId))
   User
-    .findById(favouriteId)
-    .then(favourite => {
-      const currentUserId = req.currentUser._id
-      const userIdOnFavourite = favourite.user
-      if (!userIdOnFavourite.equals(currentUserId)) {
-        return res.status(401).send({ message: 'Unauthorized' })
-      }
-      favourite.deleteOne()
-      res.status(202).send(favourite)
+  //! this comes from secureRoute
+    .findById(req.currentUser)
+    .then(user => {
+      const filteredFavourites = user.favouriteMovies.filter(movie => favouriteId !== movie.filmId)
+      user.favouriteMovies = [...filteredFavourites]
+      //! doesn't mutate so have to save
+      return user.save()
     })
+    .then(user => res.status(201).json(user))
+    .catch(err => res.status(401).send(err))
 }
 
 function getProfile(req, res) {

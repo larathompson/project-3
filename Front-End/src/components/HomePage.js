@@ -32,7 +32,7 @@ const HomePage = (props) => {
 
   const updateSearch = e => {
     setSearch(e.target.value)
-    console.log(search)
+    
   }
 
   const getSearch = e => {
@@ -59,7 +59,7 @@ const HomePage = (props) => {
       <div className="carousel">
         <div className="carousel-images">
           {movies.map((result, index) => {
-            console.log(result)
+      
             return <div key={index}>
               <Link to={`/movie/${result.title}/${result.id}`}>
                 <img src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />

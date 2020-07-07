@@ -21,10 +21,35 @@ const Favourites = () => {
       })
       .catch(error => console.log(error))
   }, [userInfo])
- 
+
+
+
   const deleteFavourite = () => {
-    
-  } 
+    // const filmId = userInfo.favouriteMovies.filter(movie => )
+    console.log(filmId)
+  }
+
+
+  // const favourite = () => {
+  //   const data = {
+  //     filmId: movieData.id,
+  //     title: movieData.title,
+  //     poster: `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`
+  //   }
+  //   axios.post('/api/favourites', data, {
+  //     headers: { Authorization: `Bearer ${Auth.getToken()}` }
+  //   })
+  //     .then(res => {
+  //       //! is returning the entire user - back end is giving the user
+  //       //! remember to check what the data is returning/ is what you expect it to be
+  //       setUserInfo(res.data)
+  //       console.log('Hello', res.data)
+  //     })
+  //     .catch(err => {
+  //       props.history.push('/login')
+  //       console.log(err.response)
+  //     })
+  // }
 
   return <>
     <h1>Hello</h1>
@@ -35,8 +60,8 @@ const Favourites = () => {
     <div>{userInfo && userInfo.favouriteMovies.map((movie, index) => {
       return <div key={index}>
         <h1>{movie.title}</h1>
-        <img src={movie.poster}/>
-        <button>Delete</button>
+        <img src={movie.poster} />
+        <button onClick={deleteFavourite}>Delete</button>
       </div>
     })}
     </div>

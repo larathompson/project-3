@@ -17,7 +17,7 @@ const SingleMovie = (props) => {
   const [reviewData, updateReviewData] = useState([])
   const [similarMovieData, updateSimilarMovieData] = useState([])
   const [text, setText] = useState('')
-  const [rating, setRating] = useState(Number)
+  const [rating, setRating] = useState(null)
 
 
   //! Returning single movie data
@@ -75,7 +75,10 @@ const SingleMovie = (props) => {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
-        setUserInfo(res.data.user)
+        //! is returning the entire user - back end is giving the user
+        //! remember to check what the data is returning/ is what you expect it to be
+        setUserInfo(res.data)
+        console.log('Hello', res.data)
       })
       .catch(err => {
         props.history.push('/login')
@@ -90,7 +93,8 @@ const SingleMovie = (props) => {
     })
       .then((axiosResponse) => {
         setText('')
-        setRating(Number)
+        //! null is when there is no rating yet - the initial state
+        setRating(null)
         const reviews = [...reviewData]
         reviews.push(axiosResponse.data)
         updateReviewData(reviews)
