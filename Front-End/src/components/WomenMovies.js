@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+AOS.init()
 
 
 const WomenMovies = (props) => {
@@ -13,18 +16,9 @@ const WomenMovies = (props) => {
   const womenList = (() => {
     axios.get(`https://api.themoviedb.org/3/list/5233088?api_key=${API_KEY}&language=en-US&page=1`)
       .then(movie => {
-        console.log('movies:', movie.data.items)
-        // const obj = movie.data.items
-        // const entries = Object.entries(obj)
-        // console.log(typeof(entries))
         setMovies(movie.data.items)
-        
-        
-        
       })
   })
-
-
 
   useEffect(() => {
     womenList()
@@ -33,13 +27,24 @@ const WomenMovies = (props) => {
   return <>
     <section className="women-section">
       <h1 className="tracking-in-expand">AWARD-WINNING FILMS MADE BY WOMEN</h1>
-      <div>
+
+      <div className="movie-container">
+
         {movies.map((movie, index) => {
-          return <div key={index}>
+          return <>
+          <div className="poster-container" data-aos="flip-left" aos-duration="600" key={index}>
             <Link to={`/movie/${movie.title}/${movie.id}`}>
-              <img className="scale-in-hor-center" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+              <img className="movie-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="movie-poster"/>
+              
+              <div className= "bio-container">
+                <p>{`${movie.release_date}`}</p>
+                <p>{`${movie.overview}`}</p>
+                <div className="fading-effect"></div>
+              </div>
+              
             </Link>
           </div>
+          </>
         })}
       </div>
     </section>

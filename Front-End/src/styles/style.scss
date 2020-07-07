@@ -52,12 +52,6 @@ html, body {
  
 }
 
-
-.women-section {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .poster {
   width: 300px;
 }
@@ -73,15 +67,34 @@ html, body {
   margin: 1px;
 }
 
+// WOMENFILM 
 
+.women-section {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-
-// WOMENFILM ANIMATIONs
 .women-section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.movie-poster {
+  width: 40vw;
+}
+
+.movie-poster p {
+  font-size: 16px;
+}
+
+// .movie-container .reveal-bio {
+//     opacity: 0;
+// }
+
+// .movie-poster:hover .movie-bio{
+//     opacity: 1;
+// }
 
 .tracking-in-expand {
   -webkit-animation:tracking-in-expand 1s cubic-bezier(.215,.61,.355,1.000) both;
@@ -90,6 +103,9 @@ html, body {
 
  @-webkit-keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}@keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}
 
+.scale-in-hor-right{-webkit-animation:scale-in-hor-right .5s cubic-bezier(.25,.46,.45,.94) both;animation:scale-in-hor-right .5s cubic-bezier(.25,.46,.45,.94) both}
+
+ @-webkit-keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}@keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}
 // .scale-in-hor-center{
 //   -webkit-animation:scale-in-hor-center .5s cubic-bezier(.25,.46,.45,.94) both;
 //   animation:scale-in-hor-center .5s cubic-bezier(.25,.46,.45,.94) both
@@ -116,3 +132,5 @@ html, body {
 //     opacity:1
 //   }
 // }
+
+
