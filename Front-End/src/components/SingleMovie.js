@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { UserContext } from '../UserContext'
 import axios from 'axios'
 import Auth from '../lib/auth'
-import { Link } from 'react-router-dom'
 import ReviewForm from './ReviewForm'
+import { isLoggedIn } from '../lib/auth'
 
 
 
@@ -14,10 +15,13 @@ const SingleMovie = (props) => {
   const [soundtrackData, setSoundtrackData] = useState({})
   const [added, setAdded] = useState(false)
   const [movieData, setMovieData] = useState([])
-  const [reviewData, updateReviewData] = useState([])
+  const [reviewData, setReviewData] = useState([])
   const [similarMovieData, updateSimilarMovieData] = useState([])
   const [text, setText] = useState('')
   const [rating, setRating] = useState(Number)
+  const [edit, setEdit] = useState(false)
+  const [updatedText, setUpdatedText] = useState('')
+  const [updatedRating, setUpdatedRating] = useState(Number)
 
 
   //! Returning single movie data
@@ -51,7 +55,7 @@ const SingleMovie = (props) => {
 
     axios.get(`api/movie/reviews/${filmId}`)
       .then(axiosResp => {
-        updateReviewData(axiosResp.data)
+        setReviewData(axiosResp.data)
 
       })
 
@@ -61,7 +65,8 @@ const SingleMovie = (props) => {
       })
 
 
-  }, [userInfo])
+  }, [userInfo, props.match])
+
 
   //! Pushing single movie to favourites(profile) page
 
@@ -93,7 +98,7 @@ const SingleMovie = (props) => {
         setRating(Number)
         const reviews = [...reviewData]
         reviews.push(axiosResponse.data)
-        updateReviewData(reviews)
+        setReviewData(reviews)
       })
   }
 
@@ -104,6 +109,29 @@ const SingleMovie = (props) => {
     axios.delete(`/api/review/${reviewId}`, { headers: { Authorization: `Bearer ${token}` } })
   }
 
+  // editing a single comment
+
+  function handleEdit(event) {
+    const token = localStorage.getItem('token')
+    const reviewId = event.target.value
+    axios.put(`/api/review/${reviewId}`, { text: updatedText, rating: updatedRating }, { headers: { Authorization: `Bearer ${token}` } })
+      .then((comment) => {
+        setUpdatedText('')
+        setUpdatedRating(Number)
+        const updatedReviews = reviewData.map((review, index) => {
+          if (comment.data._id === review._id) {
+            return comment.data
+          } else {
+            return review
+          }
+
+        })
+
+        setReviewData([...updatedReviews])
+        console.log(updatedReviews)
+
+      })
+  }
 
 
 
@@ -122,24 +150,34 @@ const SingleMovie = (props) => {
       {added ? <button title="Disabled button" disabled>Added</button> : <button onClick={favourite}>Favourite ❤️</button>}
     </section>
     <section className='reviews'>
-      {reviewData.map((review, index) => {
+      {reviewData && reviewData.map((review, index) => {
         return <div key={index} className='singleReview'>
           <h1>{review.user.username}</h1>
           <p> {review.text}</p>
           <p>{review.createdAt} </p>
-          <p> {review._id}</p>
           <a href="javascript:window.location.reload(true)">
-            <button onClick={handleDelete} value={review._id} className="button is-info">Delete </button>
+            {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleDelete} value={review._id} className="button is-info">Delete </button>}
           </a>
+
+          {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={() => setEdit(review._id)} value={review._id} className="button is-info">Edit </button>}
+          {review._id === edit && <ReviewForm
+            text={updatedText}
+            setText={setUpdatedText}
+            rating={updatedRating}
+            setRating={setUpdatedRating}
+          />}
+          {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id}>Submit</button>}
         </div>
       })}
     </section>
+
     <ReviewForm
       text={text}
       setText={setText}
       rating={rating}
       setRating={setRating}
     />
+
     <div className="button">
       <button onClick={handleComment} className="button is-info">Submit</button>
 
@@ -147,8 +185,9 @@ const SingleMovie = (props) => {
     <h2>Similar Movies</h2>
 
     <div className="similarMovieList">
-      {similarMovieData.map((result, index) => {
+      {similarMovieData && similarMovieData.map((result, index) => {
         return <div key={index}>
+          {/* <a href="javascript:window.location.reload(true)"> */}
           <Link to={`/movie/${result.title}/${result.id}`}>
             <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
           </Link>
