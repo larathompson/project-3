@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+
 const WomenMovies = (props) => {
 
   const API_KEY = process.env.MOVIE_KEY
@@ -31,12 +32,12 @@ const WomenMovies = (props) => {
 
   return <>
     <section className="women-section">
-      <h1>AWARD-WINNING FILMS MADE BY WOMEN</h1>
+      <h1 className="tracking-in-expand">AWARD-WINNING FILMS MADE BY WOMEN</h1>
       <div>
         {movies.map((movie, index) => {
           return <div key={index}>
             <Link to={`/movie/${movie.title}/${movie.id}`}>
-              <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+              <img className="scale-in-hor-center" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
             </Link>
           </div>
         })}
