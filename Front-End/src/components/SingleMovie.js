@@ -86,6 +86,7 @@ const SingleMovie = (props) => {
   function handleComment(filmId) {
     console.log(filmId)
 
+
     const token = localStorage.getItem('token')
     console.log(text)
     axios.post(`api/movie/reviews/${filmId}`, { text: text, filmId: props.match.params.id, rating: rating }, {
@@ -101,6 +102,14 @@ const SingleMovie = (props) => {
       })
   }
 
+  function handleDelete(filmId) {
+    const token = localStorage.getItem('token')
+    axios.delete(`api/movie/reviews/${filmId}`, { headers: { Authorization: `Bearer ${token}` } })
+      .then(() => {
+        props.history.push(`api/movie/reviews/${filmId}`)
+      })
+  }
+
   //! Returning soundtrack and single movie data on page
 
   return <>
@@ -111,81 +120,82 @@ const SingleMovie = (props) => {
       </div>
       <div>
         <h1>{movieData.title} </h1>
-        <img src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
+      <img src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
       </div>
-      {/* <pre>{JSON.stringify(user), null, 2}</pre> */}
-      <button onClick={favourite}>Favourite ❤️</button>
-    </section>
-    <section className='reviews'>
-      {reviewData.map((review, index) => {
-        return <div key={index} className='singleReview'>
-          <h1>{review.user.username}</h1>
-          <p> {review.text}</p>
-          <p>{review.createdAt} </p>
-        </div>
-      })}
-    </section>
-
-
-    <section className='postReview'>
-      <form>
-        <div className="container">
-          <label className="label">Text</label>
-          <div className="control">
-            <input
-              name="text"
-              className="input"
+    {/* <pre>{JSON.stringify(user), null, 2}</pre> */}
+    <button onClick={favourite}>Favourite ❤️</button>
+    section>
+    ection className='reviews'>
+      eviewData.map((review, index) => {
+      return <div key={index} className='singleReview'>
+        <h1>{review.user.username}</h1>
+        <p> {review.text}</p>
+        <p>{review.createdAt} </p>
+      </div>
+    })}
+    section>
+  
+  
+    ection className='postReview'>
+      orm>
+        iv className="container">
+        <label className="label">Text</label>
+        <div className="control">
+          <input
+            name="text"
+            className="input"
               onChange={(event) => setText(event.target.value)}
               type="text"
-              placeholder="Review"
-              value={text}
-            />
-          </div>
+            placeholder="Review"
+            value={text}
+          />
         </div>
-        <div className="container">
-          <label className="label">Rating</label>
-          <div className="control">
-            <input
-              name="text"
-              className="input"
-              onChange={(event) => setRating(event.target.value)}
-              type="number"
-              placeholder="Review"
-              value={rating}
-            />
-          </div>
+        div>
+           className="container">
+            el className="label">Rating</label>
+             className="control">
+            nput
+            name="text"
+            className="input"
+            onChange={(event) => setRating(event.target.value)}
+            type="number"
+            placeholder="Review"
+            value={rating}
+          />
         </div>
-      </form>
-      {/* <textarea
-        className="textarea"
-        placeholder="Add a review..."
-        onChange={(event) => setText(event.target.value)}
-        value={text}
-      > */}
-{/* 
-        {console.log(text)}
-      </textarea> */}
-      <div className="button">
-        <button onClick={handleComment} className="button is-info">Submit</button>
+        div>
+          >
+            tarea
+            ame="textarea"
+            older="Add a review..."
+            ge={(event) => setText(event.target.value)}
+            {text}
+            
+          
+        onsole.log(text)}
+      textarea> */}
+    <div className="button">
+      <button onClick={handleComment} className="button is-info">Submit</button>
+        <button onClick={handleDelete} className="button is-info">Delete</button>
       </div>
     </section>
 
 
-    <h2>Similar Movies</h2>
+        <h2>Similar Movies</h2>
 
     <div className="similarMovieList">
-      {similarMovieData.map((result, index) => {
-        return <div key={index}>
-          <Link to={`/movie/${result.title}/${result.id}`}>
-            <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
-          </Link>
+    {similarMovieData.map((result, index) => {
+      return <div key={index}>
+        <Link to={`/movie/${result.title}/${result.id}`}>
+          <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+        </Link>
         </div>
       })}
-    </div>
+  </div>
 
-  </>
-
-}
-
-
-export default SingleMovie
+  >
+    
+      
+        
+          
+        ault SingleMovie
