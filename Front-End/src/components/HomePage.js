@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+
 const HomePage = (props) => {
 
-  const API_KEY = '089c839eda3ed1ce04045e0b371dedeb'
+  const API_KEY = process.env.MOVIE_KEY
 
   const [search, setSearch] = useState('')
   const [movies, setMovies] = useState([])
