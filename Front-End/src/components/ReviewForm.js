@@ -26,7 +26,7 @@ const ReviewForm = ({ text, setText, rating, setRating }) => {
             className="input"
             onChange={(event) => setRating(event.target.value)}
             type="number"
-            placeholder="Review"
+            placeholder="Rating"
             value={rating}
           />
         </div>

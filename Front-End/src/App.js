@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Switch, Route, HashRouter } from 'react-router-dom'
-import { UserContext } from './UserContext'
+import { UserContext, SpotifyContext } from './UserContext'
+
 
 import Auth, { isLoggedIn } from './lib/auth'
 
@@ -18,14 +19,35 @@ import Latest from './components/Latest'
 import axios from 'axios'
 import './styles/style.scss'
 
+const queryString = require('query-string')
+
+
 
 
 const App = () => {
+
   const [userInfo, setUserInfo] = useState(null)
-  // const value = useContext(UserContext)
-  // console.log(value)
-  // const value = useMemo(() => ({ userInfo, setUserInfo }), [userInfo, setUserInfo])
-  // console.log('This is the', value)
+  const [spotifyInfo, setSpotifyInfo] = useState(null)
+
+  const SPOTIFY_AUTH = process.env.SPOTIFY_AUTH
+
+  function refreshToken() {
+    
+    axios.post('https://accounts.spotify.com/api/token', queryString.stringify({ 'grant_type': 'client_credentials' }), {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': `Basic ${SPOTIFY_AUTH}`
+      }
+    })
+      .then(res => {
+        console.log('token refreshed')
+        setSpotifyInfo(res.data.access_token)
+      })
+      .catch(res => {
+        console.log(res)
+      })
+  }
+
   useEffect(() => {
     if (isLoggedIn()) {
       axios.get('/api/profile', {
@@ -35,20 +57,40 @@ const App = () => {
           setUserInfo(res.data)
         })
     }
+    refreshToken()
+    setInterval(refreshToken, (55 * 60000))
+
+    //! query string is a package we have installed - turns an object into a query string and sorts it in to keys.
+    // axios.post('https://accounts.spotify.com/api/token', queryString.stringify({ 'grant_type': 'client_credentials' }), {
+    //   headers: {
+    //     'Content-Type': 'application/x-www-form-urlencoded',
+    //     'Authorization': `Basic ${SPOTIFY_AUTH}`
+    //   }
+    // })
+    //   .then(res => {
+    //     console.log(res.data.access_token)
+    //     setSpotifyInfo(res.data.access_token)
+    //   })
+    //   .catch(res => {
+    //     console.log(res)
+    //   })
   }, [])
+
 
   return <HashRouter>
     <NavBar />
     <Switch>
       <UserContext.Provider value={{ userInfo, setUserInfo }}>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/reviews" component={Reviews} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path='/movie/:name/:id' component={SingleMovie} />
-        <Route path="/profile" component={Favourites} />
-        <Route path="/latest" component={Latest} />
-        <Route path="/women" component={WomenMovies} />
+        <SpotifyContext.Provider value={{ spotifyInfo, setSpotifyInfo }}>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/reviews" component={Reviews} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path='/movie/:name/:id' component={SingleMovie} />
+          <Route path="/profile" component={Favourites} />
+          <Route path="/latest" component={Latest} />
+          <Route path="/women" component={WomenMovies} />
+        </SpotifyContext.Provider>
       </UserContext.Provider>
     </Switch>
   </HashRouter>

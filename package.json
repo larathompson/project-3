@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/akirakianna/project-3#readme",
   "dependencies": {
+    "aos": "^3.0.0-beta.6",
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
@@ -33,6 +34,7 @@
     "mongoose": "^5.9.5",
     "mongoose-hidden": "^1.8.1",
     "mongoose-unique-validator": "^2.0.3",
+    "query-string": "^6.13.1",
     "querystring": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

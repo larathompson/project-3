@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
+import { UserContext, SpotifyContext } from '../UserContext'
 import { Link } from 'react-router-dom'
-import { UserContext } from '../UserContext'
 import axios from 'axios'
 import Auth from '../lib/auth'
 import ReviewForm from './ReviewForm'
@@ -11,6 +11,7 @@ import { isLoggedIn } from '../lib/auth'
 const SingleMovie = (props) => {
 
   const { userInfo, setUserInfo } = useContext(UserContext)
+  const { spotifyInfo, setSpotifyInfo } = useContext(SpotifyContext)
 
   const [soundtrackData, setSoundtrackData] = useState({})
   const [added, setAdded] = useState(false)
@@ -18,10 +19,10 @@ const SingleMovie = (props) => {
   const [reviewData, setReviewData] = useState([])
   const [similarMovieData, updateSimilarMovieData] = useState([])
   const [text, setText] = useState('')
-  const [rating, setRating] = useState(Number)
+  const [rating, setRating] = useState(0)
   const [edit, setEdit] = useState(false)
   const [updatedText, setUpdatedText] = useState('')
-  const [updatedRating, setUpdatedRating] = useState(Number)
+  const [updatedRating, setUpdatedRating] = useState(0)
 
 
   //! Returning single movie data
@@ -30,7 +31,9 @@ const SingleMovie = (props) => {
     const movieName = props.match.params.name
     const filmId = props.match.params.id
     const API_KEY = process.env.MOVIE_KEY
-    // '089c839eda3ed1ce04045e0b371dedeb'
+
+
+    console.log('spotify info', spotifyInfo)
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${movieName}&page=1&include_adult=false
     `)
       .then(axiosResp => {
@@ -46,10 +49,13 @@ const SingleMovie = (props) => {
 
     axios.get(`https://api.spotify.com/v1/search?q=${movieName}soundtrack&type=playlist`,
       {
-        headers: { 'Authorization': `Bearer ${process.env.SPOTIFY_KEY}` }
+        headers: { 'Authorization': `Bearer ${spotifyInfo}` }
       })
       .then(axiosResp => {
-        setSoundtrackData(axiosResp.data.playlists.items[0].id)
+        setTimeout(() => {
+          setSoundtrackData(axiosResp.data.playlists.items[0].id)
+          console.log('hello')
+        }, 150)
       })
       .catch(err => console.log(err.response))
 
@@ -80,7 +86,9 @@ const SingleMovie = (props) => {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
-        setUserInfo(res.data.user)
+        //! is returning the entire user - back end is giving the user
+        //! remember to check what the data is returning/ is what you expect it to be
+        setUserInfo(res.data)
       })
       .catch(err => {
         props.history.push('/login')
@@ -95,7 +103,8 @@ const SingleMovie = (props) => {
     })
       .then((axiosResponse) => {
         setText('')
-        setRating(Number)
+        //!0 is when there is no rating yet - the initial state
+        setRating(0)
         const reviews = [...reviewData]
         reviews.push(axiosResponse.data)
         setReviewData(reviews)
@@ -139,9 +148,9 @@ const SingleMovie = (props) => {
 
   return <>
     <section>
-      <div>
+      {soundtrackData && <div>
         <iframe src={`https://open.spotify.com/embed/playlist/${soundtrackData}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      </div>
+      </div>}
       <div>
         <h1>{movieData.title} </h1>
         <p>{movieData.overview}</p>
