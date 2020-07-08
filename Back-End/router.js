@@ -16,9 +16,6 @@ router.route('/movie/reviews/:filmId')
   .get(reviewsController.getMovieReviews)
   .post(secureRoute, reviewsController.createMovieReview)
 
-// router.route('/movie/reviews/:filmId/:reviewId')
-//   .delete(secureRoute, reviewsController.deleteMovieReview)
-
 
 router.route('/review/:id/comments')
   .post(secureRoute, reviewsController.createComment)
@@ -40,5 +37,9 @@ router.route('/profile')
   .get(secureRoute, userController.getProfile)
 router.route('/favourites')
   .post(secureRoute, userController.addFavourite)
+
+  //! Unsure about routes
+router.route('/favourites/:filmId')
+  .delete(secureRoute, userController.deleteFavourite)
 
 module.exports = router

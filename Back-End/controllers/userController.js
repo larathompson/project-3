@@ -46,6 +46,23 @@ function addFavourite(req, res) {
     .catch(err => res.status(401).send(err))
 }
 
+//! Not sure 
+
+function deleteFavourite(req, res) {
+  const favouriteId = parseInt((req.params.filmId))
+  User
+  //! this comes from secureRoute
+    .findById(req.currentUser)
+    .then(user => {
+      const filteredFavourites = user.favouriteMovies.filter(movie => favouriteId !== movie.filmId)
+      user.favouriteMovies = [...filteredFavourites]
+      //! doesn't mutate so have to save
+      return user.save()
+    })
+    .then(user => res.status(201).json(user))
+    .catch(err => res.status(401).send(err))
+}
+
 function getProfile(req, res) {
   User
     .findById(req.currentUser)
@@ -55,35 +72,12 @@ function getProfile(req, res) {
 
 }
 
-//! Get a token ?
-
-// function generateToken(req, res) {
-//   User
-
-//     .axios({
-//       method: 'post',
-//       url: 'https://accounts.spotify.com/api/token',
-//       data: req.body,
-//       headers: {
-//         'Content-Type': 'application/x-www-form-urlencoded',
-//         'Authorization': 'Basic NTM5NDVlZDUyNzU1NDE5NGIxZmJlYTgyMGFhYTM0MDA6ZDVmNDRjOTNlNGNkNDZlY2E4YWQ5MzIyZjIwMmFiZjU='
-//       }
-//     }
-//       .then(function (res) {
-//         console.log(res)
-//       })
-//       .catch(function (res) {
-//         console.log(res)
-//       })
-
-//     )
-// }
-
 
 module.exports = {
   register,
   login,
   addFavourite,
+  deleteFavourite,
   getProfile
   // generateToken
 }
