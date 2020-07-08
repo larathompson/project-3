@@ -46,7 +46,7 @@ const NavBar = (props) => {
                 Login
               </Link>}
 
-              {isLoggedIn() && <button onClick={handleLogout} className="button is-light">
+              {isLoggedIn() && <button onClick={handleLogout} className="logout-button">
                 Logout
               </button>}
             </div>

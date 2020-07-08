@@ -29,46 +29,48 @@ const Register = (props) => {
       })
   }
 
-  return <form className="form" onSubmit={handleSubmit}>
-    <label className="label">Username</label>
+  return <form className="register-form" onSubmit={handleSubmit}>
+    <label className="username-label">Username</label>
     <input
       name="username"
       onChange={handleChange}
-      className="input"
+      className="form-input"
       type="text"
-      placeholder="Text input"
+      placeholder="nicolascage"
       value={formData.username}
     />
-    <label className="label">Email</label>
+    <label className="email-label">Email</label>
     <input
       name="email"
-      className="input"
+      className="form-input"
       onChange={handleChange}
       type="text"
-      placeholder="Text input"
+      placeholder="ncage@thescore.com"
       value={formData.email}
     />
 
-    <label className="label">Password</label>
+    <label className="password-label">Password</label>
     <input
       name="password"
-      className="input"
+      className="form-input"
       onChange={handleChange}
       type="text"
-      placeholder="Text input"
+      placeholder="********"
       value={formData.password}
     />
 
-    <label className="label">Confirm password</label>
+    <label className="confirmpassword-label">Confirm password</label>
     <input
       name="passwordConfirmation"
-      className="input"
+      className="form-input"
       onChange={handleChange}
       type="text"
-      placeholder="Text input"
+      placeholder="********"
       value={formData.passwordConfirmation}
     />
-    <button className="button is-primary">Submit</button>
+    <div className="button-container">
+      <button className="submit-button">Submit</button>
+    </div>
   </form>
 
 

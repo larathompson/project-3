@@ -165,17 +165,17 @@ const SingleMovie = (props) => {
           <p> {review.text}</p>
           <p>{review.createdAt} </p>
           <a href="javascript:window.location.reload(true)">
-            {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleDelete} value={review._id} className="button is-info">Delete </button>}
+            {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleDelete} value={review._id} className="delete-button">Delete </button>}
           </a>
 
-          {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={() => setEdit(review._id)} value={review._id} className="button is-info">Edit </button>}
+          {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={() => setEdit(review._id)} value={review._id} className="edit-button">Edit </button>}
           {review._id === edit && <ReviewForm
             text={updatedText}
             setText={setUpdatedText}
             rating={updatedRating}
             setRating={setUpdatedRating}
           />}
-          {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id}>Submit</button>}
+          {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id} className="submit-button">Submit</button>}
         </div>
       })}
     </section>
@@ -188,7 +188,7 @@ const SingleMovie = (props) => {
     />
 
     <div className="button">
-      <button onClick={handleComment} className="button is-info">Submit</button>
+      <button onClick={handleComment} className="submit-button">Submit</button>
 
     </div>
     <h2>Similar Movies</h2>
