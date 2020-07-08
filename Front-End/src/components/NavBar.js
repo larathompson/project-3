@@ -36,6 +36,11 @@ const NavBar = (props) => {
 
             <h1>THE SCORE</h1>
 
+            {isLoggedIn() && <Link to='/reviews' className= "button is-Light">
+              Reviews
+            </Link>}
+
+    
             <div className="navbar-buttons-right">
 
               {!isLoggedIn() && <Link to="/register" className="button is-light">

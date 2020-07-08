@@ -93,6 +93,119 @@ html, body {
   margin: 1px;
 }
 
+
+
+
+//reviewsPage
+
+// @media only screen and (max-width: 600px) {
+//   .reviewsPageReviews{
+//     display:flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//   }
+
+//   .reviewsPageSingleReview {
+//     width: 200vh;
+//   }  
+// }
+
+
+
+.reviewsPageSingleReview {
+  background: #E2D5CE;
+  border: 2px solid grey;
+  width: 70vw;
+  margin: 5vw;
+  display: flex;
+  align-items: right;
+  justify-content: left;
+  flex-direction: row;
+  padding: 2vw;
+  text-decoration: none;
+  box-shadow:
+      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.reviewsPageReviewh3{
+  margin: 2px;
+  font-size: 4vw;
+  font-family: futura;
+}
+
+.reviewsPage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin:10px;
+  width: 100%;
+}
+
+.reviewsPageTitle {
+  font-size: 48px;
+  margin: 2vw;
+}
+
+.reviewsPageSelectBar {
+  margin: 10px;
+  background: #E2D5CE;
+  position: relative;
+  display: inline-block;
+  font-family: futura;
+  border: 0;
+
+}
+
+.reviewsPageFilmPoster {
+  width: 18vw;
+  padding: 2vw;
+  
+}
+
+#reviewPageFilmInfo {
+  display: flex;
+}
+
+#reviewPageFilmInfo.reviewsPageReviewh3 {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+#reviewsPageUserName {
+  font-size: 15px;
+}
+
+#reviewsPageTime {
+  font-size: 15px;
+}
+
+.reviewsPageSortMenu {
+  display:flex;
+  flex-direction: row;
+}
+
+.reviewsPageBody {
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+}
+
+.reviewsPageOption {
+  font-family: futura;
+}
+
+
+
+
 // WOMENFILM 
 
 .women-section {
