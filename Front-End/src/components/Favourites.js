@@ -38,16 +38,16 @@ const Favourites = () => {
   }
 
   return <>
-    <h1>Hello</h1>
+  <h1 className="favouriteTitle">Favourites</h1>
     {/* //! first time page loads, user info undefined - so need to make sure it exists. */}
     <div>{userInfo && userInfo.favouriteMovies.map((movie, index) => {
       // console.log(userInfo)
-      return <div key={index}>
-        <h1>{movie.title}</h1>
-        <Link to={`/movie/${movie.title}/${movie.filmId}`}> <img src={movie.poster} />
+      return <div className="favouriteContainer" key={index}>
+        <h1 className="favouriteMovieTitle">{movie.title}</h1>
+        <Link to={`/movie/${movie.title}/${movie.filmId}`}> <img className="favouriteImage" src={movie.poster} />
         </Link>
         <div className="btn-delete">
-          <button className="deleteButton" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
+          <button className="favouriteDeleteButton" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
         </div>
 
       </div>
