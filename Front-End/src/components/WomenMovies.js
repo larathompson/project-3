@@ -32,18 +32,19 @@ const WomenMovies = (props) => {
 
         {movies.map((movie, index) => {
           return <>
-          <div className="women-poster-container" data-aos="flip-left" aos-duration="600" key={index}>
-            <Link to={`/movie/${movie.title}/${movie.id}`}>
-              <img className="women-movie-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="movie-poster"/>
-              
-              <div className= "bio-container" data-aos="new-animation">
+            <div className="women-poster-container" data-aos="flip-left" aos-duration="600" key={index}>
+              <Link to={`/movie/${movie.title}/${movie.id}`}>
+                <div>
+                  <img className="women-movie-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="movie-poster" />
+                </div>
+              </Link>
+              <div className="bio-container" data-aos="new-animation">
                 <p>{`${movie.release_date}`}</p>
                 <p>{`${movie.overview}`}</p>
-                <div className="fading-effect"></div>
               </div>
 
-            </Link>
-          </div>
+
+            </div>
           </>
         })}
       </div>

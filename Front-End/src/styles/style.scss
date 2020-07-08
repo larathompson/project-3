@@ -16,11 +16,10 @@ html, body {
   background-color: $cream;
 }
 
+
+
 //HOMEPAGE
 
-.home-container {
-  height: 100vh;
-}
 .hero-body {
   display: flex;
   flex: row;
@@ -48,6 +47,7 @@ html, body {
  }
 }
 
+
 // SEARCH RESULTS 
 
 .search-results-container {
@@ -58,8 +58,7 @@ html, body {
   justify-content: center;
 }
 
-.search-results-poster img{
-  // flex-basis: 25%;
+.search-results-poster img {
   width: 25vw;
   margin: 1vw;
   padding: 1vw;
@@ -68,8 +67,6 @@ html, body {
 
 .search-results-poster img:hover {
   transform: scale(1.14);
-  // padding: 15px;
-
 }
 
 // NAVBAR
@@ -86,10 +83,6 @@ html, body {
 
 // SINGLE MOVIE 
 
-// .poster {
-//   width: 300px;
-// }
-
 .similarMovieList {
   display: flex;
   flex-direction: row;
@@ -104,31 +97,51 @@ html, body {
 // WOMENFILM 
 
 .women-section {
+  // width: 100vw;
   display: flex;
   flex-wrap: wrap;
-}
-
-.women-section {
-  display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 8vw;
+}
+
+.women-poster-container {
+  display: flex;
+  margin: 1vh;
+  padding: 1vw;
 }
 
 .women-movie-poster {
-  width: 40vw;
+  width: 35vw;
+  margin: 1vh;
+  padding: 1vw;
 }
 
-.women-movie-poster p {
-  font-size: 16px;
+.bio-container {
+  width: 80vw;
 }
 
-// .movie-container .reveal-bio {
-//     opacity: 0;
-// }
+.bio-container p {
+  font-size: 1.25rem;
+}
 
-// .movie-poster:hover .movie-bio{
-//     opacity: 1;
-// }
+@media (min-width: 600px) {
+.bio-container {
+  width: 35vw;
+}
+.women-poster-container:hover .bio-container p {
+  opacity: 1;
+}
+.bio-container p {
+  opacity: 0;
+  transition: .5s ease;
+}
+}
+
+
+
+
+
 
 [data-aos="new-animation"] {
   opacity: 0;
@@ -149,32 +162,27 @@ html, body {
 .scale-in-hor-right{-webkit-animation:scale-in-hor-right .5s cubic-bezier(.25,.46,.45,.94) both;animation:scale-in-hor-right .5s cubic-bezier(.25,.46,.45,.94) both}
 
  @-webkit-keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}@keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}
-// .scale-in-hor-center{
-//   -webkit-animation:scale-in-hor-center .5s cubic-bezier(.25,.46,.45,.94) both;
-//   animation:scale-in-hor-center .5s cubic-bezier(.25,.46,.45,.94) both
-// }
 
-//  @-webkit-keyframes scale-in-hor-center {
-//    0% {-webkit-transform:scaleX(0);
-//     transform:scaleX(0);opacity:1
-//   }
-//   100% {-webkit-transform:scaleX(1);
-//     transform:scaleX(1);
-//     opacity:1
-//   }
-// }
-// @keyframes scale-in-hor-center{
-//   0% {
-//     -webkit-transform:scaleX(0);
-//     transform:scaleX(0);
-//     opacity:1
-//   }
-//   100% {
-//     -webkit-transform:scaleX(1);
-//     transform:scaleX(1);
-//     opacity:1
-//   }
-// }
+ @media (max-width: 500px) {
+   h1 {
+     font-size: 14px;
+   }
+   p {
+     font-size: 14px;
+   }
+   .women-section {
+     align-items: center;
+   }
+   .women-poster-container {
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+   }
+   .women-movie-poster {
+     width: 80vw;
+   }
+
+ }
 
 
 
