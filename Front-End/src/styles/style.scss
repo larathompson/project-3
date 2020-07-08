@@ -20,18 +20,18 @@ html, body {
 
 //HOMEPAGE
 
-.home-container {
-  footer {
+
+footer {
     color: slategray;
     margin-top: 10vh;
     margin-bottom:2vh;
     display: flex;
     justify-content: space-between;
   }
-  .by {
+.by {
     animation: glitch 1s linear infinite;
   }
-}
+
 
 @keyframes glitch {
   2%,64%{
@@ -49,8 +49,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // flex: row;
-  // justify-content: flex-end;
+
   h1 {
     font-size: 4rem;
   }
@@ -317,6 +316,8 @@ html, body {
 
  @-webkit-keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}@keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}
 
+
+ // ***** MOBILE ***** //
  @media (max-width: 600px) {
    h1 {
      font-size: 14px;
@@ -341,6 +342,9 @@ html, body {
   }
   .bio-container{
     width: 80vw;
+  }
+  footer {
+    font-size: 10px;
   }
  }
 

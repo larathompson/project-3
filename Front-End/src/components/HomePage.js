@@ -95,7 +95,7 @@ const HomePage = (props) => {
           })}
         </div>
       </div>
-      <footer>
+      {/* <footer>
         <small>All Rights Reserved <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a> & <a href="https://www.spotify.com/uk/" target="_blank" rel="noopener noreferrer">Spotify</a></small>
         <div>
           <div>
@@ -104,7 +104,7 @@ const HomePage = (props) => {
             </small>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </section>
   </>
 }

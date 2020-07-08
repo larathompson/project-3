@@ -14,6 +14,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import SingleMovie from './components/SingleMovie'
 import Latest from './components/Latest'
+import Footer from './components/Footer'
 
 
 import axios from 'axios'
@@ -93,6 +94,7 @@ const App = () => {
         </SpotifyContext.Provider>
       </UserContext.Provider>
     </Switch>
+    <Footer />
   </HashRouter>
 }
 
