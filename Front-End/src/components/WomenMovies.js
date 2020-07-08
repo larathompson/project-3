@@ -24,26 +24,38 @@ const WomenMovies = (props) => {
     womenList()
   }, [])
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  function handleScroll(event) {
+    // new piece of state to reveal animation, true/false once past certain distance 
+    console.log('scrolled!')
+  }
+
+
   return <>
     <section className="women-section">
       <h1 className="tracking-in-expand">AWARD-WINNING FILMS MADE BY WOMEN</h1>
 
-      <div className="movie-container">
+      <div className="women-movie-container">
 
         {movies.map((movie, index) => {
           return <>
-          <div className="poster-container" data-aos="flip-left" aos-duration="600" key={index}>
-            <Link to={`/movie/${movie.title}/${movie.id}`}>
-              <img className="movie-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="movie-poster"/>
-              
-              <div className= "bio-container" data-aos="new-animation">
+            <div className="women-poster-container" data-aos="flip-left" aos-duration="600" key={index}>
+              <Link to={`/movie/${movie.title}/${movie.id}`}>
+                <div>
+                  <img className="women-movie-poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="movie-poster" />
+                </div>
+              </Link>
+              <div className="bio-container" data-aos="new-animation">
                 <p>{`${movie.release_date}`}</p>
                 <p>{`${movie.overview}`}</p>
-                <div className="fading-effect"></div>
               </div>
 
-            </Link>
-          </div>
+
+            </div>
           </>
         })}
       </div>

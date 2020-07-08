@@ -8,13 +8,15 @@ const HomePage = (props) => {
   const API_KEY = process.env.MOVIE_KEY
 
   const [search, setSearch] = useState('')
-  const [movies, setMovies] = useState([])
+  const [movieSearchResults, setMovieSearchResults] = useState([])
+  const [movieCarousel, setMovieCarousel] = useState([])
+
 
   const ourMovieList = (() => {
     axios.get(`https://api.themoviedb.org/3/list/5224231?api_key=${API_KEY}&language=en-US&page=1`)
       // POPULAR MOVIES: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
       .then(movie => {
-        setMovies(movie.data.items)
+        setMovieCarousel(movie.data.items)
         return movie.data.items
       })
       // * Because you have returned movie data above^ you can CHAIN with .then 
@@ -23,7 +25,7 @@ const HomePage = (props) => {
         const shuffledMovies = movie.sort((a, b) => {
           return 0.5 - Math.random()
         })
-        setMovies([...shuffledMovies])
+        setMovieCarousel([...shuffledMovies])
       })
   })
 
@@ -34,13 +36,12 @@ const HomePage = (props) => {
   const getMovies = (() => {
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`)
       .then(movie => {
-        setMovies(movie.data.results)
+        setMovieSearchResults(movie.data.results)
       })
   })
 
   const updateSearch = e => {
     setSearch(e.target.value)
-    
   }
 
   const getSearch = e => {
@@ -65,10 +66,19 @@ const HomePage = (props) => {
           </button>
         </form>
       </div>
+      <div className="search-results-container">
+        {movieSearchResults.map((movie, index) => {
+          return <div className="search-results-poster"key={index}>
+            <Link to={`/movie/${movie.title}/${movie.id}`}>
+              <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+            </Link>
+          </div>
+        })}
+      </div>
       <div className="carousel">
         <div className="carousel-images">
-          {movies.map((result, index) => {
-      
+          {movieCarousel.map((result, index) => {
+
             return <div key={index}>
               <Link to={`/movie/${result.title}/${result.id}`}>
                 <img src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />

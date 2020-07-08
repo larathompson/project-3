@@ -12,6 +12,7 @@ const reviewSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   rating: { type: Number, required: true },
   filmId: { type: String, required: true },
+  film: { type: Object },
   comments: [ commentSchema ]
 }, {
   timestamps: true

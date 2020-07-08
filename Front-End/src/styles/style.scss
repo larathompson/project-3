@@ -24,6 +24,8 @@ html, body {
   // padding: 0;
 }
 
+
+
 //HOMEPAGE
 
 .hero-body {
@@ -33,7 +35,6 @@ html, body {
 }
 
 .carousel {
-  height: 100;
   overflow-x: hidden;
   position: relative;
 }
@@ -43,10 +44,36 @@ html, body {
   animation: scrollLeft 30s linear infinite;
 }
 
+.carousel-images img {
+  width: 30vw;
+  height: auto;
+}
+
 @keyframes scrollLeft {
  to {
    transform: translateX(-100%)
  }
+}
+
+// SEARCH RESULTS & LATEST
+
+.search-results-container, .latest-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-results-poster, .latest-poster img{
+  width: 25vw;
+  margin: 1vw;
+  padding: 1vw;
+  transition: transform.2s ease-in-out;
+}
+
+.search-results-poster, .latest-poster img:hover {
+  transform: scale(1.14);
 }
 
 // NAVBAR
@@ -62,9 +89,7 @@ html, body {
   }
 }
 
-.poster {
-  width: 300px;
-}
+// SINGLE MOVIE 
 
 .similarMovieList {
   display: flex;
@@ -77,34 +102,153 @@ html, body {
   margin: 1px;
 }
 
+
+
+
+//reviewsPage
+
+// @media only screen and (max-width: 600px) {
+//   .reviewsPageReviews{
+//     display:flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//   }
+
+//   .reviewsPageSingleReview {
+//     width: 200vh;
+//   }  
+// }
+
+
+
+.reviewsPageSingleReview {
+  background: #E2D5CE;
+  border: 2px solid grey;
+  width: 70vw;
+  margin: 5vw;
+  display: flex;
+  align-items: right;
+  justify-content: left;
+  flex-direction: row;
+  padding: 2vw;
+  text-decoration: none;
+  box-shadow:
+      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.reviewsPageReviewh3{
+  margin: 2px;
+  font-size: 4vw;
+  font-family: futura;
+}
+
+.reviewsPage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin:10px;
+  width: 100%;
+}
+
+.reviewsPageTitle {
+  font-size: 48px;
+  margin: 2vw;
+}
+
+.reviewsPageSelectBar {
+  margin: 10px;
+  background: #E2D5CE;
+  position: relative;
+  display: inline-block;
+  font-family: futura;
+  border: 0;
+
+}
+
+.reviewsPageFilmPoster {
+  width: 18vw;
+  padding: 2vw;
+  
+}
+
+#reviewPageFilmInfo {
+  display: flex;
+}
+
+#reviewPageFilmInfo.reviewsPageReviewh3 {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+#reviewsPageUserName {
+  font-size: 15px;
+}
+
+#reviewsPageTime {
+  font-size: 15px;
+}
+
+.reviewsPageSortMenu {
+  display:flex;
+  flex-direction: row;
+}
+
+.reviewsPageBody {
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+}
+
+.reviewsPageOption {
+  font-family: futura;
+}
+
+
+
+
 // WOMENFILM 
 
 .women-section {
+  // width: 100vw;
   display: flex;
   flex-wrap: wrap;
-}
-
-.women-section {
-  display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 8vw;
 }
 
-.movie-poster {
-  width: 40vw;
+.women-poster-container {
+  display: flex;
+  margin: 1vh;
+  padding: 1vw;
 }
 
-.movie-poster p {
-  font-size: 16px;
+.women-movie-poster {
+  width: 35vw;
+  margin: 1vh;
+  padding: 1vw;
 }
 
-// .movie-container .reveal-bio {
-//     opacity: 0;
-// }
-
-// .movie-poster:hover .movie-bio{
-//     opacity: 1;
-// }
+.bio-container {
+  width: 35vw;
+}
+.women-poster-container:hover .bio-container p {
+  opacity: 1;
+}
+.bio-container p {
+  opacity: 0;
+  transition: .5s ease;
+  font-size: 1.25rem;
+}
 
 [data-aos="new-animation"] {
   opacity: 0;
@@ -125,32 +269,251 @@ html, body {
 .scale-in-hor-right{-webkit-animation:scale-in-hor-right .5s cubic-bezier(.25,.46,.45,.94) both;animation:scale-in-hor-right .5s cubic-bezier(.25,.46,.45,.94) both}
 
  @-webkit-keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}@keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}
-// .scale-in-hor-center{
-//   -webkit-animation:scale-in-hor-center .5s cubic-bezier(.25,.46,.45,.94) both;
-//   animation:scale-in-hor-center .5s cubic-bezier(.25,.46,.45,.94) both
-// }
 
-//  @-webkit-keyframes scale-in-hor-center {
-//    0% {-webkit-transform:scaleX(0);
-//     transform:scaleX(0);opacity:1
-//   }
-//   100% {-webkit-transform:scaleX(1);
-//     transform:scaleX(1);
-//     opacity:1
-//   }
-// }
-// @keyframes scale-in-hor-center{
-//   0% {
-//     -webkit-transform:scaleX(0);
-//     transform:scaleX(0);
-//     opacity:1
-//   }
-//   100% {
-//     -webkit-transform:scaleX(1);
-//     transform:scaleX(1);
-//     opacity:1
-//   }
-// }
+ @media (max-width: 600px) {
+   h1 {
+     font-size: 14px;
+   }
+   p {
+     font-size: 14px;
+   }
+   .women-section {
+     align-items: center;
+   }
+   .women-poster-container {
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     width: 80vw;
+   }
+   .women-movie-poster {
+     width: 80vw;
+   }
+   .women-poster-container:active .bio-container p {
+    opacity: 1;
+  }
+  .bio-container{
+    width: 80vw;
+  }
+ }
+
+
+
+// Register & Log In Styling
+
+.register-form {
+    background: #C4C4C4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    margin: 100px auto;
+    padding: 20px;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+  ;
+}
+
+  .login-form {
+    background: #C4C4C4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    margin: 100px auto;
+    padding: 20px;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+  ;
+  }
+
+  .username-label {
+    margin: 10px;
+  }
+
+  .email-label {
+    margin: 10px;
+  }
+
+  .password-label {
+    margin: 10px;
+  }
+
+  .confirmpassword-label {
+    margin: 10px;
+  }
+
+  .form-input {
+    padding: 4px;
+    margin: 4px;
+    width: 200px;
+  }
+
+  .register-button {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  .login-button {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+
+  .submit-button {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  .edit-button {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  .delete-button {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  .logout-button {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  .register-button:hover {
+    border: 1px solid black;
+    background-color: #FFFAF1;
+    color: black;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  .login-button:hover {
+    border: 1px solid black;
+    background-color: #FFFAF1;
+    color: black;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+
+  .submit-button:hover {
+    border: 1px solid black;
+    background-color: #717e8e;
+    color: black;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  .edit-button:hover {
+    border: 1px solid black;
+    background-color: #717e8e;
+    color: black;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  .delete-button:hover {
+    border: 1px solid black;
+    background-color: #717e8e;
+    color: black;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  .logout-button:hover {
+    border: 1px solid black;
+    background-color: #717e8e;
+    color: black;
+    margin-top: 10px;
+    padding: 7px;
+    font-family: futura;
+  }
+
+  @media only screen and (min-width: 300px) {
+    .register-form {
+      background: #C4C4C4;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      margin: 100px auto;
+      padding: 20px;
+      box-shadow:
+      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12)
+    ;
+    }
+    .login-form {
+      background: #C4C4C4;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      margin: 100px auto;
+      padding: 20px;
+      box-shadow:
+      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12)
+    ;
+    }
+  }
+
 
 
 

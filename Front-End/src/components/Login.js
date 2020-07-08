@@ -5,14 +5,14 @@ import { UserContext } from '../UserContext'
 
 
 const Login = (props) => {
-  
+
   const { user, setUser } = useState()
   const [formData, updateFormData] = useState({
     email: '',
     password: ''
   })
   const { setUserInfo } = useContext(UserContext)
-  
+
   function handleChange(event) {
     const name = event.target.name
     const data = {
@@ -33,42 +33,30 @@ const Login = (props) => {
         setUserInfo(resp.data.user)
         props.history.push('/')
       })
-      .catch(err => console.log(err.response) )
+      .catch(err => console.log(err.response))
   }
 
-  return <form className="form" onSubmit={handleSubmit}>
-    <div className="container">
-      <div className="field">
-        <label className="label">Email</label>
-        <div className="control">
-          <input
-            name="email"
-            className="input"
-            onChange={handleChange}
-            type="text"
-            placeholder="Text input"
-            value={formData.email}
-          />
-        </div>
-      </div>
-    </div>
-    <div className="container">
-      <div className="field">
-        <label className="label">Password</label>
-        <div className="control">
-          <input
-            name="password"
-            className="input"
-            onChange={handleChange}
-            type="text"
-            placeholder="Text input"
-            value={formData.password}
-          />
-        </div>
-      </div>
-    </div>
-    <div className="container">
-      <button className="button is-primary">Submit</button>
+  return <form className="login-form" onSubmit={handleSubmit}>
+    <label className="email-label">Email</label>
+    <input
+      name="email"
+      className="form-input"
+      onChange={handleChange}
+      type="text"
+      placeholder="ncage@thescore.com"
+      value={formData.email}
+    />
+    <label className="password-label">Password</label>
+    <input
+      name="password"
+      className="form-input"
+      onChange={handleChange}
+      type="text"
+      placeholder="********"
+      value={formData.password}
+    />
+    <div className="button-container">
+      <button className="login-button">Log In</button>
     </div>
   </form>
 
