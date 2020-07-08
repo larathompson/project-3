@@ -63,7 +63,7 @@ const Reviews = () => {
         {filterReviews.map((review, index) => {
           return <div key={index} className="reviewsPageSingleReview">
             {(review.film) && <Link to={`/movie/${review.film.original_title}/${review.film.id}`}>
-              {(review.film) && <h2 className="reviewsPageReviewh3" id="reviewPageFilmInfo"> {review.film.original_title}</h2>}
+              {/* {(review.film) && <h2 className="reviewsPageReviewh3" id="reviewPageFilmInfo"> {review.film.original_title}</h2>} */}
               {(review.film) && <img className="reviewsPageFilmPoster" id="reviewPageFilmInfo" src={`https://image.tmdb.org/t/p/w154/${review.film.poster_path}`} />}
             </Link>}
             <div className="reviewsPageBody">
