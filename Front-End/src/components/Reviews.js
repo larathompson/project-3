@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
+// import { movieData } from './singleMovie'
+import { UserContext } from '../UserContext'
 
 
 const Reviews = () => {
@@ -9,14 +11,38 @@ const Reviews = () => {
 
   const [filterReviews, setFilterReviews] = useState([])
 
+  // const [movieData, setMovieData] = useState([])
+
+  // const [filmInfo, updatefilmInfo] = useState([])
+  // const API_KEY = process.env.MOVIE_KEY
+
 
   useEffect(() => {
     axios.get('/api/reviews')
       .then(review => {
+        console.log(review)
         setReviewData(review.data)
         setFilterReviews(review.data)
       })
+
+    // //added in from here 
+    // axios.get(`https://api.themoviedb.org/3/movie/${filterReviews.filmId}/similar?api_key=${API_KEY}&language=en-US`)
+    //   .then(axiosResp => {
+    //     console.log(axiosResp)
+    //     updatefilmInfo(axiosResp.data.results)
+    //   })
   }, [])
+
+
+  // function getFilmInfo() {
+  //   filterReviews.map((review, index) => {
+  //     axios.get(`https://api.themoviedb.org/3/movie/${review.filmId}/?api_key=${API_KEY}&language=en-US`)
+  //       .then(axiosResp => {
+  //         console.log(axiosResp)
+  //         updatefilmInfo(axiosResp.data.results)
+  //       })
+  //   })
+  // }
 
 
 
@@ -38,31 +64,34 @@ const Reviews = () => {
       const high = data.sort((a, b) => b.rating - a.rating)
       setFilterReviews(high)
     }
-
   }
-  return <section>
-    <nav>
-      Sort Reviews
-      <select onChange={handleSort}>
-        <option value="highToLow"> Highest to Lowest</option>
-        <option value="lowToHigh"> Lowest to Highest</option>
-        <option value="oldest"> Oldest </option>
-        <option value="most-recent"> Most Recent </option>
+
+
+
+
+  return <section className='reviewsPage'>
+    <h1 className='reviewsTitle'> Reviews </h1>
+    <nav className='sortMenu'>
+      <h2 className='sortButton'>Sort Reviews</h2>
+      <select onChange={handleSort} className='selectBar'>
+        <option value="highToLow" className='option'> Highest to Lowest</option>
+        <option value="lowToHigh" className='option'> Lowest to Highest</option>
+        <option value="oldest" className='option'> Oldest </option>
+        <option value="most-recent" className='option'> Most Recent </option>
       </select>
 
     </nav>
 
     <main>
       <div className='reviews'>
-        {/* {console.log(reviews.user.username)} */}
         {filterReviews.map((review, index) => {
           return <div key={index} className='singleReview'>
 
-            <h3> Username: {review.user.username}</h3>
-            <h3> Review: {review.text}</h3>
-            <h3> Rating: {review.rating}</h3>
-            {/* <h3> {moment.format('review.createdAt')} </h3> */}
-            <h3> Time: {moment(review.updatedAt).fromNow()}</h3>
+            <h3 className='reviewh3'> 👤 {review.user.username}</h3>
+            <h3 className='reviewh3'> 💬{review.text}</h3>
+            <h3 className='reviewh3'> ⭐ {review.rating}</h3>
+            <h3 className='reviewh3'> ⏰{moment(review.updatedAt).fromNow()}</h3>
+
           </div>
         })}
 

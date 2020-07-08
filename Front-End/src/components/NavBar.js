@@ -26,6 +26,8 @@ const NavBar = (props) => {
               Women
             </Link>
 
+          
+
             {!isLoggedIn() && <Link to="/register" className="button is-light">
               Register
             </Link>}
@@ -37,6 +39,10 @@ const NavBar = (props) => {
 
             {isLoggedIn() && <Link to="/profile" className="button is-light">
               Favourites
+            </Link>}
+
+            {isLoggedIn() && <Link to='/reviews' className= "button is-Light">
+              Reviews
             </Link>}
 
             {isLoggedIn() && <button onClick={handleLogout} className="button is-light">

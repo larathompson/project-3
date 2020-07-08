@@ -173,7 +173,7 @@ const SingleMovie = (props) => {
 
     <ReviewForm
       text={text}
-      setText={}
+      setText={setText}
       rating={rating}
       setRating={setRating}
     />
