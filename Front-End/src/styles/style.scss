@@ -18,6 +18,9 @@ html, body {
 
 //HOMEPAGE
 
+.home-container {
+  height: 100vh;
+}
 .hero-body {
   display: flex;
   flex: row;
@@ -25,7 +28,6 @@ html, body {
 }
 
 .carousel {
-  height: 100;
   overflow-x: hidden;
   position: relative;
 }
@@ -35,10 +37,39 @@ html, body {
   animation: scrollLeft 30s linear infinite;
 }
 
+.carousel-images img {
+  width: 30vw;
+  height: auto;
+}
+
 @keyframes scrollLeft {
  to {
    transform: translateX(-100%)
  }
+}
+
+// SEARCH RESULTS 
+
+.search-results-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-results-poster img{
+  // flex-basis: 25%;
+  width: 25vw;
+  margin: 1vw;
+  padding: 1vw;
+  transition: transform.2s ease-in-out;
+}
+
+.search-results-poster img:hover {
+  transform: scale(1.14);
+  // padding: 15px;
+
 }
 
 // NAVBAR
@@ -51,12 +82,13 @@ html, body {
     justify-content: space-evenly;
     padding-left: 30px;
   }
- 
 }
 
-.poster {
-  width: 300px;
-}
+// SINGLE MOVIE 
+
+// .poster {
+//   width: 300px;
+// }
 
 .similarMovieList {
   display: flex;
@@ -82,11 +114,11 @@ html, body {
   align-items: center;
 }
 
-.movie-poster {
+.women-movie-poster {
   width: 40vw;
 }
 
-.movie-poster p {
+.women-movie-poster p {
   font-size: 16px;
 }
 
