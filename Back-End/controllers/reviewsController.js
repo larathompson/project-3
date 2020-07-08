@@ -39,7 +39,7 @@ function getMovieReviews(req, res) {
 //added this 
 function createMovieReview(req, res) {
   const review = req.body
-  console.log('hello' + review)
+  console.log(review)
   const filmId = req.params.filmId
   console.log('filmid' + filmId)
   req.body.user = req.currentUser
