@@ -24,6 +24,17 @@ const WomenMovies = (props) => {
     womenList()
   }, [])
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  function handleScroll(event) {
+    // new piece of state to reveal animation, true/false once past certain distance 
+    console.log('scrolled!')
+  }
+
+
   return <>
     <section className="women-section">
       <h1 className="tracking-in-expand">AWARD-WINNING FILMS MADE BY WOMEN</h1>
