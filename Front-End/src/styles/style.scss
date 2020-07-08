@@ -20,30 +20,38 @@ html, body {
 
 //HOMEPAGE
 
+// NAVBAR
 
-footer {
-    color: slategray;
-    margin-top: 10vh;
-    margin-bottom:2vh;
+.navbar-menu {
+  // position: fixed;
+  // top: 0;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 100px;
+  
+  
+  .buttons {
     display: flex;
-    justify-content: space-between;
-  }
-.by {
-    animation: glitch 1s linear infinite;
-  }
+  
 
+    // flex: 1;
+    // padding: 10px;
 
-@keyframes glitch {
-  2%,64%{
-    transform: translate(1px,0) skew(0deg);
+     
+    border: 1px solid $blue-grey;
+    background-color: $blue-grey;
+    color: white;
+    margin-top: 10px;
+    padding: 7px;
+    
+
+    
   }
-  4%,60%{
-    transform: translate(-1px,0) skew(0deg);
-  }
-  100% {
-    transform: translate(0,0) skew(5deg); 
-  }
+ 
 }
+
+
 
 .hero-body {
   display: flex;
@@ -51,12 +59,11 @@ footer {
   align-items: center;
 
   h1 {
-    font-size: 4rem;
+    font-size: 5rem;
   }
   .search-section {
     padding-bottom: 10vh;
   }
-  
 }
 
 
@@ -90,6 +97,12 @@ footer {
   margin-top: 10px;
   padding: 7px;
 }
+
+.search-bar {
+  padding: 7px;
+  width: 25vh;
+}
+
 .search-results-container, .latest-container{
   display: flex;
   flex-wrap: wrap;
@@ -109,31 +122,30 @@ footer {
   transform: scale(1.14);
 }
 
-// NAVBAR
 
-.navbar-container {
-  // position: fixed;
-  // top: 0;
-  font-size: 20px;
+footer {
+  color: slategray;
+  margin-top: 10vh;
+  margin-bottom:2vh;
   display: flex;
-  flex-direction: row;
-  margin-bottom: 100px;
-  
-  .buttons {
-    display: flex;
-    flex: 1;
-    padding: 10px;
-  }
-  .navbar-buttons-left {
-    justify-content: flex-start;
-  }
-  .navbar-buttons-right {
-    justify-content: flex-end;
-  }
-  // .navbar-buttons-left {
-  //   flex-direction: start;
-  // }
+  justify-content: space-between;
 }
+.by {
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch {
+2%,64%{
+  transform: translate(1px,0) skew(0deg);
+}
+4%,60%{
+  transform: translate(-1px,0) skew(0deg);
+}
+100% {
+  transform: translate(0,0) skew(5deg); 
+}
+}
+
 
 // SINGLE MOVIE 
 
@@ -319,14 +331,26 @@ footer {
 
  // ***** MOBILE ***** //
  @media (max-width: 600px) {
-   h1 {
-     font-size: 14px;
-   }
-   p {
-     font-size: 14px;
-   }
+
+
+  // .navbar {
+
+  // }
+
+  .hero-body {
+    h1 {
+      font-size: 4rem;
+    }
+  }
+  
    .women-section {
      align-items: center;
+     h1 {
+      font-size: 14px;
+    }
+    p {
+      font-size: 14px;
+    }
    }
    .women-poster-container {
      flex-direction: column;
