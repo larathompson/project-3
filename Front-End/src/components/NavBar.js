@@ -6,7 +6,7 @@ const NavBar = (props) => {
 
   function handleLogout() {
     logout()
-    props.history.push('/HomePage')
+    props.history.push('/')
   }
 
   return <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -14,34 +14,42 @@ const NavBar = (props) => {
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
-            <Link to="/" className="button is-light">
-              Home
-            </Link>
+            <div className="navbar-buttons-left">
 
-            <Link to="/latest" className="button is-Light">
-              Latest
-            </Link>
+              <Link to="/" className="button is-light">
+                Home
+              </Link>
 
-            <Link to="/women" className="button is-Light">
-              Women
-            </Link>
+              <Link to="/latest" className="button is-Light">
+                Latest
+              </Link>
 
-            {!isLoggedIn() && <Link to="/register" className="button is-light">
-              Register
-            </Link>}
+              <Link to="/women" className="button is-Light">
+                Women
+              </Link>
 
+              {isLoggedIn() && <Link to="/profile" className="button is-light">
+                Favourites
+              </Link>}
 
-            {!isLoggedIn() && <Link to="/login" className="button is-light">
-              Login
-            </Link>}
+            </div>
 
-            {isLoggedIn() && <Link to="/profile" className="button is-light">
-              Favourites
-            </Link>}
+            <h1>THE SCORE</h1>
 
-            {isLoggedIn() && <button onClick={handleLogout} className="button is-light">
-              Logout
-            </button>}
+            <div className="navbar-buttons-right">
+
+              {!isLoggedIn() && <Link to="/register" className="button is-light">
+                Register
+              </Link>}
+
+              {!isLoggedIn() && <Link to="/login" className="button is-light">
+                Login
+              </Link>}
+
+              {isLoggedIn() && <button onClick={handleLogout} className="button is-light">
+                Logout
+              </button>}
+            </div>
 
           </div>
         </div>
