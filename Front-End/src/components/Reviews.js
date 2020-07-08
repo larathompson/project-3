@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
+import { UserContext } from '../UserContext'
 
 
 const Reviews = () => {
@@ -10,14 +11,15 @@ const Reviews = () => {
   const [filterReviews, setFilterReviews] = useState([])
 
 
+
   useEffect(() => {
     axios.get('/api/reviews')
       .then(review => {
+        console.log(review)
         setReviewData(review.data)
         setFilterReviews(review.data)
       })
   }, [])
-
 
 
   function handleSort(event) {
@@ -38,31 +40,39 @@ const Reviews = () => {
       const high = data.sort((a, b) => b.rating - a.rating)
       setFilterReviews(high)
     }
-
   }
-  return <section>
-    <nav>
-      Sort Reviews
-      <select onChange={handleSort}>
-        <option value="highToLow"> Highest to Lowest</option>
-        <option value="lowToHigh"> Lowest to Highest</option>
-        <option value="oldest"> Oldest </option>
-        <option value="most-recent"> Most Recent </option>
+
+
+
+
+  return <section className="reviewsPage">
+    <h1 className="reviewsPageTitle"> Reviews </h1>
+    <nav className="reviewsPageSortMenu">
+      <h2 className="reviewsPageSortButton">Sort Reviews</h2>
+      <select onChange={handleSort} className="reviewsPageSelectBar">
+        <option value="highToLow" className="reviewsPageOption"> Highest to Lowest</option>
+        <option value="lowToHigh" className="reviewsPageOption"> Lowest to Highest</option>
+        <option value="oldest" className="reviewsPageOption"> Oldest </option>
+        <option value="most-recent" className="reviewsPageOption"> Most Recent </option>
       </select>
 
     </nav>
 
     <main>
-      <div className='reviews'>
-        {/* {console.log(reviews.user.username)} */}
+      <div className="reviewsPageReviews">
         {filterReviews.map((review, index) => {
-          return <div key={index} className='singleReview'>
-
-            <h3> Username: {review.user.username}</h3>
-            <h3> Review: {review.text}</h3>
-            <h3> Rating: {review.rating}</h3>
-            {/* <h3> {moment.format('review.createdAt')} </h3> */}
-            <h3> Time: {moment(review.updatedAt).fromNow()}</h3>
+          return <div key={index} className="reviewsPageSingleReview">
+            {(review.film) && <Link to={`/movie/${review.film.original_title}/${review.film.id}`}>
+              {/* {(review.film) && <h2 className="reviewsPageReviewh3" id="reviewPageFilmInfo"> {review.film.original_title}</h2>} */}
+              {(review.film) && <img className="reviewsPageFilmPoster" id="reviewPageFilmInfo" src={`https://image.tmdb.org/t/p/w154/${review.film.poster_path}`} />}
+            </Link>}
+            <div className="reviewsPageBody">
+  
+              <h3 className="reviewsPageReviewh3"> 🗨️ {review.text}</h3>
+              <h3 className="reviewsPageReviewh3"> ★  {review.rating}</h3>
+              <h3 className="reviewsPageReviewh3" id="reviewsPageUserName"> 👤 {review.user.username}</h3>
+              <h3 className="reviewsPageReviewh3" id="reviewsPageTime"> ⌚ {moment(review.updatedAt).fromNow()}</h3>
+            </div>
           </div>
         })}
 

@@ -5,6 +5,7 @@ import axios from 'axios'
 import Auth from '../lib/auth'
 import ReviewForm from './ReviewForm'
 import { isLoggedIn } from '../lib/auth'
+import moment from 'moment'
 
 
 
@@ -15,6 +16,7 @@ const SingleMovie = (props) => {
 
   const [soundtrackData, setSoundtrackData] = useState({})
   const [added, setAdded] = useState(false)
+  //this needs to be changed to object (think is object)
   const [movieData, setMovieData] = useState([])
   const [reviewData, setReviewData] = useState([])
   const [similarMovieData, updateSimilarMovieData] = useState([])
@@ -98,7 +100,7 @@ const SingleMovie = (props) => {
 
   function handleComment(filmId) {
     const token = localStorage.getItem('token')
-    axios.post(`api/movie/reviews/${filmId}`, { text: text, filmId: props.match.params.id, rating: rating }, {
+    axios.post(`api/movie/reviews/${filmId}`, { text: text, filmId: props.match.params.id, rating: rating, film: movieData }, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((axiosResponse) => {
@@ -164,7 +166,7 @@ const SingleMovie = (props) => {
         return <div key={index} className='singleReview'>
           <h1>{review.user.username}</h1>
           <p> {review.text}</p>
-          <p>{review.createdAt} </p>
+          <p>{moment(review.updatedAt).fromNow()} </p>
           <a href="javascript:window.location.reload(true)">
             {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleDelete} value={review._id} className="delete-button">Delete </button>}
           </a>

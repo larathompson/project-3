@@ -55,10 +55,10 @@ const Latest = (props) => {
           </button>
         </form>
       </div>
-      <div className="movie">
+      <div className="latest-container">
         {movies.map((result, index) => {
           // console.log(result)
-          return <div key={index}>
+          return <div className="latest-poster"key={index}>
             <Link to={`/movie/${result.title}/${result.id}`}>
               <img src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
             </Link>
