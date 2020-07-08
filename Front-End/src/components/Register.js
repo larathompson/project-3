@@ -69,7 +69,7 @@ const Register = (props) => {
       value={formData.passwordConfirmation}
     />
     <div className="button-container">
-      <button className="submit-button">Submit</button>
+      <button className="register-button">Register</button>
     </div>
   </form>
 

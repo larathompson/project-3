@@ -127,6 +127,7 @@ const SingleMovie = (props) => {
       .then((comment) => {
         setUpdatedText('')
         setUpdatedRating(Number)
+        setEdit(false)
         const updatedReviews = reviewData.map((review, index) => {
           if (comment.data._id === review._id) {
             return comment.data
@@ -175,20 +176,20 @@ const SingleMovie = (props) => {
             rating={updatedRating}
             setRating={setUpdatedRating}
           />}
-          {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id} className="submit-button">Submit</button>}
+          {(isLoggedIn() && edit && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id} className="submit-button">Submit</button>}
         </div>
       })}
     </section>
 
-    <ReviewForm
+    {(isLoggedIn() && !edit && userInfo) && <ReviewForm
       text={text}
       setText={setText}
       rating={rating}
       setRating={setRating}
-    />
+    />}
 
     <div className="button">
-      <button onClick={handleComment} className="submit-button">Submit</button>
+      {(isLoggedIn() && !edit && userInfo) && <button onClick={handleComment} className="submit-button">Submit</button>}
 
     </div>
     <h2>Similar Movies</h2>
