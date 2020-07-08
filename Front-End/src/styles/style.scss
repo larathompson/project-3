@@ -47,10 +47,9 @@ html, body {
  }
 }
 
+// SEARCH RESULTS & LATEST
 
-// SEARCH RESULTS 
-
-.search-results-container {
+.search-results-container, .latest-container{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -58,14 +57,14 @@ html, body {
   justify-content: center;
 }
 
-.search-results-poster img {
+.search-results-poster, .latest-poster img{
   width: 25vw;
   margin: 1vw;
   padding: 1vw;
   transition: transform.2s ease-in-out;
 }
 
-.search-results-poster img:hover {
+.search-results-poster, .latest-poster img:hover {
   transform: scale(1.14);
 }
 
@@ -129,13 +128,6 @@ html, body {
   font-size: 1.25rem;
 }
 
-@media (max-width: 600px) {
-  .bio-container {
-    width: 80vw;
-  }
-
-}
-
 [data-aos="new-animation"] {
   opacity: 0;
   transition-property: transform, opacity;
@@ -156,7 +148,7 @@ html, body {
 
  @-webkit-keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}@keyframes scale-in-hor-right{0%{-webkit-transform:scaleX(0);transform:scaleX(0);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}100%{-webkit-transform:scaleX(1);transform:scaleX(1);-webkit-transform-origin:100% 100%;transform-origin:100% 100%;opacity:1}}
 
- @media (max-width: 500px) {
+ @media (max-width: 600px) {
    h1 {
      font-size: 14px;
    }
@@ -170,6 +162,7 @@ html, body {
      flex-direction: column;
      align-items: center;
      justify-content: center;
+     width: 80vw;
    }
    .women-movie-poster {
      width: 80vw;
@@ -177,8 +170,11 @@ html, body {
    .women-poster-container:active .bio-container p {
     opacity: 1;
   }
-
+  .bio-container{
+    width: 80vw;
+  }
  }
+
 
 
 
