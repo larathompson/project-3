@@ -46,12 +46,12 @@ html, body {
 .navbar {
   display: flex;
   flex-direction: row;
+  width: 100%;
   .buttons {
     display: flex;
     justify-content: space-evenly;
     padding-left: 30px;
   }
- 
 }
 
 .poster {
@@ -147,4 +147,94 @@ html, body {
 
 
 //****** KIANNA - FAVOURITE PAGE STYLING ******//
+
+.favouritesPage {
+  display: flex;
+  flex-direction: column;
+  // position: absolute;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.favouritePageTitle {
+  text-align: center;
+  font-size: 70px;
+  margin: 20px 0;
+}
+
+.favouritePageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  // position: absolute;
+  // top: 50%;
+  width: 100vw;
+  height: 90vh;
+ 
+}
+
+.favouriteCardContainer {
+  margin: 0 1vw;
+  width: 15vw;
+  height: 35vh;
+  padding: 2vw;
+}
+
+.favouriteMiddle {
+  // position: relative;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+}
+
+.favouriteCard {
+  cursor: pointer;
+  // margin: 10px;
+}
+
+.favouriteFront,.favouriteBack{
+  // width: 20vw;
+  // height: 50vh;
+  overflow: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  transition: transform .6s linear;
+}
+
+// div .favouriteBack {
+//   height: 50vh;
+// }
+
+.favouriteFront img {
+  // height: 35vh;
+  width: 20vw;
+}
+
+.favouriteFront {
+  transform: perspective(25vh) rotateY(0deg);
+}
+
+.favouriteBack {
+  background: $royal-blue;
+  // height: 57vh;
+  width: 20vw;
+  transform: perspective(25vh) rotateY(180deg);
+
+}
+
+.favourite-back-content {
+  color: $silver-grey;
+  text-align: center;
+  width: 100%;
+}
+
+.favouriteCard:hover > .favouriteFront {
+  transform: perspective(25vh) rotateY(-180deg);
+
+}
+
+.favouriteCard:hover > .favouriteBack {
+  transform: perspective(25vh) rotateY(0deg);
+
+}
 
