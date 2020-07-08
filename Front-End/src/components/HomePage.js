@@ -10,12 +10,20 @@ const HomePage = (props) => {
   const [search, setSearch] = useState('')
   const [movies, setMovies] = useState([])
 
-
   const ourMovieList = (() => {
     axios.get(`https://api.themoviedb.org/3/list/5224231?api_key=${API_KEY}&language=en-US&page=1`)
       // POPULAR MOVIES: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
       .then(movie => {
         setMovies(movie.data.items)
+        return movie.data.items
+      })
+      // * Because you have returned movie data above^ you can CHAIN with .then 
+      //* Below: movie = movie.data.items
+      .then(movie => {
+        const shuffledMovies = movie.sort((a, b) => {
+          return 0.5 - Math.random()
+        })
+        setMovies([...shuffledMovies])
       })
   })
 
@@ -40,6 +48,7 @@ const HomePage = (props) => {
     getMovies()
     setSearch('')
   }
+
 
   return <>
     <section className="home-container">
