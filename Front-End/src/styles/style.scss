@@ -98,24 +98,9 @@ html, body {
 
 //reviewsPage
 
-// @media only screen and (max-width: 600px) {
-//   .reviewsPageReviews{
-//     display:flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//   }
-
-//   .reviewsPageSingleReview {
-//     width: 200vh;
-//   }  
-// }
-
-
-
 .reviewsPageSingleReview {
-  background: #E2D5CE;
-  border: 2px solid grey;
+  // background: #E2D5CE;
+  // border: 2px solid grey;
   width: 70vw;
   margin: 5vw;
   display: flex;
@@ -124,20 +109,21 @@ html, body {
   flex-direction: row;
   padding: 2vw;
   text-decoration: none;
-  box-shadow:
-      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-      0 12.5px 10px rgba(0, 0, 0, 0.06),
-      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-      0 100px 80px rgba(0, 0, 0, 0.12);
+  // box-shadow:
+  //     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  //     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  //     0 12.5px 10px rgba(0, 0, 0, 0.06),
+  //     0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  //     0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  //     0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
 .reviewsPageReviewh3{
   margin: 2px;
   font-size: 4vw;
   font-family: futura;
-  color: #68829E;
+  color: black;
+  text-align: center;
 }
 
 .reviewsPage {
@@ -145,8 +131,8 @@ html, body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin:10px;
-  width: 100%;
+  margin:7vw;
+  // width: 100vw;
 }
 
 .reviewsPageTitle {
@@ -155,9 +141,11 @@ html, body {
 }
 
 .reviewsPageSelectBar {
-  margin: 10px;
+  margin: 3vw;
   height: 12vw;
-  background: #E2D5CE;
+  background: black;
+  color: white;
+  font-size: 18px;
   position: relative;
   display: inline-block;
   font-family: futura;
@@ -173,9 +161,13 @@ html, body {
 }
 
 .reviewsPageFilmPoster {
-  width: 18vw;
-  padding: 2vw;
+  width: 22vw;
+  padding:  0vw 2vw;
   
+}
+
+.reviewsPageFilmPoster:hover {
+transform: scale(1.14);
 }
 
 #reviewPageFilmInfo {
@@ -188,9 +180,9 @@ html, body {
 }
 
 
-
 #reviewsPageUserName {
   font-size: 15px;
+  color: #68829E;
 }
 
 #reviewsPageTime {
@@ -200,17 +192,98 @@ html, body {
 .reviewsPageSortMenu {
   display:flex;
   flex-direction: row;
+  justify-content: center;
+  width: 90vw;
+}
+
+.reviewsPageSortButton{
+  font-size: 12px;
 }
 
 .reviewsPageBody {
   display: flex;
-  justify-content: right;
+  justify-content: space-around;
   flex-direction: column;
+  background: #E2D5CE;
+  width: 70vw;
 }
 
 .reviewsPageOption {
   font-family: futura;
 }
+
+#reviewsPageText {
+  // background-color: #FFFAF1;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  padding: 1vw;
+}
+
+.reviewsPageImportant {
+  // background-color: #FFFAF1; 
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.reviewsPageTitle {
+  margin: 1vw;
+}
+
+@media only screen and (min-width: 700px) {
+
+  .reviewsPage{
+    flex-wrap: wrap;
+    margin: 0px;
+  }
+    .reviewsPageReviews{
+      // display: flex;
+      display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 100vw;
+   }
+
+  
+    .reviewsPageSingleReview {
+      width: 25vw;
+    margin: 1vw;
+    padding: 1vw;
+    // transition: transform.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    }
+
+    
+.reviewsPageSelectBar {
+  width: 20vw;
+  height: 5vw;
+}
+
+.reviewsPageFilmPoster {
+  padding: 3vw;
+}
+
+.reviewsPageBody {
+  height:20vw;
+}
+
+#reviewsPageText {
+  font-size: 18px;
+  padding: 0px;
+}
+
+    }  
+  
 
 
 

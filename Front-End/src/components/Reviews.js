@@ -18,6 +18,7 @@ const Reviews = () => {
         console.log(review)
         setReviewData(review.data)
         setFilterReviews(review.data)
+        console.log(reviews)
       })
   }, [])
 
@@ -48,7 +49,7 @@ const Reviews = () => {
   return <section className="reviewsPage">
     <h1 className="reviewsPageTitle"> Reviews </h1>
     <nav className="reviewsPageSortMenu">
-      <h2 className="reviewsPageSortButton">Sort Reviews</h2>
+      {/* <h2 className="reviewsPageSortButton">Sort Reviews</h2> */}
       <select onChange={handleSort} className="reviewsPageSelectBar">
         <option value="highToLow" className="reviewsPageOption"> Highest to Lowest</option>
         <option value="lowToHigh" className="reviewsPageOption"> Lowest to Highest</option>
@@ -64,14 +65,15 @@ const Reviews = () => {
           return <div key={index} className="reviewsPageSingleReview">
             {(review.film) && <Link to={`/movie/${review.film.original_title}/${review.film.id}`}>
               {/* {(review.film) && <h2 className="reviewsPageReviewh3" id="reviewPageFilmInfo"> {review.film.original_title}</h2>} */}
-              {(review.film) && <img className="reviewsPageFilmPoster" id="reviewPageFilmInfo" src={`https://image.tmdb.org/t/p/w154/${review.film.poster_path}`} />}
+              {(review.film) && <img className="reviewsPageFilmPoster" id="reviewPageFilmInfo" src={`https://image.tmdb.org/t/p/w500/${review.film.poster_path}`} />}
             </Link>}
             <div className="reviewsPageBody">
-  
-              <h3 className="reviewsPageReviewh3"> 🗨️ {review.text}</h3>
-              <h3 className="reviewsPageReviewh3"> ★  {review.rating}</h3>
-              <h3 className="reviewsPageReviewh3" id="reviewsPageUserName"> 👤 {review.user.username}</h3>
-              <h3 className="reviewsPageReviewh3" id="reviewsPageTime"> ⌚ {moment(review.updatedAt).fromNow()}</h3>
+              <div className="reviewsPageImportant">
+                <h3 className="reviewsPageReviewh3" id="reviewsPageText"> “{review.text}” </h3>
+                <h3 className="reviewsPageReviewh3"> ★  {review.rating}</h3>
+              </div>
+              <h3 className="reviewsPageReviewh3" id="reviewsPageUserName"> 👤 {review.user.username}, {moment(review.updatedAt).fromNow()}</h3>
+              {/* <h3 className="reviewsPageReviewh3" id="reviewsPageTime"> ⌚ {moment(review.updatedAt).fromNow()}</h3> */}
             </div>
           </div>
         })}
