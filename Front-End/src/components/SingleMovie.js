@@ -22,11 +22,15 @@ const SingleMovie = (props) => {
   const [similarMovieData, updateSimilarMovieData] = useState([])
   const [text, setText] = useState('')
   const [rating, setRating] = useState(0)
-  const [edit, setEdit] = useState(false)
+  const [isEditting, setIsEditting] = useState(false)
   const [updatedText, setUpdatedText] = useState('')
   const [updatedRating, setUpdatedRating] = useState(0)
 
 
+  function scrollToTop() {
+    window.scrollTo(0, 0)
+  }
+  
   //! Returning single movie data
 
   useEffect(() => {
@@ -45,6 +49,7 @@ const SingleMovie = (props) => {
           //! .some() returns a boolean value, used for ternary operator for add to favourites button.
           const exists = userInfo.favouriteMovies.some(movie => movie.filmId === axiosResp.data.results[0].id)
           setAdded(exists)
+          scrollToTop()
         }
       })
       .catch(err => console.log(err.response))
@@ -129,7 +134,7 @@ const SingleMovie = (props) => {
       .then((comment) => {
         setUpdatedText('')
         setUpdatedRating(Number)
-        setEdit(false)
+        setIsEditting(false)
         const updatedReviews = reviewData.map((review, index) => {
           if (comment.data._id === review._id) {
             return comment.data
@@ -146,74 +151,90 @@ const SingleMovie = (props) => {
   }
 
 
+  function handleToggle(event) {
+
+    if (isEditting) {
+      setIsEditting(false)
+    } else {
+      setIsEditting(event.target.value)
+    }
+
+  }
+
+  function userCheck(username) {
+    return isLoggedIn() && userInfo && userInfo.username === username
+  }
+
+
+
   //! Returning soundtrack and single movie data on page
 
   return <>
-  <h1 className="singleMovieTitle">{movieData.title}</h1>
-  <p>{movieData.overview}</p>
-  <div className="singlePageContainer">
-    <section className="singleSectionOne">
-      {soundtrackData && <div>
-        <iframe className="singleIframe" src={`https://open.spotify.com/embed/playlist/${soundtrackData}`} width="250" height="375" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      </div>}
-      <div className="singleMovieSection">
-        {/* desciption in here */}
-        <img className="singleMoviePoster" src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
-        <div className="favouriteMovieButtonContainer">
-          {added ? <button title="Disabled button" disabled>Added</button> : <button className="favouriteMovieButton" onClick={favourite}>Favourite ❤️</button>}
-        </div>
-      </div>
-    </section>
-    <h2 className="singlePageReviews">Reviews</h2>
-    <section className="singleSectionTwo">
-      {reviewData && reviewData.map((review, index) => {
-        return <div key={index} className="singleReviewContainer">
-          <h1>{review.user.username} says:</h1>
-          <p>"{review.text}"</p>
-          <p>{moment(review.updatedAt).fromNow()} </p>
-          <div className="singleReviewButtons">
-            <a href="javascript:window.location.reload(true)">
-              {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleDelete} value={review._id} id="singleButton" className="delete-button">Delete </button>}
-            </a>
-            {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={() => setEdit(review._id)} value={review._id} id="singleButton" className="edit-button">Edit </button>}
+    <h1 className="singleMovieTitle">{movieData.title}</h1>
+    <p>{movieData.overview}</p>
+    <div className="singlePageContainer">
+      <section className="singleSectionOne">
+        {soundtrackData && <div>
+          <iframe className="singleIframe" src={`https://open.spotify.com/embed/playlist/${soundtrackData}`} width="250" height="375" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>}
+        <div className="singleMovieSection">
+          {/* desciption in here */}
+          <img className="singleMoviePoster" src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
+          <div className="favouriteMovieButtonContainer">
+            {added ? <button title="Disabled button" disabled>Added</button> : <button className="favouriteMovieButton" onClick={favourite}>Favourite ❤️</button>}
           </div>
-          {review._id === edit && <ReviewForm
-            text={updatedText}
-            setText={setUpdatedText}
-            rating={updatedRating}
-            setRating={setUpdatedRating}
+        </div>
+      </section>
+      <h2 className="singlePageReviews">Reviews</h2>
+      <section className="singleSectionTwo">
+        {reviewData && reviewData.map((review, index) => {
+          return <div key={index} className="singleReviewContainer">
+            <h1>{review.user.username} says:</h1>
+            <p>"{review.text}"</p>
+            <p>{moment(review.updatedAt).fromNow()} </p>
+            <div className="singleReviewButtons">
+              <a href="javascript:window.location.reload(true)">
+                {userCheck(review.user.username) && <button onClick={handleDelete} value={review._id} id="singleButton" className="delete-button">Delete </button>}
+              </a>
+              {userCheck(review.user.username) && <button onClick={handleToggle} value={review._id} id="singleButton" className="edit-button">Edit </button>}
+            </div>
+            {review._id === isEditting && <ReviewForm
+              text={updatedText}
+              setText={setUpdatedText}
+              rating={updatedRating}
+              setRating={setUpdatedRating}
+            />}
+            {(isLoggedIn() && isEditting === review._id && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id} className="submit-button">Submit</button>}
+          </div>
+        })}
+      </section>
+      <section className="singleSectionThree">
+        <h3 className="singleLeaveReview">Leave a Review</h3>
+        <div className="sectionThreeText">
+          {(isLoggedIn() && !isEditting && userInfo) && <ReviewForm
+            text={text}
+            setText={setText}
+            rating={rating}
+            setRating={setRating}
           />}
-          {(isLoggedIn() && edit && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id} className="submit-button">Submit</button>}
+          <div className="button">
+            {(isLoggedIn() && !isEditting && userInfo) && <button onClick={handleComment} className="submit-button">Submit</button>}
+          </div>
         </div>
-      })}
-    </section>
-    <section className="singleSectionThree">
-      <h3 className="singleLeaveReview">Leave a Review</h3>
-      <div className="sectionThreeText">
-        {(isLoggedIn() && !edit && userInfo) && <ReviewForm
-          text={text}
-          setText={setText}
-          rating={rating}
-          setRating={setRating}
-        />}
-        <div className="button">
-          {(isLoggedIn() && !edit && userInfo) && <button onClick={handleComment} className="submit-button">Submit</button>}
-        </div>
+      </section>
+      <h2 className="singleSimilarTitle">Similar Movies</h2>
+      <div className="singleSimilarMovieList">
+        {similarMovieData && similarMovieData.map((result, index) => {
+          return <div className="singleSimilarContainer" key={index}>
+            {/* <a href="javascript:window.location.reload(true)"> */}
+            <Link onClick={scrollToTop} to={`/movie/${result.title}/${result.id}`}>
+              <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+            </Link>
+          </div>
+        })}
       </div>
-    </section>
-    <h2 className="singleSimilarTitle">Similar Movies</h2>
-    <div className="singleSimilarMovieList">
-      {similarMovieData && similarMovieData.map((result, index) => {
-        return <div className="singleSimilarContainer" key={index}>
-          {/* <a href="javascript:window.location.reload(true)"> */}
-          <Link to={`/movie/${result.title}/${result.id}`}>
-            <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
-          </Link>
-        </div>
-      })}
     </div>
-  </div>
-</>
+  </>
 }
 
 

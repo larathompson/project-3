@@ -51,7 +51,7 @@ const Login = (props) => {
       name="password"
       className="form-input"
       onChange={handleChange}
-      type="text"
+      type="password"
       placeholder="********"
       value={formData.password}
     />
