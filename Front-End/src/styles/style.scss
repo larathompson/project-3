@@ -43,12 +43,18 @@ background-color: #fffaf1;
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%2368829e' fill-opacity='0.29'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
 
+// **** REPEAT CSS **** //
+
 button {
   border-radius: 5px;
 }
 
 img {
   border-radius: 1vh;
+}
+
+input {
+  outline: none !important;
 }
 
 // ***** RAQ HOMEPAGE START ***** //
@@ -232,7 +238,7 @@ font-size: 20px;
 }
 
 .search-form input {
-  color: blue;
+  color: black;
   border-radius: 8px;
   font-size: 2.5vw;
   margin-right: 5px;
@@ -240,6 +246,7 @@ font-size: 20px;
   height: 7vh;
   padding: 1vh;
 }
+
 
 .search-bar {
   padding: 7px;
@@ -283,7 +290,6 @@ footer a {
 }
 
 
-
 // ***** RAQ HOMEPAGE END ***** //
 
 // **** RAQ SEARCH RESULTS & LATEST START **** //
@@ -294,6 +300,7 @@ footer a {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.2);
 }
 
 .latest-home-container {
@@ -685,7 +692,6 @@ transform: scale(1.14);
   }
   .latest-container img {
     border-radius: 0.7rem;
-
   }
  }
  // ***** RAQ's MOBILE END ***** //
