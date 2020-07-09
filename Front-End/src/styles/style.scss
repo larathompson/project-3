@@ -373,7 +373,7 @@ transform: scale(1.14);
 
 
 
-// WOMENFILM 
+// ***** RAQUEL WOMENFILM START ***** //
 
 .women-section {
   // width: 100vw;
@@ -391,41 +391,46 @@ transform: scale(1.14);
 }
 
 .women-movie-poster {
-  width: 40vw;
+  width: 30vw;
   margin-right: 1.5vh;
   border-radius: 8px;
-  // padding: 1vw;
 }
 
 .bio-container {
-  height: 40vh;
-  // margin: 1vh;
-  // padding: 1vw;
-  // color: darkgrey;
-  // background-color: #878caa73;
+  // height: 60vh;
+  width: 30vw;
+  margin: auto;
+  overflow: auto;
+  margin: 1vh;
+  padding: 1vw;
   border-radius: 8px;
-  color: black;
-  // display: flex;
-  // align-items: center;
+  text-align: center;
+  span {
+    color: slategray;
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
 
 .women-poster-container:hover .bio-container {
   opacity: 1;
-  background-color: #878caa73;
+  background-color: #878caa58;
   transform: translateX(20px);
 }
 
 .women-poster-container:hover .bio-container p {
   opacity: 1;
-  color: black;
 }
 
 .bio-container p {
   opacity: 0;
   transition: .5s ease;
   font-size: 1.25rem;
-  color: black;
- 
+  color: dark-grey;
+}
+
+.bio-container :nth-last-child {
+  padding-bottom: 5px;
 }
 
 [data-aos="new-animation"] {
@@ -461,10 +466,10 @@ transform: scale(1.14);
    .women-section {
      align-items: center;
     h1 {
-      font-size: 14px;
+      font-size: 18px;
     }
     p {
-      font-size: 14px;
+      font-size: 16px;
     }
    }
    .women-poster-container {
@@ -480,8 +485,9 @@ transform: scale(1.14);
    .bio-container p {
     opacity: 1;
   }
-  .bio-container{
+  .bio-container {
     width: 80vw;
+    height: 40vh;
     background-color: #878caa73;
   }
 
@@ -501,6 +507,7 @@ transform: scale(1.14);
   }
  }
 
+ // ***** RAQUEL WOMENFILM END ***** //
 
 
 // Register & Log In Styling
