@@ -1,6 +1,8 @@
 
 import React from 'react'
 
+import StarRating from './StarRating'
+
 
 const ReviewForm = ({ text, setText, rating, setRating }) => {
   return <section className='postReview'>
@@ -18,22 +20,30 @@ const ReviewForm = ({ text, setText, rating, setRating }) => {
           />
         </div>
       </div>
+
+
       <div className="container">
         <label className="label">Rating</label>
-        <div className="control">
+        <StarRating
+        setRating={setRating}
+        rating={rating}
+        />
+        {/* <div className="control">
           <input
             name="rating"
             //changed this
             min="1"
-            max="10"
+            max="5"
             className="input"
             onChange={(event) => setRating(event.target.value)}
             type="number"
             placeholder="Rating"
             value={rating}
           />
-        </div>
+        </div> */}
+
       </div>
+
     </form>
   </section>
 }

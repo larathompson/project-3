@@ -248,6 +248,8 @@ footer {
 .reviewsPageFilmPoster {
   width: 22vw;
   padding:  0vw 2vw;
+  border-radius: 15px;
+  height: 32vw;
   
 }
 
@@ -289,9 +291,10 @@ transform: scale(1.14);
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  background: #878caa73;
+  background: #9193a058;
   width: 70vw;
   border-radius: 20px;
+  height: 32vw;
 }
 
 .reviewsPageOption {
@@ -1149,4 +1152,19 @@ div .favouriteFront {
  }
 
 }
+
+
+
+//star rating
+
+input[type="radio"] {
+  display:none
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+
 
