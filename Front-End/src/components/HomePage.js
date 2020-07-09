@@ -54,21 +54,29 @@ const HomePage = (props) => {
   return <>
     <section className="home-container">
       <div className="hero-body">
-        <form onSubmit={getSearch} className="search-form">
-          <input
-            className="search-bar"
-            type="text"
-            value={search}
-            onChange={updateSearch}
-          />
-          <button className="search-button" type="submit">
-            Search
-          </button>
-        </form>
+
+        <div>
+          <h1>THE SCORE</h1>
+        </div>
+
+        <div className="search-section">
+          <form onSubmit={getSearch} className="search-form">
+            <input
+              className="search-bar"
+              type="text"
+              value={search}
+              onChange={updateSearch}
+            />
+            <button className="search-button" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+
       </div>
       <div className="search-results-container">
         {movieSearchResults.map((movie, index) => {
-          return <div className="search-results-poster"key={index}>
+          return <div className="search-results-poster" key={index}>
             <Link to={`/movie/${movie.title}/${movie.id}`}>
               <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
             </Link>
@@ -87,6 +95,16 @@ const HomePage = (props) => {
           })}
         </div>
       </div>
+      {/* <footer>
+        <small>All Rights Reserved <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a> & <a href="https://www.spotify.com/uk/" target="_blank" rel="noopener noreferrer">Spotify</a></small>
+        <div>
+          <div>
+            <small>Brought to you by 
+              <small className="by"> 🌜4kir4 x Lara x Shaikh x SilkenTofu🌛</small>
+            </small>
+          </div>
+        </div>
+      </footer> */}
     </section>
   </>
 }

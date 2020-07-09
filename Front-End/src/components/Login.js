@@ -56,7 +56,7 @@ const Login = (props) => {
       value={formData.password}
     />
     <div className="button-container">
-      <button className="login-button">Log In</button>
+      <button className="login-button">Login</button>
     </div>
   </form>
 
