@@ -795,31 +795,25 @@ transform: scale(1.14);
 .favouritesPage {
   display: flex;
   flex-direction: column;
-  // height: 100vh;
+}
+
+.favouritePageTitle {
+  font-size: 38px;
+  color: $blue-grey;
+  text-align: center;
 }
 
 .favouriteCardContainer {
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
-  // height: 100%;
   align-items: center;
-  // flex-wrap: wrap;
   width: 100vw;
 }
 
-.flower_box {
+.favourites-card {
   display: flex;
-  // flex-shrink: 1;  
   width: 60vw;
   margin-top: 2vh;
-  // margin-left: 20vw;
-  // height: 420px;
-  // position: relative;
-  // top: 50%;
-  // left: 50%;
-  // -webkit-transform: translate(-50%, -50%);
-  // transform: translate(-50%, -50%);
   background: rgba(255,255,255,1);
   border-radius: 8px;
   text-align: center;
@@ -830,16 +824,12 @@ transform: scale(1.14);
 .favouriteImage {
   float: left;
   width: 30vw;
-  // height: 100%;
-  display:block;
-  // background-size: cover;
+  display: block; 
   border-radius: 8px 0 0 8px;
 }
 
-.text{
-  // padding: 55px 40px;
-  width: 30vw;
-  // height: 100%;
+.favourites-text{
+  width: 30vw; 
   float: left;
   font-size: 0.75rem;
   display: flex;
@@ -849,11 +839,17 @@ transform: scale(1.14);
   
 }
 
+.favourites-text h1 {
+  color: $slate-blue;
+}
+
+.favourites-text p {
+  color: $silver-grey;
+}
+
 .favouriteDeleteButton {
-  // float: right;
   margin-top: 2vh;
   width: 20vw;
-  // height: 50px;
   border-radius: 8px;
   outline: 0;
   border: 0;
@@ -868,6 +864,22 @@ transform: scale(1.14);
   cursor: pointer;
   background-color: $silver-grey;
   transition: background-color 0.5s ease-out;
+}
+
+@media only screen and (min-width: 650px) {
+  .text{
+   font-size: 1.25rem; 
+  }
+  
+  .favouriteDeleteButton {
+   padding: 10px;
+  }
+
+  .favouritePageTitle {
+    font-size: 65px;
+   
+  }
+  
 }
 
 
