@@ -178,7 +178,7 @@ const SingleMovie = (props) => {
             rating={updatedRating}
             setRating={setUpdatedRating}
           />}
-          {(isLoggedIn() && edit && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id} className="submit-button">Submit</button>}
+          {(isLoggedIn() && (edit === review._id) && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id} className="submit-button">Submit</button>}
         </div>
       })}
     </section>
