@@ -16,10 +16,10 @@ mongoose.connect(
       .then(() => {
         return User.create([
           {
-            username: 'raquel',
-            email: 'raquel@raquel.com',
-            password: 'raquel',
-            passwordConfirmation: 'raquel'
+            username: 'silkenTofu',
+            email: 'tofu@tofu.com',
+            password: 'tofu',
+            passwordConfirmation: 'tofu'
           },
           {
             username: 'kianna',
