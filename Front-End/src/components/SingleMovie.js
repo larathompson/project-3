@@ -82,7 +82,8 @@ const SingleMovie = (props) => {
     const data = {
       filmId: movieData.id,
       title: movieData.title,
-      poster: `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`
+      poster: `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`,
+      reason: ''
     }
     axios.post('/api/favourites', data, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }

@@ -9,52 +9,42 @@ const NavBar = (props) => {
     props.history.push('/')
   }
 
-  return <nav className="navbar-container" role="navigation" aria-label="main navigation">
-    <div className="navbar-menu">
-      <div className="buttons">
-        <div className="navbar-buttons-left">
+  return <nav className="navbar-menu">
+    <div className="navbar-container-left">
+      <Link to="/" className="navbar-link">
+        Home
+      </Link>
 
-          <Link to="/" className="button is-light">
-            Home
-          </Link>
+      <Link to="/latest" className="navbar-link">
+        Latest
+      </Link>
 
-          <Link to="/latest" className="button is-Light">
-            Latest
-          </Link>
+      <Link to="/women" className="navbar-link">
+        Women
+      </Link>
 
-          <Link to="/women" className="button is-Light">
-            Women
-          </Link>
+      {isLoggedIn() && <Link to="/profile" className="navbar-link">
+        Favourites
+      </Link>}
 
-          {isLoggedIn() && <Link to="/profile" className="button is-light">
-            Favourites
-          </Link>}
+      {isLoggedIn() && <Link to='/reviews' className="navbar-link">
+        Reviews
+      </Link>}
+    </div>
 
-        </div>
+    <div className="navbar-container-right">
+      {!isLoggedIn() && <Link to="/register" className="navbar-link">
+        Register
+      </Link>}
 
-        {/* <h1>THE SCORE</h1> */}
+      {!isLoggedIn() && <Link to="/login" className="navbar-link">
+        Login
+      </Link>}
 
-        {isLoggedIn() && <Link to='/reviews' className="button is-Light">
-          Reviews
-        </Link>}
-
-
-        <div className="navbar-buttons-right">
-
-          {!isLoggedIn() && <Link to="/register" className="button is-light">
-            Register
-          </Link>}
-
-          {!isLoggedIn() && <Link to="/login" className="button is-light">
-            Login
-          </Link>}
-
-          {isLoggedIn() && <button onClick={handleLogout} className="logout-button">
-            Logout
-          </button>}
-        </div>
-
-      </div>
+      {isLoggedIn() && <button onClick={handleLogout} id="navbar-button" className="navbar-link">
+        <span className="noselect">Logout</span>
+        <div id="circle"></div>
+      </button>}
     </div>
   </nav>
 }
