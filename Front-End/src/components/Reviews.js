@@ -70,7 +70,10 @@ const Reviews = () => {
             <div className="reviewsPageBody">
               <div className="reviewsPageImportant">
                 <h3 className="reviewsPageReviewh3" id="reviewsPageText"> “{review.text}” </h3>
-                <h3 className="reviewsPageReviewh3"> ★  {review.rating}</h3>
+                {/* <h3 className="reviewsPageReviewh3"> ★  {review.rating}</h3> */}
+               <span> {[...Array(review.rating)].map((e, i) => {
+              return <span key={i} className="reviewsPageReviewh3">★</span>
+            })} </span>
               </div>
               <h3 className="reviewsPageReviewh3" id="reviewsPageUserName"> 👤 {review.user.username}, {moment(review.updatedAt).fromNow()}</h3>
               {/* <h3 className="reviewsPageReviewh3" id="reviewsPageTime"> ⌚ {moment(review.updatedAt).fromNow()}</h3> */}

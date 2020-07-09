@@ -41,28 +41,28 @@ mongoose.connect(
           }
         ])
       })
-      .then(users => {
-        return Reviews.create([
-          {
-            text: 'Great soundtrack! ',
-            user: users[3],
-            rating: 5,
-            filmId: '64690'
-          },
-          {
-            text: 'Shit! ',
-            user: users[1],
-            rating: 1,
-            filmId: '64690'
-          },
-          {
-            text: 'Distinctly average!' ,
-            user: users[1],
-            rating: 3,
-            filmId: '1018'
-          }
-        ])
-      })
+      // .then(users => {
+      //   return Reviews.create([
+      //     {
+      //       text: 'Great soundtrack! ',
+      //       user: users[3],
+      //       rating: 5,
+      //       filmId: '64690'
+      //     },
+      //     {
+      //       text: 'Shit! ',
+      //       user: users[1],
+      //       rating: 1,
+      //       filmId: '64690'
+      //     },
+      //     {
+      //       text: 'Distinctly average!' ,
+      //       user: users[1],
+      //       rating: 3,
+      //       filmId: '1018'
+      //     }
+      //   ])
+      // })
       .then(reviews => {
         console.log(`${reviews.length} reviews have been created !`)
       })

@@ -40,24 +40,18 @@ const Favourites = () => {
   return <section className="favouritesPage">
     <h1 className="favouritePageTitle">FAVOURITES</h1>
     {/* //! first time page loads, user info undefined - so need to make sure it exists. */}
-    <div className="favouritePageContainer">{userInfo && userInfo.favouriteMovies.map((movie, index) => {
-      return <div key={index} className="favouriteCardContainer">
-        <div className="favouriteCard favouriteMiddle" key={index}>
-          <div className="favouriteFront">
-            <Link to={`/movie/${movie.title}/${movie.filmId}`}> <img className="favouriteImage" src={movie.poster} />
-            </Link>
-            <button className="favouriteDeleteButtonMobile" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
-          </div>
-          <div className="favouriteBack">
-            <div className="favourite-back-content favouriteMiddle">
-              <h1 className="favouriteMovieTitle">{movie.title}</h1>
-              {/* <Link to={`/movie/${movie.title}/${movie.filmId}`}> <img className="favouriteImageBack" src={movie.poster} />
-            </Link> */}
-              <button className="favouriteDeleteButton" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
-            </div>
-          </div>
+    <div className="favouriteCardContainer">{userInfo && userInfo.favouriteMovies.map((movie, index) => {
+      return <div key={index} className="favourites-card">
+        {/* <div className="flower_box"> */}
+        <Link to={`/movie/${movie.title}/${movie.filmId}`}> <img className="favouriteImage" src={movie.poster} />
+        </Link>
+        <div className="favourites-text">
+          <h1 className="favouriteMovieTitle">{movie.title}</h1>
+          <p>{movie.reason}reason here</p>
+          <button className="favouriteDeleteButton" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
         </div>
       </div>
+      // </div>
     })}
     </div>
   </section>
