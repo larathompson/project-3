@@ -677,6 +677,12 @@ div .favouriteFront {
 }
 
 @media only screen and (min-width: 400px) {
+  
+  .favouritePageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-evenly;
+  }
 
   .favouritePageTitle {
     font-size: 55px;
