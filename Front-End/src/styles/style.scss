@@ -82,17 +82,6 @@ img {
  
 }
 
-// #navbar-button {
-//   margin-top: 10px;
-//   border: none;
-//   border-radius: 5px;
-//   outline: none !important;
-//   background-color: black;
-//   color: white;
-//   padding: 7px 10px;
-//   font-family: 'futura'
-// }
-
 
 #navbar-button {
   background: #222;
@@ -166,8 +155,11 @@ font-size: 20px;
 
   h1 {
     font-size: 5rem;
-    
+    // text-shadow: -2px 6px lightgrey;
+    -webkit-animation: text-shadow-pop-bl 1s both;
+    animation: text-shadow-pop-bl 1s both;
   }
+
   .search-section {
     padding-bottom: 10vh;
   }
@@ -184,7 +176,7 @@ font-size: 20px;
 }
 
 .carousel-images img {
-  width: 30vw;
+  width: 20vw;
   height: auto;
 }
 
@@ -194,32 +186,59 @@ font-size: 20px;
  }
 }
 
+ @-webkit-keyframes text-shadow-pop-bl {
+  0% {
+    text-shadow: 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey;
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    text-shadow: -1px 1px lightgrey, -2px 2px lightgrey, -3px 3px lightgrey, -4px 4px lightgrey, -5px 5px lightgrey, -6px 6px lightgrey, -7px 7px lightgrey, -8px 8px lightgrey;
+    -webkit-transform: translateX(8px) translateY(-8px);
+            transform: translateX(8px) translateY(-8px);
+  }
+}
+@keyframes text-shadow-pop-bl {
+  0% {
+    text-shadow: 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey;
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    text-shadow: -1px 1px lightgrey, -2px 2px lightgrey, -3px 3px lightgrey, -4px 4px lightgrey, -5px 5px lightgrey, -6px 6px lightgrey, -7px 7px lightgrey, -8px 8px lightgrey;
+    -webkit-transform: translateX(8px) translateY(-8px);
+            transform: translateX(8px) translateY(-8px);
+  }
+}
+
+
 // SEARCH RESULTS & LATEST
 
 .search-button {
-  border: 1px solid black;
-  background-color: black;
+  border: 1px solid slategrey;
+  background-color: slategrey;
   color: white;
-  padding: 1vh;
   width: 10.5vw;
   height: 7vh;
   font-size: 2.5vw;
 }
+.search-button:hover {
+  border: none;
+  background-color: #717e8e;
+  color: rgba(255,255,255,1);
+  cursor: pointer;
+  background-color: $silver-grey;
+  transition: background-color 0.5s ease-out;
+}
 
 .search-form input {
   color: blue;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 2.5vw;
   margin-right: 5px;
   width: 45vw;
   height: 7vh;
   padding: 1vh;
-}
-
-.search-button:hover {
-  border: 1px solid black;
-  background-color: #717e8e;
-  color: black;
 }
 
 .search-bar {
@@ -232,7 +251,7 @@ font-size: 20px;
 footer {
   color: slategray;
   margin-top: 15vh;
-  margin-bottom:2vh;
+  margin-bottom: 2vh;
   display: flex;
   justify-content: space-between;
   .by {
@@ -240,6 +259,15 @@ footer {
     flex-direction: row;
     width: 100%;
   }
+  p {
+    padding-left: 5px;
+  }
+}
+
+footer a {
+  text-decoration: none;
+  color: $slate-blue;
+  font-weight: bold;
 }
 
 @keyframes glitch {
@@ -254,6 +282,8 @@ footer {
 }
 }
 
+
+
 // ***** RAQ HOMEPAGE END ***** //
 
 // **** RAQ SEARCH RESULTS & LATEST START **** //
@@ -264,6 +294,15 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.latest-home-container {
+  .search-form {
+    margin-top: 10vh;
+  }
+}
+.latest-container {
+  margin-top: 10vh;
 }
 
 .search-results-poster img, .latest-poster img{
@@ -454,7 +493,7 @@ transform: scale(1.14);
 
   
     .reviewsPageSingleReview {
-      width: 25vw;
+    width: 25vw;
     margin: 1vw;
     padding: 1vw;
     // transition: transform.2s ease-in-out;
@@ -495,6 +534,12 @@ transform: scale(1.14);
   flex-direction: column;
   align-items: center;
   margin: 8vw;
+  h1 {
+    letter-spacing: 1px;
+  }
+  span {
+    letter-spacing: 1px;
+  }
 }
 
 .women-poster-container {
@@ -508,8 +553,6 @@ transform: scale(1.14);
   width: 30vw;
   margin-right: 1.5vh;
   border-radius: 8px;
-  
-
 }
 
 .bio-container {
@@ -521,9 +564,10 @@ transform: scale(1.14);
   border-radius: 8px;
   text-align: center;
   span {
-    color: slategray;
+    color: rgb(245, 245, 245);
     font-weight: bold;
-    text-decoration: underline;
+    font-size: 22px;
+    // text-decoration: underline;
   }
 }
 
@@ -584,17 +628,11 @@ transform: scale(1.14);
     }
   }
 
-  .search-button {
-    height: 6vh;
-    width: 17vw;
-    font-size: 2.5vh;
-  }
-
-  .search-form input {
+  .search-form input .search-button {
     height: 6vh;
     font-size: 2.5vh;
   }
-
+  
   .carousel-images img {
     width: 40vw;
   }
@@ -631,6 +669,8 @@ transform: scale(1.14);
   .bio-container {
     width: 80vw;
     background-color: #878caa73;
+    margin: 3vw;
+    
   }
 
   .women-poster-container:hover .bio-container {
@@ -642,6 +682,10 @@ transform: scale(1.14);
   .women-poster-container:hover .bio-container p {
     opacity: 1;
     color: black;
+  }
+  .latest-container img {
+    border-radius: 0.7rem;
+
   }
  }
  // ***** RAQ's MOBILE END ***** //
@@ -717,7 +761,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .login-button {
@@ -726,7 +769,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
 
@@ -736,7 +778,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .edit-button {
@@ -745,7 +786,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .delete-button {
@@ -754,7 +794,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .logout-button {
@@ -763,7 +802,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
 
@@ -773,7 +811,6 @@ transform: scale(1.14);
     color: black;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .login-button:hover {
@@ -782,7 +819,6 @@ transform: scale(1.14);
     color: black;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
 
