@@ -23,6 +23,9 @@ const ReviewForm = ({ text, setText, rating, setRating }) => {
         <div className="control">
           <input
             name="rating"
+            //changed this
+            min="1"
+            max="10"
             className="input"
             onChange={(event) => setRating(event.target.value)}
             type="number"
