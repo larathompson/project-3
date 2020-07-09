@@ -391,22 +391,41 @@ transform: scale(1.14);
 }
 
 .women-movie-poster {
-  width: 35vw;
-  margin: 1vh;
-  padding: 1vw;
+  width: 40vw;
+  margin-right: 1.5vh;
+  border-radius: 8px;
+  // padding: 1vw;
 }
 
 .bio-container {
-  width: 35vw;
-  color: darkgrey;
+  height: 40vh;
+  // margin: 1vh;
+  // padding: 1vw;
+  // color: darkgrey;
+  // background-color: #878caa73;
+  border-radius: 8px;
+  color: black;
+  // display: flex;
+  // align-items: center;
 }
+
+.women-poster-container:hover .bio-container {
+  opacity: 1;
+  background-color: #878caa73;
+  transform: translateX(20px);
+}
+
 .women-poster-container:hover .bio-container p {
   opacity: 1;
+  color: black;
 }
+
 .bio-container p {
   opacity: 0;
   transition: .5s ease;
   font-size: 1.25rem;
+  color: black;
+ 
 }
 
 [data-aos="new-animation"] {
@@ -433,11 +452,6 @@ transform: scale(1.14);
  // ***** MOBILE ***** //
  @media (max-width: 600px) {
 
-
-  // .navbar {
-
-  // }
-
   .hero-body {
     h1 {
       font-size: 4rem;
@@ -461,13 +475,27 @@ transform: scale(1.14);
    }
    .women-movie-poster {
      width: 80vw;
+     border-radius: 7px;
    }
    .bio-container p {
     opacity: 1;
   }
   .bio-container{
     width: 80vw;
+    background-color: #878caa73;
   }
+
+  .women-poster-container:hover .bio-container {
+    opacity: 1;
+    background-color: #878caa73;
+    transform: translateY(20px);
+  }
+  
+  .women-poster-container:hover .bio-container p {
+    opacity: 1;
+    color: black;
+  }
+
   footer {
     font-size: 10px;
   }
