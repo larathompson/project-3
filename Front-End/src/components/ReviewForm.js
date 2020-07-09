@@ -8,11 +8,11 @@ const ReviewForm = ({ text, setText, rating, setRating }) => {
   return <section className='postReview'>
     <form>
       <div className="container">
-        <label className="label">Text</label>
+        <label className="review-label">Text</label>
         <div className="control">
           <input
             name="text"
-            className="input"
+            className="single-review-input"
             onChange={(event) => setText(event.target.value)}
             type="text"
             placeholder="Review"
@@ -23,10 +23,10 @@ const ReviewForm = ({ text, setText, rating, setRating }) => {
 
 
       <div className="container">
-        <label className="label">Rating</label>
+        <label className="review-label">Rating</label>
         <StarRating
-        setRating={setRating}
-        rating={rating}
+          setRating={setRating}
+          rating={rating}
         />
         {/* <div className="control">
           <input

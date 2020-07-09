@@ -47,7 +47,7 @@ const Favourites = () => {
         </Link>
         <div className="favourites-text">
           <h1 className="favouriteMovieTitle">{movie.title}</h1>
-          <p>{movie.reason}reason here</p>
+          <p>"{movie.reason}"</p>
           <button className="favouriteDeleteButton" value={movie.filmId} onClick={deleteFavourite}>Delete</button>
         </div>
       </div>

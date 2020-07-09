@@ -16,13 +16,20 @@ const SingleMovie = (props) => {
 
   const [soundtrackData, setSoundtrackData] = useState({})
   const [added, setAdded] = useState(false)
+
+  //! Reason for Favourite Pop Up State
+  const [clickFavourite, setClickFavourite] = useState(false)
+  const [reason, setReason] = useState('')
+  const [updatedReason, setUpdatedReason] = useState('')
+
+
   //this needs to be changed to object (think is object)
   const [movieData, setMovieData] = useState([])
   const [reviewData, setReviewData] = useState([])
   const [similarMovieData, updateSimilarMovieData] = useState([])
   const [text, setText] = useState('')
   const [rating, setRating] = useState(0)
-  const [isEditting, setIsEditting] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
   const [updatedText, setUpdatedText] = useState('')
   const [updatedRating, setUpdatedRating] = useState(0)
 
@@ -30,7 +37,7 @@ const SingleMovie = (props) => {
   function scrollToTop() {
     window.scrollTo(0, 0)
   }
-  
+
   //! Returning single movie data
 
   useEffect(() => {
@@ -84,11 +91,19 @@ const SingleMovie = (props) => {
   //! Pushing single movie to favourites(profile) page
 
   const favourite = () => {
+    setClickFavourite(true)
+    //! how do I make favourite button disappear?
+  }
+
+  const submitReason = (event) => {
+    setClickFavourite(false)
+    setReason(reason)
+
     const data = {
       filmId: movieData.id,
       title: movieData.title,
       poster: `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`,
-      reason: ''
+      reason: event.target.value
     }
     axios.post('/api/favourites', data, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
@@ -102,6 +117,7 @@ const SingleMovie = (props) => {
         props.history.push('/login')
         console.log(err.response)
       })
+
   }
 
   function handleComment(filmId) {
@@ -135,7 +151,7 @@ const SingleMovie = (props) => {
       .then((comment) => {
         setUpdatedText('')
         setUpdatedRating(Number)
-        setIsEditting(false)
+        setIsEditing(false)
         const updatedReviews = reviewData.map((review, index) => {
           if (comment.data._id === review._id) {
             return comment.data
@@ -154,10 +170,10 @@ const SingleMovie = (props) => {
 
   function handleToggle(event) {
 
-    if (isEditting) {
-      setIsEditting(false)
+    if (isEditing) {
+      setIsEditing(false)
     } else {
-      setIsEditting(event.target.value)
+      setIsEditing(event.target.value)
     }
 
   }
@@ -172,18 +188,28 @@ const SingleMovie = (props) => {
 
   return <>
     <h1 className="singleMovieTitle">{movieData.title}</h1>
-    <p>{movieData.overview}</p>
+    <p className="singleMovieBio">{movieData.overview}</p>
+    <div className="favouriteMovieButtonContainer">
+      {added ? <button title="Disabled button" disabled>Added</button> : <button className="favouriteMovieButton" onClick={favourite}>Favourite</button>}
+      {clickFavourite && <form><input
+        name="text"
+        className="reason-input-form"
+        reason={updatedReason}
+        setReason={setUpdatedReason}
+        onChange={(event) => setReason(event.target.value)}
+        placeholder="Why it is your favourite?"
+        value={reason}
+      />
+      <button className="reasonButton" value={reason} onClick={submitReason}>Submit</button>
+      </form>}
+    </div>
     <div className="singlePageContainer">
       <section className="singleSectionOne">
         {soundtrackData && <div>
           <iframe className="singleIframe" src={`https://open.spotify.com/embed/playlist/${soundtrackData}`} width="250" height="375" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>}
         <div className="singleMovieSection">
-          {/* desciption in here */}
           <img className="singleMoviePoster" src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
-          <div className="favouriteMovieButtonContainer">
-            {added ? <button title="Disabled button" disabled>Added</button> : <button className="favouriteMovieButton" onClick={favourite}>Favourite ❤️</button>}
-          </div>
         </div>
       </section>
       <h2 className="singlePageReviews">Reviews</h2>
@@ -191,38 +217,39 @@ const SingleMovie = (props) => {
         {reviewData && reviewData.map((review, index) => {
           return <div key={index} className="singleReviewContainer">
             <h1>{review.user.username} says:</h1>
-            <p>"{review.text}"</p>
+            <p>{review.text}</p>
             <span>{[...Array(review.rating)].map((e, i) => {
               return <span key={i}>★</span>
             })} </span>
             <p>{moment(review.updatedAt).fromNow()} </p>
             <div className="singleReviewButtons">
+              {/* //! THIS NEEDS TO BE CHANGED  */}
               <a href="javascript:window.location.reload(true)">
-                {userCheck(review.user.username) && <button onClick={handleDelete} value={review._id} id="singleButton" className="delete-button">Delete </button>}
+                {userCheck(review.user.username) && <button onClick={handleDelete} value={review._id} id="singleButton" className="single-delete-button">Delete </button>}
               </a>
-              {userCheck(review.user.username) && <button onClick={handleToggle} value={review._id} id="singleButton" className="edit-button">Edit </button>}
+              {userCheck(review.user.username) && <button onClick={handleToggle} value={review._id} id="singleButton" className="single-edit-button">Edit </button>}
             </div>
-            {review._id === isEditting && <ReviewForm
+            {review._id === isEditing && <ReviewForm
               text={updatedText}
               setText={setUpdatedText}
               rating={updatedRating}
               setRating={setUpdatedRating}
             />}
-            {(isLoggedIn() && isEditting === review._id && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id} className="submit-button">Submit</button>}
+            {(isLoggedIn() && isEditing === review._id && userInfo && userInfo.username === review.user.username) && <button onClick={handleEdit} value={review._id} className="submit-button">Submit</button>}
           </div>
         })}
       </section>
       <section className="singleSectionThree">
         <h3 className="singleLeaveReview">Leave a Review</h3>
         <div className="sectionThreeText">
-          {(isLoggedIn() && !isEditting && userInfo) && <ReviewForm
+          {(isLoggedIn() && !isEditing && userInfo) && <ReviewForm
             text={text}
             setText={setText}
             rating={rating}
             setRating={setRating}
           />}
           <div className="button">
-            {(isLoggedIn() && !isEditting && userInfo) && <button onClick={handleComment} className="submit-button">Submit</button>}
+            {(isLoggedIn() && !isEditing && userInfo) && <button onClick={handleComment} className="submit-button">Submit</button>}
           </div>
         </div>
       </section>

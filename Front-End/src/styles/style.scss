@@ -60,6 +60,7 @@ img {
   color: $cream;
 }
 
+
 .navbar-menu {
   // background-color: $slate-blue;
   background-color: hsla(225, 2%, 30%, 0.451);
@@ -95,7 +96,7 @@ img {
 
 
 #navbar-button {
-  background: #222;
+  background: $slate-blue;
   height: 50px;
   min-width: 150px;
   border: none;
@@ -153,6 +154,10 @@ margin: 15px 10px 10px 10px;
 font-size: 20px;
 // text-transform: uppercase;
 
+}
+
+.navbar-link:hover {
+ color: $slate-blue;
 }
 
 
@@ -891,7 +896,7 @@ transform: scale(1.14);
 .favourites-card {
   display: flex;
   width: 60vw;
-  margin-top: 2vh;
+  margin-top: 3vh;
   background: rgba(255,255,255,1);
   border-radius: 8px;
   text-align: center;
@@ -944,13 +949,33 @@ transform: scale(1.14);
   transition: background-color 0.5s ease-out;
 }
 
+.single-delete-button {
+  border: 1px solid $silver-grey;
+  background-color: $silver-grey;
+  color: white;
+  margin-top: 10px;
+  padding: 7px;
+  font-family: futura;
+}
+
+.single-edit-button {
+border: 1px solid $silver-grey;
+background-color: $silver-grey;
+color: white;
+margin-top: 10px;
+padding: 7px;
+font-family: futura;
+}
+
+
 @media only screen and (min-width: 650px) {
-  .text{
+  .favourites-text{
    font-size: 1.25rem; 
   }
   
   .favouriteDeleteButton {
    padding: 10px;
+   font-size: 1rem;
   }
 
   .favouritePageTitle {
@@ -959,8 +984,6 @@ transform: scale(1.14);
   }
   
 }
-
-
 
 //** END OF FAVOURITES STYLING **//
 
@@ -1024,34 +1047,40 @@ transform: scale(1.14);
   display: flex;
   flex-direction: column;
   // justify-content: center;
-  margin: 0 10px;
+  margin: 10px;
   align-items: center;
   border: 1px solid black;
-  width: 30vw;
+  width: 80vw;
   
 
 }
 
+.single-review-input {
+  margin: 5px 0;
+  // color: $royal-blue;
+}
 
-
-// .singleReviewContainer {
-//   display: flex;
-//   width: 100%;
-//   flex-direction: row;
-  
-
-// }
+.review-label {
+  color: $slate-blue;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
 .singleLeaveReview {
   font-size: 18px;
   text-align: center;
   margin: 0;
   padding: 5px;
+  border-bottom: 1px solid $cream;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: $slate-blue;
+  color: $cream;
 }
 
 .singleSectionThree {
   text-align: center;
-  padding: 5px;
+  // padding: 5px;
   margin-top: 5px;
   // border: 2px solid $royal-blue;
   background-color: #878caa73;
@@ -1083,7 +1112,60 @@ transform: scale(1.14);
   margin: 5px;
 }
 
+.singleMovieBio {
+  color: $blue-grey;
+  font-size: 15px;
+  text-align: center;
+  padding: 10px;
 
+}
+
+.favouriteMovieButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+button .favouriteMovieButton {
+  margin-top: 2vh;
+  width: 20vw;
+  border-radius: 8px;
+  outline: 0;
+  border: 0;
+  // background-color: black;
+  color: rgba(255,255,255,1);
+  font-family: 'Futura', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 5px;
+
+}
+
+.favouriteMovieButton:hover {
+  cursor: pointer;
+  background-color: $silver-grey;
+  transition: background-color 0.5s ease-out;
+}
+
+.reason-input-form {
+ margin-right: 2.5vw;
+ padding: 1vw;
+}
+
+.reasonButton {
+  font-size: 1rem;
+  padding: 0.75vw;
+  border: none;
+  background-color: $transparent-grey;
+}
+
+button {
+
+  outline: none !important;
+
+}
 
 
 
@@ -1091,18 +1173,16 @@ transform: scale(1.14);
 //** SINGLE PAGE MEDIA QUERIES **//
 @media only screen and (max-width: 499px) {
 
-  // .singleLeaveReview {
-    
-  //   text-align: center;
-  //   margin: 0;
-  //   padding: 5px;
-  // }
-
 .singleSectionOne {
   display: flex;
   flex-direction: column;
   // justify-content: space-between;
 }
+
+.singleReviewContainer {
+  min-width: 25vw;
+}
+
 }
 
 @media only screen and (min-width: 500px) {
@@ -1114,9 +1194,11 @@ transform: scale(1.14);
     
   // }
 
+
   .singleMovieTitle {
     font-size: 40px;
     text-align: center;
+    padding-top: 20px;
   }
 
 
@@ -1172,7 +1254,7 @@ transform: scale(1.14);
     margin: 0 10px;
     align-items: center;
     border: 1px solid black;
-    width: 15vw;
+    width: 25vw;
     
   
   }
@@ -1180,11 +1262,45 @@ transform: scale(1.14);
   .singleLeaveReview {
     font-size: 25px;
     text-align: center;
+    margin: 0;
+    padding: 10px;
   }
   
   .singleSectionThree {
     width: 35vw;
     margin-top: 25px;
+    padding: 0;
+  }
+
+  .favouriteMovieButton {
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    width: 20vw;
+    // border-radius: 8px;
+    // outline: 0;
+    border: 3px solid $slate-blue;
+    background-color: $silver-grey;
+    color: rgba(255,255,255,1);
+    font-family: 'Futura', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 15px;
+    border-radius: 50%;
+  
+  }
+  
+  .favouriteMovieButton:hover {
+    cursor: pointer;
+    background-color: $cream;
+    transition: background-color 0.5s ease-out;
+    color: $silver-grey;
+  }
+
+  .reason-input-form {
+    padding: 2vh;
+    outline: none !important;
+
   }
 
 }
@@ -1192,8 +1308,16 @@ transform: scale(1.14);
 @media only screen and (min-width: 600px) {
 
   .singleMovieTitle {
-    font-size: 100px;
+    font-size: 60px;
+    padding-top: 25px;
    
+  }
+
+  .singleMovieBio {
+    font-size: 20px;
+    padding: 20px;
+
+
   }
 
   .singlePageReviews {
@@ -1203,6 +1327,20 @@ transform: scale(1.14);
 
  .singleSimilarTitle {
    font-size: 40px;
+ }
+
+ .singleReviewContainer h1 {
+   padding-top: 1vh;
+   margin: 0;
+   text-transform: uppercase;
+   color: $silver-grey;
+
+ }
+
+ .singleReviewContainer p {
+   padding: 1vh;
+   margin: 0;
+
  }
 
 }
