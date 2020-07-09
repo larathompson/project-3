@@ -38,7 +38,7 @@ router.route('/profile')
 router.route('/favourites')
   .post(secureRoute, userController.addFavourite)
 
-  //! Unsure about routes
+//! Unsure about routes
 router.route('/favourites/:filmId')
   .delete(secureRoute, userController.deleteFavourite)
 
