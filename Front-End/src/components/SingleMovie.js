@@ -87,7 +87,8 @@ const SingleMovie = (props) => {
     const data = {
       filmId: movieData.id,
       title: movieData.title,
-      poster: `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`
+      poster: `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`,
+      reason: ''
     }
     axios.post('/api/favourites', data, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
@@ -191,6 +192,9 @@ const SingleMovie = (props) => {
           return <div key={index} className="singleReviewContainer">
             <h1>{review.user.username} says:</h1>
             <p>"{review.text}"</p>
+            <span>{[...Array(review.rating)].map((e, i) => {
+              return <span key={i}>★</span>
+            })} </span>
             <p>{moment(review.updatedAt).fromNow()} </p>
             <div className="singleReviewButtons">
               <a href="javascript:window.location.reload(true)">

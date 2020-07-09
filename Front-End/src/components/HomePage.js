@@ -95,16 +95,6 @@ const HomePage = (props) => {
           })}
         </div>
       </div>
-      {/* <footer>
-        <small>All Rights Reserved <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a> & <a href="https://www.spotify.com/uk/" target="_blank" rel="noopener noreferrer">Spotify</a></small>
-        <div>
-          <div>
-            <small>Brought to you by 
-              <small className="by"> 🌜4kir4 x Lara x Shaikh x SilkenTofu🌛</small>
-            </small>
-          </div>
-        </div>
-      </footer> */}
     </section>
   </>
 }

@@ -50,8 +50,8 @@ const WomenMovies = (props) => {
                 </div>
               </Link>
               <div className="bio-container" data-aos="new-animation">
-                <p>{`${movie.release_date}`}</p>
-                <p>{`${movie.overview}`}</p>
+                <p><span>RELEASE DATE:</span><br/>{`${movie.release_date}`}</p>
+                <p><span>OVERVIEW:</span> <br/>{`${movie.overview}`}</p>
               </div>
 
 
