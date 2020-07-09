@@ -5,14 +5,15 @@ const Footer = () => {
 
   return <>
     <footer>
-      <small>All Rights Reserved <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a> & <a href="https://www.spotify.com/uk/" target="_blank" rel="noopener noreferrer">Spotify</a></small>
       <div>
-        <div>
-          <small>Brought to you by
-            <span className="by"> 🌜4kir4 x Lara x Shaikh x SilkenTofu🌛</span>
-          </small>
-        </div>
+        <p>All Rights Reserved <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a> & <a href="https://www.spotify.com/uk/" target="_blank" rel="noopener noreferrer">Spotify</a></p>
       </div>
+
+      <div>
+        <p className="by">🌜<a href="" target="_blank" rel="noopener noreferrer">4kir4</a> x <a href="https://github.com/larathompson" target="_blank" rel="noopener noreferrer">Lara</a> x <a href="https://github.com/shaikhqayum" target="_blank" rel="noopener noreferrer">Shaikh</a> x <a href="https://github.com/cruickshankprc" target="_blank" rel="noopener noreferrer">SilkenTofu</a> 🌛</p>
+      </div>
+
+
     </footer>
   </>
 }
