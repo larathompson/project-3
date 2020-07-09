@@ -166,8 +166,10 @@ const SingleMovie = (props) => {
       </section>
 
 
+
       <h2 className="singlePageReviews">Reviews</h2>
       <section className="singleSectionTwo">
+
         {reviewData && reviewData.map((review, index) => {
           return <div key={index} className="singleReviewContainer">
             <h1>{review.user.username} says:</h1>
@@ -176,10 +178,10 @@ const SingleMovie = (props) => {
 
             <div className="singleReviewButtons">
               <a href="javascript:window.location.reload(true)">
-                {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleDelete} value={review._id} className="delete-button">Delete </button>}
+                {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={handleDelete} value={review._id} id="singleButton" className="delete-button">Delete </button>}
               </a>
 
-              {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={() => setEdit(review._id)} value={review._id} className="edit-button">Edit </button>}
+              {(isLoggedIn() && userInfo && userInfo.username === review.user.username) && <button onClick={() => setEdit(review._id)} value={review._id} id="singleButton" className="edit-button">Edit </button>}
             </div>
             {review._id === edit && <ReviewForm
               text={updatedText}

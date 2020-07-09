@@ -665,6 +665,7 @@ div .favouriteFront {
 
 }
 
+
 // ** FAVOURITES MEDIA QUERY ** //
 
 @media only screen and (max-width: 399px) {
@@ -794,6 +795,8 @@ div .favouriteFront {
 
 }
 
+
+
 // .singleReviewContainer {
 //   display: flex;
 //   width: 100%;
@@ -839,6 +842,14 @@ div .favouriteFront {
   // align-items: center;
 }
 
+#singleButton {
+  margin: 5px;
+}
+
+
+
+
+
 
 //** SINGLE PAGE MEDIA QUERIES **//
 @media only screen and (max-width: 499px) {
@@ -875,7 +886,7 @@ div .favouriteFront {
   .singleSectionOne {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 100vw;
     padding: 35px;
   }
