@@ -192,8 +192,8 @@ const SingleMovie = (props) => {
           return <div key={index} className="singleReviewContainer">
             <h1>{review.user.username} says:</h1>
             <p>"{review.text}"</p>
-            <span>{[...Array(review.rating)].map((e, i) => {
-              return <span key={i}>★</span>
+            <span >{[...Array(review.rating)].map((e, i) => {
+              return <span key={i} className="singleMovieStars">★</span>
             })} </span>
             <p>{moment(review.updatedAt).fromNow()} </p>
             <div className="singleReviewButtons">

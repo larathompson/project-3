@@ -155,6 +155,14 @@ font-size: 20px;
 
 }
 
+//navBar media query
+// @media only screen and (min-width: 700px) {
+//   .navbar-menu{
+//     display: flex;
+//     justify-content: space-between;
+//   }
+// }
+
 
 
 //
@@ -331,7 +339,7 @@ footer {
   flex-direction: column;
   align-items: center;
   margin:7vw;
-  // width: 100vw;
+  width: 100%;
 }
 
 .reviewsPageTitle {
@@ -345,6 +353,8 @@ footer {
   background: black;
   color: white;
   font-size: 18px;
+  padding: 0 15px;
+  border-radius: 5px;
   position: relative;
   display: inline-block;
   font-family: futura;
@@ -382,7 +392,7 @@ transform: scale(1.14);
 
 
 #reviewsPageUserName {
-  font-size: 15px;
+  font-size: 12px;
   color: #68829E;
 }
 
@@ -405,9 +415,9 @@ transform: scale(1.14);
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  background: #9193a058;
+  background-color: RGBA(255,255,255,0.79);
   width: 70vw;
-  border-radius: 20px;
+  border-radius: 10px;
   height: 32vw;
 }
 
@@ -420,7 +430,7 @@ transform: scale(1.14);
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  color: black;
+  color: #717e8e;
   padding: 1vw;
 }
 
@@ -468,16 +478,18 @@ transform: scale(1.14);
 
     
 .reviewsPageSelectBar {
-  width: 20vw;
+  width: 23vw;
   height: 5vw;
 }
 
 .reviewsPageFilmPoster {
   padding: 3vw;
+  border-radius: 40px;
 }
 
 .reviewsPageBody {
-  height:15vw;
+  height:10vw;
+  width: 175px;
 }
 
 #reviewsPageText {
@@ -1218,6 +1230,16 @@ input[type="radio"] {
 .star {
   cursor: pointer;
   transition: color 200ms;
+}
+
+.singleMovieStars {
+  color: #ffc107;
+}
+
+#singleMovieStars {
+  color: #ffc107;
+  font-size: 15px;
+  padding: none;
 }
 
 
