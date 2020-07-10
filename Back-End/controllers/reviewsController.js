@@ -81,7 +81,7 @@ function remove(req, res) {
         return res.status(401).send({ message: 'Unauthorized' })
       }
       review.deleteOne()
-      res.status(202).send(review)
+      res.status(202).send(req.currentUser)
     })
 }
 

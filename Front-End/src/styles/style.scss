@@ -1025,6 +1025,8 @@ font-family: futura;
 .singleIframe {
   height: 275px;
   width: 190px;
+  border-radius: 5px;
+  margin-top: 2vh;
 
 }
 
@@ -1036,17 +1038,12 @@ font-family: futura;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  // border: 1px solid black;
   width: 100vw;
-
-
-  // flex-direction: column;
 }
 
 .singleReviewContainer {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   margin: 10px;
   align-items: center;
   border: 1px solid black;
@@ -1057,7 +1054,6 @@ font-family: futura;
 
 .single-review-input {
   margin: 5px 0;
-  // color: $royal-blue;
 }
 
 .review-label {
@@ -1080,17 +1076,13 @@ font-family: futura;
 
 .singleSectionThree {
   text-align: center;
-  // padding: 5px;
   margin-top: 5px;
-  // border: 2px solid $royal-blue;
   background-color: #878caa73;
   border-radius: 20px;
   width: 80vw;
-  // position: relative;
 }
 
 .sectionThreeText {
-  // position: absolute;
   color: black;
   padding: 5px;
 }
@@ -1102,11 +1094,6 @@ font-family: futura;
   align-items: center;
 }
 
-.singleSimilarContainer {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-}
 
 #singleButton {
   margin: 5px;
@@ -1127,19 +1114,16 @@ font-family: futura;
   flex-direction: column;
 }
 
-button .favouriteMovieButton {
-  margin-top: 2vh;
-  width: 20vw;
-  border-radius: 8px;
-  outline: 0;
-  border: 0;
-  // background-color: black;
-  color: rgba(255,255,255,1);
+.favouriteMovieButton {
+  border: 3px solid $slate-blue;
+  border-radius: 50%;
+  background-color: $silver-grey;
+  color: $cream;
   font-family: 'Futura', sans-serif;
   font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  padding: 5px;
+  padding: 8px;
 
 }
 
@@ -1149,16 +1133,19 @@ button .favouriteMovieButton {
   transition: background-color 0.5s ease-out;
 }
 
-.reason-input-form {
- margin-right: 2.5vw;
+.reason-input-form { 
+ margin-top: 1vh;
+ margin-right: 2vw;
  padding: 1vw;
+ width: 50vw;
 }
 
 .reasonButton {
   font-size: 1rem;
-  padding: 0.75vw;
+  padding: 1vw;
   border: none;
   background-color: $transparent-grey;
+  border-radius: 25%;
 }
 
 button {
@@ -1176,7 +1163,7 @@ button {
 .singleSectionOne {
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
+  
 }
 
 .singleReviewContainer {
@@ -1186,14 +1173,6 @@ button {
 }
 
 @media only screen and (min-width: 500px) {
-
-  // .singleSectionOne {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-    
-  // }
-
 
   .singleMovieTitle {
     font-size: 40px;
@@ -1211,7 +1190,6 @@ button {
   }
 
   .singleMoviePoster {
-    // width: 50vw;
     height: 400px;
     width: 275px;
   
@@ -1240,23 +1218,17 @@ button {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    // border: 1px solid black;
     width: 100vw;
-
- 
-    // flex-direction: column;
   }
 
   .singleReviewContainer {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     margin: 0 10px;
     align-items: center;
     border: 1px solid black;
     width: 25vw;
-    
-  
+
   }
 
   .singleLeaveReview {
@@ -1276,15 +1248,9 @@ button {
     margin-top: 2vh;
     margin-bottom: 3vh;
     width: 20vw;
-    // border-radius: 8px;
-    // outline: 0;
-    border: 3px solid $slate-blue;
-    background-color: $silver-grey;
-    color: rgba(255,255,255,1);
-    font-family: 'Futura', sans-serif;
     font-size: 20px;
     letter-spacing: 3px;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     padding: 15px;
     border-radius: 50%;
   
@@ -1298,8 +1264,9 @@ button {
   }
 
   .reason-input-form {
-    padding: 2vh;
+    padding: 1vh;
     outline: none !important;
+    width: 25vw;
 
   }
 

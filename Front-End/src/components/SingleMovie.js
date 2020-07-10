@@ -20,8 +20,6 @@ const SingleMovie = (props) => {
   //! Reason for Favourite Pop Up State
   const [clickFavourite, setClickFavourite] = useState(false)
   const [reason, setReason] = useState('')
-  const [updatedReason, setUpdatedReason] = useState('')
-
 
   //this needs to be changed to object (think is object)
   const [movieData, setMovieData] = useState([])
@@ -56,7 +54,7 @@ const SingleMovie = (props) => {
           //! .some() returns a boolean value, used for ternary operator for add to favourites button.
           const exists = userInfo.favouriteMovies.some(movie => movie.filmId === axiosResp.data.results[0].id)
           setAdded(exists)
-          scrollToTop()
+          // scrollToTop()
         }
       })
       .catch(err => console.log(err.response))
@@ -96,14 +94,15 @@ const SingleMovie = (props) => {
   }
 
   const submitReason = (event) => {
+
     setClickFavourite(false)
-    setReason(reason)
+    event.preventDefault()
 
     const data = {
       filmId: movieData.id,
       title: movieData.title,
       poster: `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`,
-      reason: event.target.value
+      reason: reason
     }
     axios.post('/api/favourites', data, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
@@ -135,14 +134,17 @@ const SingleMovie = (props) => {
       })
   }
 
-  //deleting a single comment 
+  //deleting a single review 
   function handleDelete(event) {
     const token = localStorage.getItem('token')
     const reviewId = event.target.value
     axios.delete(`/api/review/${reviewId}`, { headers: { Authorization: `Bearer ${token}` } })
+      .then(res => {
+        setUserInfo(res.data)
+      })
   }
 
-  // editing a single comment
+  // editing a single review
 
   function handleEdit(event) {
     const token = localStorage.getItem('token')
@@ -191,16 +193,15 @@ const SingleMovie = (props) => {
     <p className="singleMovieBio">{movieData.overview}</p>
     <div className="favouriteMovieButtonContainer">
       {added ? <button title="Disabled button" disabled>Added</button> : <button className="favouriteMovieButton" onClick={favourite}>Favourite</button>}
-      {clickFavourite && <form><input
+      {clickFavourite && <form onSubmit={submitReason}><input
         name="text"
         className="reason-input-form"
-        reason={updatedReason}
-        setReason={setUpdatedReason}
+        //! Needed to record the changes in state - listening for changes, updating reason with changes. State is changing when you type in the box.
         onChange={(event) => setReason(event.target.value)}
-        placeholder="Why it is your favourite?"
+        placeholder="Why it is your favourite film?"
         value={reason}
       />
-      <button className="reasonButton" value={reason} onClick={submitReason}>Submit</button>
+        <button className="reasonButton">Submit</button>
       </form>}
     </div>
     <div className="singlePageContainer">
@@ -223,10 +224,7 @@ const SingleMovie = (props) => {
             })} </span>
             <p>{moment(review.updatedAt).fromNow()} </p>
             <div className="singleReviewButtons">
-              {/* //! THIS NEEDS TO BE CHANGED  */}
-              <a href="javascript:window.location.reload(true)">
-                {userCheck(review.user.username) && <button onClick={handleDelete} value={review._id} id="singleButton" className="single-delete-button">Delete </button>}
-              </a>
+              {userCheck(review.user.username) && <button onClick={handleDelete} value={review._id} id="singleButton" className="single-delete-button">Delete </button>}
               {userCheck(review.user.username) && <button onClick={handleToggle} value={review._id} id="singleButton" className="single-edit-button">Edit </button>}
             </div>
             {review._id === isEditing && <ReviewForm
@@ -256,12 +254,13 @@ const SingleMovie = (props) => {
       <h2 className="singleSimilarTitle">Similar Movies</h2>
       <div className="singleSimilarMovieList">
         {similarMovieData && similarMovieData.map((result, index) => {
-          return <div className="singleSimilarContainer" key={index}>
-            {/* <a href="javascript:window.location.reload(true)"> */}
-            <Link onClick={scrollToTop} to={`/movie/${result.title}/${result.id}`}>
-              <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
-            </Link>
-          </div>
+          if (index < 5) {
+            return <div className="singleSimilarContainer" key={index}>
+              <Link onClick={scrollToTop} to={`/movie/${result.title}/${result.id}`}>
+                <img className="similarMovieItem" src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} />
+              </Link>
+            </div>
+          }
         })}
       </div>
     </div>
