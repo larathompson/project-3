@@ -2,12 +2,18 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const env = process.env.NODE_ENV === 'production' ? (
+  new webpack.EnvironmentPlugin({ ...process.env })
+) : (
+  new Dotenv()
+)
 
 module.exports = {
   entry: './Front-End/src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve('dist')
+    path: path.resolve('./Back-End/dist'),
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -38,6 +44,7 @@ module.exports = {
       template: 'Front-End/src/index.html',
       filename: 'index.html',
       inject: 'body'
-    })
+    }),
+    env
   ]
 }

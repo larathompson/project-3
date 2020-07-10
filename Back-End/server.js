@@ -3,6 +3,9 @@ const bodyParser = require('body-parser')
 const router = require('./router')
 const mongoose = require('mongoose')
 const { port, dbURI } = require('./config/environment')
+const path = require('path')
+const dist = path.join(__dirname, 'dist')
+
 
 mongoose.connect(
   dbURI,
@@ -21,7 +24,13 @@ expressServer.use((req, res, next) => {
   next()
 })
 
+//! Adding middleware
+
 expressServer.use('/api', router)
+expressServer.use('/', express.static(dist))
+expressServer.get('*', function(req, res) {
+  res.sendFile(path.join(dist, 'index.html'))
+})
 //this server is continuously listening for requests to it
 expressServer.listen(port)
 
