@@ -2,8 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const router = require('./router')
 const mongoose = require('mongoose')
+const { port, dbURI } = require('./config/environment')
+
 mongoose.connect(
-  'mongodb://localhost/moviedb',
+  dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) console.log(err)
@@ -21,4 +23,6 @@ expressServer.use((req, res, next) => {
 
 expressServer.use('/api', router)
 //this server is continuously listening for requests to it
-expressServer.listen(8000)
+expressServer.listen(port)
+
+module.exports = expressServer

@@ -1,6 +1,6 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
-const secret = 'Kianna and Kianna only is the Git master '
+const { secret } = require('../config/environment')
 
 const axios = require('axios').default
 
