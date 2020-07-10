@@ -43,12 +43,18 @@ background-color: #fffaf1;
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%2368829e' fill-opacity='0.29'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
 
+// **** REPEAT CSS **** //
+
 button {
   border-radius: 5px;
 }
 
 img {
   border-radius: 1vh;
+}
+
+input {
+  outline: none !important;
 }
 
 // ***** RAQ HOMEPAGE START ***** //
@@ -60,10 +66,11 @@ img {
   color: $cream;
 }
 
+
 .navbar-menu {
   // background-color: $slate-blue;
   background-color: hsla(225, 2%, 30%, 0.451);
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
 }
@@ -71,33 +78,22 @@ img {
 .navbar-container-left {
   display: flex;
   justify-content: flex-start;
-  margin-left: 15px;
+  margin-left: 1.75vw;
 
 }
 
 .navbar-container-right {
   display: flex;
   justify-content: flex-end;
-  margin-right: 15px;
+  margin-right: 1.75vw;
  
 }
 
-// #navbar-button {
-//   margin-top: 10px;
-//   border: none;
-//   border-radius: 5px;
-//   outline: none !important;
-//   background-color: black;
-//   color: white;
-//   padding: 7px 10px;
-//   font-family: 'futura'
-// }
-
 
 #navbar-button {
-  background: #222;
-  height: 50px;
-  min-width: 150px;
+  background: $slate-blue;
+  height: 8vh;
+  min-width: 15vw;
   border: none;
   border-radius: 5px;
   color: $cream;
@@ -140,8 +136,8 @@ img {
 }
 
 #navbar-button:hover #circle {
-  height: 50px;
-  width: 150px;
+  height: 8vh;
+  width: 15vw;
   left: 0;
   border-radius: 0;
   border-bottom: 2px solid $cream;
@@ -149,20 +145,44 @@ img {
 
 
 .navbar-link {
-margin: 15px 10px 10px 10px;
+margin: 2.25vh 1vw 1vh 1vw;
 font-size: 20px;
 // text-transform: uppercase;
 
 }
 
-//navBar media query
-// @media only screen and (min-width: 700px) {
-//   .navbar-menu{
-//     display: flex;
-//     justify-content: space-between;
-//   }
-// }
+.navbar-link:hover {
+ color: $slate-blue;
+}
 
+//** NAVBAR MOBILE - KIANNA **//
+
+@media only screen and (max-width: 400px) {
+
+  .navbar-link {
+    margin: 2.5vh 1vw;
+    font-size: 16px;
+  }
+
+  .navbar-container-left{
+    width: 40vw;
+    margin-left: 0vw;
+  }
+
+  .navbar-container-right {
+    width: 40vw;
+    margin-right: 0vw;
+  }
+
+  #navbar-button {
+    height: 4vh;
+    font-size: 16px;
+    margin-top: 1.75vh;
+    padding-top: 5px;
+     
+  }
+   
+}
 
 
 //
@@ -174,8 +194,11 @@ font-size: 20px;
 
   h1 {
     font-size: 5rem;
-    
+    // text-shadow: -2px 6px lightgrey;
+    -webkit-animation: text-shadow-pop-bl 1s both;
+    animation: text-shadow-pop-bl 1s both;
   }
+
   .search-section {
     padding-bottom: 10vh;
   }
@@ -192,7 +215,7 @@ font-size: 20px;
 }
 
 .carousel-images img {
-  width: 30vw;
+  width: 20vw;
   height: auto;
 }
 
@@ -202,21 +225,54 @@ font-size: 20px;
  }
 }
 
+ @-webkit-keyframes text-shadow-pop-bl {
+  0% {
+    text-shadow: 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey;
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    text-shadow: -1px 1px lightgrey, -2px 2px lightgrey, -3px 3px lightgrey, -4px 4px lightgrey, -5px 5px lightgrey, -6px 6px lightgrey, -7px 7px lightgrey, -8px 8px lightgrey;
+    -webkit-transform: translateX(8px) translateY(-8px);
+            transform: translateX(8px) translateY(-8px);
+  }
+}
+@keyframes text-shadow-pop-bl {
+  0% {
+    text-shadow: 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey, 0 0 lightgrey;
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    text-shadow: -1px 1px lightgrey, -2px 2px lightgrey, -3px 3px lightgrey, -4px 4px lightgrey, -5px 5px lightgrey, -6px 6px lightgrey, -7px 7px lightgrey, -8px 8px lightgrey;
+    -webkit-transform: translateX(8px) translateY(-8px);
+            transform: translateX(8px) translateY(-8px);
+  }
+}
+
+
 // SEARCH RESULTS & LATEST
 
 .search-button {
-  border: 1px solid black;
-  background-color: black;
+  border: 1px solid slategrey;
+  background-color: slategrey;
   color: white;
-  padding: 1vh;
   width: 10.5vw;
   height: 7vh;
   font-size: 2.5vw;
 }
+.search-button:hover {
+  border: none;
+  background-color: #717e8e;
+  color: rgba(255,255,255,1);
+  cursor: pointer;
+  background-color: $silver-grey;
+  transition: background-color 0.5s ease-out;
+}
 
 .search-form input {
-  color: blue;
-  border-radius: 5px;
+  color: black;
+  border-radius: 8px;
   font-size: 2.5vw;
   margin-right: 5px;
   width: 45vw;
@@ -224,11 +280,6 @@ font-size: 20px;
   padding: 1vh;
 }
 
-.search-button:hover {
-  border: 1px solid black;
-  background-color: #717e8e;
-  color: black;
-}
 
 .search-bar {
   padding: 7px;
@@ -240,14 +291,25 @@ font-size: 20px;
 footer {
   color: slategray;
   margin-top: 15vh;
-  margin-bottom:2vh;
+  // margin-bottom: 2vh;
   display: flex;
   justify-content: space-between;
   .by {
     animation: glitch 1s linear infinite;
     flex-direction: row;
     width: 100%;
+    
   }
+  p {
+    padding-left: 5px;
+  }
+}
+
+footer a {
+  text-decoration: none;
+  // color: $slate-blue;
+  color: $royal-blue;
+  font-weight: bold;
 }
 
 @keyframes glitch {
@@ -262,6 +324,7 @@ footer {
 }
 }
 
+
 // ***** RAQ HOMEPAGE END ***** //
 
 // **** RAQ SEARCH RESULTS & LATEST START **** //
@@ -272,6 +335,16 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.2);
+}
+
+.latest-home-container {
+  .search-form {
+    margin-top: 10vh;
+  }
+}
+.latest-container {
+  margin-top: 10vh;
 }
 
 .search-results-poster img, .latest-poster img{
@@ -464,7 +537,7 @@ transform: scale(1.14);
 
   
     .reviewsPageSingleReview {
-      width: 25vw;
+    width: 25vw;
     margin: 1vw;
     padding: 1vw;
     // transition: transform.2s ease-in-out;
@@ -507,6 +580,12 @@ transform: scale(1.14);
   flex-direction: column;
   align-items: center;
   margin: 8vw;
+  h1 {
+    letter-spacing: 1px;
+  }
+  span {
+    letter-spacing: 1px;
+  }
 }
 
 .women-poster-container {
@@ -520,8 +599,6 @@ transform: scale(1.14);
   width: 30vw;
   margin-right: 1.5vh;
   border-radius: 8px;
-  
-
 }
 
 .bio-container {
@@ -533,9 +610,10 @@ transform: scale(1.14);
   border-radius: 8px;
   text-align: center;
   span {
-    color: slategray;
+    color: rgb(245, 245, 245);
     font-weight: bold;
-    text-decoration: underline;
+    font-size: 22px;
+    // text-decoration: underline;
   }
 }
 
@@ -596,17 +674,11 @@ transform: scale(1.14);
     }
   }
 
-  .search-button {
-    height: 6vh;
-    width: 17vw;
-    font-size: 2.5vh;
-  }
-
-  .search-form input {
+  .search-form input .search-button {
     height: 6vh;
     font-size: 2.5vh;
   }
-
+  
   .carousel-images img {
     width: 40vw;
   }
@@ -643,6 +715,8 @@ transform: scale(1.14);
   .bio-container {
     width: 80vw;
     background-color: #878caa73;
+    margin: 3vw;
+    
   }
 
   .women-poster-container:hover .bio-container {
@@ -654,6 +728,9 @@ transform: scale(1.14);
   .women-poster-container:hover .bio-container p {
     opacity: 1;
     color: black;
+  }
+  .latest-container img {
+    border-radius: 0.7rem;
   }
  }
  // ***** RAQ's MOBILE END ***** //
@@ -729,7 +806,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .login-button {
@@ -738,7 +814,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
 
@@ -748,7 +823,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .edit-button {
@@ -757,7 +831,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .delete-button {
@@ -766,7 +839,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .logout-button {
@@ -775,7 +847,6 @@ transform: scale(1.14);
     color: white;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
 
@@ -785,7 +856,6 @@ transform: scale(1.14);
     color: black;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
   .login-button:hover {
@@ -794,7 +864,6 @@ transform: scale(1.14);
     color: black;
     margin-top: 10px;
     padding: 7px;
-    font-family: futura;
   }
 
 
@@ -903,7 +972,7 @@ transform: scale(1.14);
 .favourites-card {
   display: flex;
   width: 60vw;
-  margin-top: 2vh;
+  margin-top: 3vh;
   background: rgba(255,255,255,1);
   border-radius: 8px;
   text-align: center;
@@ -956,13 +1025,33 @@ transform: scale(1.14);
   transition: background-color 0.5s ease-out;
 }
 
+.single-delete-button {
+  border: 1px solid $silver-grey;
+  background-color: $silver-grey;
+  color: white;
+  margin-top: 10px;
+  padding: 7px;
+  font-family: futura;
+}
+
+.single-edit-button {
+border: 1px solid $silver-grey;
+background-color: $silver-grey;
+color: white;
+margin-top: 10px;
+padding: 7px;
+font-family: futura;
+}
+
+
 @media only screen and (min-width: 650px) {
-  .text{
+  .favourites-text{
    font-size: 1.25rem; 
   }
   
   .favouriteDeleteButton {
    padding: 10px;
+   font-size: 1rem;
   }
 
   .favouritePageTitle {
@@ -971,8 +1060,6 @@ transform: scale(1.14);
   }
   
 }
-
-
 
 //** END OF FAVOURITES STYLING **//
 
@@ -1014,6 +1101,8 @@ transform: scale(1.14);
 .singleIframe {
   height: 275px;
   width: 190px;
+  border-radius: 5px;
+  margin-top: 2vh;
 
 }
 
@@ -1025,55 +1114,51 @@ transform: scale(1.14);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  // border: 1px solid black;
   width: 100vw;
-
-
-  // flex-direction: column;
 }
 
 .singleReviewContainer {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  margin: 0 10px;
+  margin: 10px;
   align-items: center;
   border: 1px solid black;
-  width: 30vw;
+  width: 80vw;
   
 
 }
 
+.single-review-input {
+  margin: 5px 0;
+}
 
-
-// .singleReviewContainer {
-//   display: flex;
-//   width: 100%;
-//   flex-direction: row;
-  
-
-// }
+.review-label {
+  color: $slate-blue;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
 .singleLeaveReview {
   font-size: 18px;
   text-align: center;
   margin: 0;
   padding: 5px;
+  border-bottom: 1px solid $cream;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: $slate-blue;
+  color: $cream;
 }
 
 .singleSectionThree {
   text-align: center;
-  padding: 5px;
   margin-top: 5px;
-  // border: 2px solid $royal-blue;
   background-color: #878caa73;
   border-radius: 20px;
   width: 80vw;
-  // position: relative;
 }
 
 .sectionThreeText {
-  // position: absolute;
   color: black;
   padding: 5px;
 }
@@ -1085,50 +1170,78 @@ transform: scale(1.14);
   align-items: center;
 }
 
-.singleSimilarContainer {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-}
 
 #singleButton {
   margin: 5px;
 }
 
+.singleMovieBio {
+  color: $blue-grey;
+  font-size: 15px;
+  text-align: center;
+  padding: 10px;
 
+}
+
+.favouriteMovieButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.favouriteMovieButton {
+  border: 3px solid $slate-blue;
+  border-radius: 50%;
+  background-color: $silver-grey;
+  color: $cream;
+  font-family: 'Futura', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 8px;
+
+}
+
+.favouriteMovieButton:hover {
+  cursor: pointer;
+  background-color: $silver-grey;
+  transition: background-color 0.5s ease-out;
+}
+
+.reason-input-form { 
+ margin-top: 1vh;
+ margin-right: 2vw;
+ padding: 1vw;
+ width: 50vw;
+}
+
+.reasonButton {
+  font-size: 1rem;
+  padding: 1vw;
+  border: none;
+  background-color: $transparent-grey;
+  border-radius: 1vw;
+}
+
+button {
+
+  outline: none !important;
+
+}
 
 
 
 
 //** SINGLE PAGE MEDIA QUERIES **//
-@media only screen and (max-width: 499px) {
 
-  // .singleLeaveReview {
-    
-  //   text-align: center;
-  //   margin: 0;
-  //   padding: 5px;
-  // }
-
-.singleSectionOne {
-  display: flex;
-  flex-direction: column;
-  // justify-content: space-between;
-}
-}
 
 @media only screen and (min-width: 500px) {
-
-  // .singleSectionOne {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-    
-  // }
 
   .singleMovieTitle {
     font-size: 40px;
     text-align: center;
+    padding-top: 20px;
   }
 
 
@@ -1141,7 +1254,6 @@ transform: scale(1.14);
   }
 
   .singleMoviePoster {
-    // width: 50vw;
     height: 400px;
     width: 275px;
   
@@ -1170,33 +1282,56 @@ transform: scale(1.14);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    // border: 1px solid black;
     width: 100vw;
-
- 
-    // flex-direction: column;
   }
 
   .singleReviewContainer {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
-    margin: 0 10px;
+    margin-bottom: 1vh;
     align-items: center;
     border: 1px solid black;
-    width: 15vw;
-    
-  
+    width: 25vw;
+
   }
 
   .singleLeaveReview {
     font-size: 25px;
     text-align: center;
+    margin: 0;
+    padding: 10px;
   }
   
   .singleSectionThree {
     width: 35vw;
-    margin-top: 25px;
+    margin-top: 2vh;
+    padding: 0;
+  }
+
+  .favouriteMovieButton {
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    width: 20vw;
+    font-size: 20px;
+    letter-spacing: 3px;
+    // text-transform: uppercase;
+    padding: 15px;
+    border-radius: 50%;
+  
+  }
+  
+  .favouriteMovieButton:hover {
+    cursor: pointer;
+    background-color: $cream;
+    transition: background-color 0.5s ease-out;
+    color: $silver-grey;
+  }
+
+  .reason-input-form {
+    padding: 1vh;
+    outline: none !important;
+    width: 25vw;
+
   }
 
 }
@@ -1204,17 +1339,49 @@ transform: scale(1.14);
 @media only screen and (min-width: 600px) {
 
   .singleMovieTitle {
-    font-size: 100px;
+    font-size: 60px;
+    padding-top: 25px;
    
   }
 
-  .singlePageReviews {
+  .singleMovieBio {
+    font-size: 20px;
+    padding: 20px;
 
-    font-size: 40px;
+
+  }
+
+  .singlePageReviews {
+    font-size: 50px;
+    padding-bottom: 3vh;
+    margin: 0;
   }
 
  .singleSimilarTitle {
-   font-size: 40px;
+   font-size: 50px;
+
+ }
+
+ .singleReviewContainer {
+   margin-bottom: 2.5vh;
+ }
+
+ .singleReviewContainer h1 {
+   padding-top: 1vh;
+   margin: 0;
+   text-transform: uppercase;
+   color: $silver-grey;
+
+ }
+
+ .singleReviewContainer p {
+   padding: 1vh;
+   margin: 0;
+
+ }
+
+ .similarMovieItem {
+   margin: 1vw;
  }
 
 }
