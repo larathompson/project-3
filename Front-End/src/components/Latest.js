@@ -41,7 +41,7 @@ const Latest = (props) => {
   }
 
   return <>
-    <section className="home-container">
+    <section className="latest-home-container">
       <div className="hero-body">
         <form onSubmit={getSearch} className="search-form">
           <input

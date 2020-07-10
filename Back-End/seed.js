@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 const User = require('./models/user')
 const Reviews = require('./models/reviews')
+const { dbURI } = require('./config/environment')
 // const { default: Reviews } = require('../Front-End/src/components/Reviews')
-
 
 //it says there is a throw error and the module cant be found !
 mongoose.connect(
-  'mongodb://localhost/moviedb',
+  dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err, db) => {
     if (err) return console.log(err)
@@ -16,10 +16,10 @@ mongoose.connect(
       .then(() => {
         return User.create([
           {
-            username: 'raquel',
-            email: 'raquel@raquel.com',
-            password: 'raquel',
-            passwordConfirmation: 'raquel'
+            username: 'silkenTofu',
+            email: 'tofu@tofu.com',
+            password: 'tofu',
+            passwordConfirmation: 'tofu'
           },
           {
             username: 'kianna',
