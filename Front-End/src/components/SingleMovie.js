@@ -184,8 +184,6 @@ const SingleMovie = (props) => {
     return isLoggedIn() && userInfo && userInfo.username === username
   }
 
-
-
   //! Returning soundtrack and single movie data on page
 
   return <>
@@ -201,7 +199,7 @@ const SingleMovie = (props) => {
         placeholder="Why it is your favourite film?"
         value={reason}
       />
-        <button className="reasonButton">Submit</button>
+   <button className="reasonButton">Submit</button>
       </form>}
     </div>
     <div className="singlePageContainer">

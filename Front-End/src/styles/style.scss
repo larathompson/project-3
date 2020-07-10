@@ -64,7 +64,7 @@ img {
 .navbar-menu {
   // background-color: $slate-blue;
   background-color: hsla(225, 2%, 30%, 0.451);
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
 }
@@ -72,33 +72,22 @@ img {
 .navbar-container-left {
   display: flex;
   justify-content: flex-start;
-  margin-left: 15px;
+  margin-left: 1.75vw;
 
 }
 
 .navbar-container-right {
   display: flex;
   justify-content: flex-end;
-  margin-right: 15px;
+  margin-right: 1.75vw;
  
 }
-
-// #navbar-button {
-//   margin-top: 10px;
-//   border: none;
-//   border-radius: 5px;
-//   outline: none !important;
-//   background-color: black;
-//   color: white;
-//   padding: 7px 10px;
-//   font-family: 'futura'
-// }
 
 
 #navbar-button {
   background: $slate-blue;
-  height: 50px;
-  min-width: 150px;
+  height: 8vh;
+  min-width: 15vw;
   border: none;
   border-radius: 5px;
   color: $cream;
@@ -141,8 +130,8 @@ img {
 }
 
 #navbar-button:hover #circle {
-  height: 50px;
-  width: 150px;
+  height: 8vh;
+  width: 15vw;
   left: 0;
   border-radius: 0;
   border-bottom: 2px solid $cream;
@@ -150,7 +139,7 @@ img {
 
 
 .navbar-link {
-margin: 15px 10px 10px 10px;
+margin: 2.25vh 1vw 1vh 1vw;
 font-size: 20px;
 // text-transform: uppercase;
 
@@ -160,6 +149,35 @@ font-size: 20px;
  color: $slate-blue;
 }
 
+//** NAVBAR MOBILE - KIANNA **//
+
+@media only screen and (max-width: 400px) {
+
+  .navbar-link {
+    margin: 2.5vh 1vw;
+    font-size: 16px;
+  }
+
+  .navbar-container-left{
+    width: 40vw;
+    margin-left: 0vw;
+  }
+
+  .navbar-container-right {
+    width: 40vw;
+    margin-right: 0vw;
+  }
+
+  #navbar-button {
+    height: 4vh;
+    font-size: 16px;
+    margin-top: 1.75vh;
+    padding-top: 5px;
+     
+  }
+   
+
+}
 
 
 //
@@ -1145,7 +1163,7 @@ font-family: futura;
   padding: 1vw;
   border: none;
   background-color: $transparent-grey;
-  border-radius: 25%;
+  border-radius: 1vw;
 }
 
 button {
@@ -1158,19 +1176,7 @@ button {
 
 
 //** SINGLE PAGE MEDIA QUERIES **//
-@media only screen and (max-width: 499px) {
 
-.singleSectionOne {
-  display: flex;
-  flex-direction: column;
-  
-}
-
-.singleReviewContainer {
-  min-width: 25vw;
-}
-
-}
 
 @media only screen and (min-width: 500px) {
 
@@ -1224,7 +1230,7 @@ button {
   .singleReviewContainer {
     display: flex;
     flex-direction: column;
-    margin: 0 10px;
+    margin-bottom: 1vh;
     align-items: center;
     border: 1px solid black;
     width: 25vw;
@@ -1240,7 +1246,7 @@ button {
   
   .singleSectionThree {
     width: 35vw;
-    margin-top: 25px;
+    margin-top: 2vh;
     padding: 0;
   }
 
@@ -1288,12 +1294,18 @@ button {
   }
 
   .singlePageReviews {
-
-    font-size: 40px;
+    font-size: 50px;
+    padding-bottom: 3vh;
+    margin: 0;
   }
 
  .singleSimilarTitle {
-   font-size: 40px;
+   font-size: 50px;
+
+ }
+
+ .singleReviewContainer {
+   margin-bottom: 2.5vh;
  }
 
  .singleReviewContainer h1 {
@@ -1308,6 +1320,10 @@ button {
    padding: 1vh;
    margin: 0;
 
+ }
+
+ .similarMovieItem {
+   margin: 1vw;
  }
 
 }
