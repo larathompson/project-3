@@ -17,6 +17,7 @@ const HomePage = (props) => {
       // POPULAR MOVIES: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
       .then(movie => {
         setMovieCarousel(movie.data.items)
+        //why are we returing here???
         return movie.data.items
       })
       // * Because you have returned movie data above^ you can CHAIN with .then 

@@ -24,6 +24,8 @@ function login(req, res) {
       if (!user.validatePassword(req.body.password)) {
         return res.status(401).send({ message: 'Unauthorized' })
       }
+
+      //not sure about this 
       const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '72h' })
       res.status(202).send({ message: `Welcome back ${user.username}`, token, user })
     })
@@ -47,7 +49,7 @@ function addFavourite(req, res) {
 }
 
 //! Not sure 
-
+//why here is it being turned into an integer??
 function deleteFavourite(req, res) {
   const favouriteId = parseInt((req.params.filmId))
   User

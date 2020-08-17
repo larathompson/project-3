@@ -1,7 +1,9 @@
 const Reviews = require('../models/reviews')
 
 
-
+//this function gets all the reviews
+//populate is a function and it adds the user to the reviews
+//  is the USER FROM THE SCHEMA??
 function index(req, res) {
   Reviews
     .find()
@@ -12,6 +14,7 @@ function index(req, res) {
     })
 }
 
+//req.parms searches the query path of the URL request
 function getOneReview(req, res) {
   const id = req.params.id
   Reviews
@@ -36,7 +39,9 @@ function getMovieReviews(req, res) {
     })
     .catch(error => res.send(error))
 }
-//added this 
+
+//Allows you to access the JSON data that was sent in the request. Generally used in POST/PUT requests
+//the req.body allowss you to access the data sent in the request
 function createMovieReview(req, res) {
   const review = req.body
   console.log(review)
@@ -59,6 +64,7 @@ function createMovieReview(req, res) {
 
 function create(req, res) {
   const review = req.body
+  //not entirely sure about this ??
   review.user = req.currentUser
   Reviews
     .create(review)
@@ -77,6 +83,7 @@ function remove(req, res) {
     .then(review => {
       const currentUserId = req.currentUser._id
       const userIdOnReview = review.user
+      //checking they wrote the review
       if (!userIdOnReview.equals(currentUserId)) {
         return res.status(401).send({ message: 'Unauthorized' })
       }
