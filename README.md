@@ -52,16 +52,16 @@ We had to:
 
 ## Planning
 
-![moviePage](../movie.png)
-![singlemoviePage](../singlemovie.png)
-![favouritePage](../favourites.png)
-![reviewsPage](../reviews.png)
+![moviePage](movie.png)
+![singlemoviePage](singlemovie.png)
+![favouritePage](favourites.png)
+![reviewsPage](reviews.png)
 
 As a team, we used Figma to wireframe our app. This was beneficial as it later allowed us to work independently on different components whilst ensuring our app had a consistent style. 
 
 ## Task Planning 
 
-![taskPage](../trello.png)
+![taskPage](trello.png)
 
 Throughout the duration of the project we used Trello to assign tasks to different members of the groups and had corresponding deadlines. This meant that we were confident that we could complete our app by the deadline. Additionally, it meant that we reduced the number of conflicts that occured during merges between our teams code when using GitHub. 
 
@@ -115,7 +115,7 @@ After collaborating to create the backend, we split off and worked independently
 
 ## Reviews
 
-![reviewPage](../review.png)
+![reviewPage](review.png)
 
 As shown in the image, one each film page, all of the written reviews are displayed. Additionally, I used the Font Awesome star icon (`faStar`) to create an interactive rating system, whereby the logged-in user could rate a film on a scale of 1-5 stars. 
 
@@ -246,7 +246,7 @@ const StarRating = ({ setRating, rating }) => {
 
 ### Viewing all the reviews
 
-![allReviewsPage](../allrev.png)
+![allReviewsPage](allrev.png)
 
 The user also has an option to view all the reviews written on the app and is able to sort them by rating and the date the review was posted. In order to do this, a GET request in the `useEffect` retrieved all the reviews, saving them in state. 
 
