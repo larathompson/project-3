@@ -284,6 +284,15 @@ Furthermore, prior to the project, we were warned that the Spotify API was diffi
 
 As this was the first project where we had worked in a group of 4, it took us a couple of days to come to terms with how best to communicate and collaborate. As this project was comprised of many different features, this resulted in us having conflicts when merging. We quickly understood the importance of consistently communicating and therefore, could resolve this issue. Additionally, as mentioned, the Spotify API was initally difficult to access and our token had to consistently be renewed. This took us a few days to resolve and made me recognise the importance of perseverence and time management; our team set deadlines which accounted for difficulties that may arise and with this forward-thinking, we were still able to create our MVP with some additional features. 
 
+Finally, we were able to make the app both mobile and desktop responsive, however, due to time constraints, there are still a few features which could be improved upon. 
+
+
+### Additional Features
+
+Due to time constraints we were not able to implement all of the additional features that we would have liked. As shown on the review model, we were hoping to design a feature whereby users could comment on each others reviews - this is something that I would like to implement in the future. 
+
+
+
 
 
 
