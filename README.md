@@ -2,9 +2,9 @@
 
 # Overview
 
-This MERN Stack app was the third project that I completed whilst at GA. This project was completed over the course of 7 days in a group of 4 people. To facilitate successful collaboration over the duration of the project, we used Trello to set ourselves task deadlines, Figma to wireframe our app and Git, GitHub, Slack and VSCode Live Share to faciliate communication whilst coding. 
+This MERN Stack app was the third project that I completed whilst at GA. This project was completed over the course of 7 days in a group of 4 people. To facilitate successful collaboration over the duration of the project, we used Trello to set ourselves task deadlines, Figma to wireframe our app and Git, GitHub, Slack and VSCode Live Share to facilitate communication whilst coding. 
 
-As a team, we decided to create a movie soundtrack database that consumed from the Spotify and MovieDB public API's. On this app, a user can search for film sountracks, see recently released movies and films produced by women. Additionally, they are able to login, favourite and post/edit/delete comments on movies. My role focused on the commenting functionality of the app, in addition to helping with the styling and configuration of the app. 
+As a team, we decided to create a movie soundtrack database that consumed the Spotify and MovieDB public API's. On this app, a user can search for film soundtracks, see recently released movies and films produced by women. Additionally, they are able to login, favourite and post/edit/delete comments on movies. My role focused on the commenting functionality of the app, in addition to helping with the styling and configuration of the app. 
 
 You can view The Score [here](https://the--score.herokuapp.com/#/), or find the GitHub repository [here](https://github.com/larathompson/project-3). 
 
@@ -14,14 +14,14 @@ Listed below are the requirement that our team had to meet whilst building the a
 
 We had to:
 
-- work in a team, using git to code collaboratively
-- build a full-stack application by making our own backend and frontend
-- use an express API to serve the data from a Mongo database
-- consume our API with a separate front-end built in React
-- build a complete product which had multiple relationships and CRUD functionality for at least some of the models 
-- implement thoughtful user stories/wireframces that were significant enough to know which features were core MVP and which could be cut
-- have a visually impressive design 
-- be deployed online so that it could be publically accesible
+- Work in a team, using git to code collaboratively
+- Build a full-stack application by making our own backend and frontend
+- Use an express API to serve the data from a Mongo database
+- Consume our API with a separate front-end built in React
+- Build a complete product which had multiple relationships and CRUD functionality for at least some of the models 
+- Implement thoughtful user stories/wireframes that were significant enough to know which features were core MVP and which could be cut
+- Have a visually impressive design 
+- Be deployed online so that it could be publicly accessible
 
 # Technologies Used
 - HTML
@@ -67,7 +67,7 @@ Throughout the duration of the project we used Trello to assign tasks to differe
 
 ## App set-up
 
-Whilst creating our app, we starting by creating the back-end. In order to use this, we used Mongoose, MongoDB, Express and Node.js. Whilst setting up the app, I took the lead in setting up the web-pack, package.json, server.js and seed.js and files. 
+Whilst creating our app, we started by building the back-end. In order to use this, we used Mongoose, MongoDB, Express and Node.js. Whilst setting up the app, I took the lead in setting up the web-pack, package.json, server.js and seed.js and files. 
 
 In order to create a design for the data we wanted stored, we created schemas - a user schema and a reviews schema. The user schema also used bcrypt and mongoose unique validator. This ensured that the user was not already stored in the database in addition to hashing the stored password after using a virtual field to check that the original password matched the password confirmation. 
 
@@ -109,7 +109,7 @@ Once the models were created, we were able to create endpoints which performed C
 ### Reviews Controllers
 - `/reviews` (GET, POST) --> allows users to view all the reviews they posted and post new reviews
 - `/review/:id` (GET, DELETE, PUT) --> allows users to view, delete or edit a review
-- `/movie/reviews/:filmId` (GET, POST) --> allows all the reviews of a film to be displayed ansd for users to post reviews to the movie page
+- `/movie/reviews/:filmId` (GET, POST) --> allows all the reviews of a film to be displayed and for users to post reviews to the movie page
 
 After collaborating to create the backend, we split off and worked independently to work on different front-end components. As mentioned, my focus was to create the review functionality of the app. 
 
@@ -131,11 +131,11 @@ axios.get(`api/movie/reviews/${filmId}`)
       })
 ```
 
-The data provided into the response into was stored state (`const [reviewData, setReviewData] = useState([])`). By mapping over this data, I was able to display on the page the content of the reviews, the user who posted the review and by using the library `moment`, I was able to display how recently it was posted. 
+The data provided into the response was stored in state (`const [reviewData, setReviewData] = useState([])`). By mapping over this data, I was able to display on the page the content of the reviews, the user who posted the review and by using the library `moment`, I was able to display how recently it was posted. 
 
 ### Post a review on the movie page:
 
-In order to post a review, a user must be registered and logged in. When the user clicks on the 'Submit' button on the Review Form, the `handleComment` function is run. This retrieves the users token from local storage, and then posts the content of the comment to the server. When posted, the text `setText` is reset to being a blank box and the rating `setRating` is set to its inital state of `0`. We then pushed the review into the `reviews` array and then reviewData is updated to include the new review. 
+In order to post a review, a user must be registered and logged in. When the user clicks on the 'Submit' button on the Review Form, the `handleComment` function is run. This retrieves the user's token from local storage, and then posts the content of the comment to the server. When posted, the text `setText` is reset to being a blank box and the rating `setRating` is set to its initial state of `0`. We then pushed the review into the `reviews` array and then reviewData is updated to include the new review. 
 
 ```
   function handleComment(filmId) {
@@ -193,7 +193,7 @@ In order to ensure you could only edit a review you had written, we wrote a `use
 
 ```
 
-Simiarly to the posting and editing reviews function, only logged in users can delete the comments which they had written. 
+Similarly to the posting and editing reviews function, only logged in users can delete the comments which they had written. 
 
 ```
 function handleDelete(event) {
@@ -210,7 +210,7 @@ function handleDelete(event) {
 
 In order to do the interactive star rating, I created a separate component(`StarRating`) in order to split up our code. I used the react-icons library. 
 
-To create the 5 stars, I made an array that had 5 untitled items in it and mapped over this (in order to create 5 stars) and returned from each of those the star. Behind each star I inserted a radio button which I hid using CSS. In order to know what the user rated the movie as, I used `onClick` to set the rating value as `i + 1 ` (as index starts at 0 but the first value is 1 star) and saving this rating in state. 
+To create the 5 stars, I made an array that had 5 untitled items in it and mapped over this (in order to create 5 stars) and returned from each of those a star. Behind each star I inserted a radio button which I hid using CSS. In order to know what the user rated the movie as, I used `onClick` to set the rating value as `i + 1 ` (as index starts at 0 but the first value is 1 star) and saved this rating in state. 
 
 I also added a hover function (`onMouseEnter`) - this was a function that made the stars turn yellow when the mouse hovered over them and turned grey `onMouseLeave`. This hover value was also saved in state. 
 
@@ -279,6 +279,11 @@ The `handleSort` function sorts the array depending on by which method the user 
 This project was the most challenging on the course as we had to use more complex code, desigining and creating both the front-end and back-end, in addition to learning how best to work collaboratively in a large group. This project allowed me to develop a deeper understanding of how communication between the back-end and front-end occurs and I became more confident at researching and implementing new features that I learnt independently, such as the star rating feature. Additionally, I could clearly see the benefits of working collaboratively in projects - I was able to learn about `useContext` from another member of my team whilst learning how best to code and style collaboratively. As well as consolidating and learning new technical skills, I became confident at how to use Git to work as a team and we quickly learnt that planning and consistent communcation was essential in order to create a functional app that had consistent styling.
 
 Furthermore, prior to the project, we were warned that the Spotify API was difficult to access. However, through perseverence and team-work, we were able to use it and I personally saw this as a big success. Having used the Deezer API in my previous project, this project demonstrated to me that I had become more confident with understanding technical documentation. 
+
+### Bugs
+
+- On the Favourites Page, the footer is mid-way up the page - this can be fixed with some CSS styling. 
+- When the app is viewed on a mobile, the nav bar becomes less responsive and the styling of the buttons becomes inconsistent - this is due to the fact that we were rushed for time and could be fixed with styling. 
 
 ### Challenges and Lessons Learnt 
 
